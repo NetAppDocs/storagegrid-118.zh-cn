@@ -1,0 +1,35 @@
+---
+permalink: upgrade/impact-of-upgrade-on-groups-and-user-accounts.html 
+sidebar: sidebar 
+keywords: upgrade, permissions 
+summary: 升级完成后、您可能需要相应地更新组和用户帐户。 
+---
+= 升级对组和用户帐户的影响
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+升级完成后、您可能需要相应地更新组和用户帐户。
+
+
+
+== 对组权限和选项进行的更改
+
+升级到StorageGRID 11.8后、可以选择为租户用户组分配以下新权限。
+
+[cols="1a,2a,2a"]
+|===
+| 权限 | Description | 详细信息 
+
+
+ a| 
+查看所有存储分段
+ a| 
+允许用户查看所有存储分段和存储分段配置。
+ a| 
+"管理所有存储分段"权限将取代"查看所有存储分段"权限。
+
+|===
+请参见 link:../tenant/tenant-management-permissions.html["租户管理权限"]。

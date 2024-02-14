@@ -1,0 +1,40 @@
+---
+permalink: admin/modifying-connection-settings-for-s3-api.html 
+sidebar: sidebar 
+keywords: archive node, cloud tiering 
+summary: 将归档节点配置为通过 S3 API 连接到外部归档存储系统后，如果连接发生变化，您可以修改某些设置。 
+---
+= 修改 S3 API 的连接设置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+将归档节点配置为通过 S3 API 连接到外部归档存储系统后，如果连接发生变化，您可以修改某些设置。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.关于此任务
+如果更改 Cloud Tiering （ S3 ）帐户，则必须确保用户访问凭据对存储分段具有读 / 写访问权限，包括先前归档节点向存储分段载入的所有对象。
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 目标 * 。
+. 选择 * 配置 * > * 主 * 。
++
+image::../media/archive_node_s3_middleware.gif[修改归档节点的配置页面]
+
+. 根据需要修改帐户信息。
++
+如果更改存储类，则新对象数据将与新存储类一起存储。载入时，现有对象仍存储在存储类集下。
+
++
+
+NOTE: 存储分段名称、区域和端点使用AWS值、无法更改。
+
+. 选择 * 应用更改 * 。
+

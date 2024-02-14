@@ -1,0 +1,51 @@
+---
+permalink: audit/arem-archive-object-remove.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, AREM, Archive Object Remove 
+summary: '" 归档对象删除 " 审核消息指示已从归档节点成功删除内容块或未成功删除内容块。如果结果成功，则归档节点已成功通知外部归档存储系统 StorageGRID 已释放对象位置。对象是否从外部归档存储系统中删除取决于系统类型及其配置。' 
+---
+= AREM ：归档对象删除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+" 归档对象删除 " 审核消息指示已从归档节点成功删除内容块或未成功删除内容块。如果结果成功，则归档节点已成功通知外部归档存储系统 StorageGRID 已释放对象位置。对象是否从外部归档存储系统中删除取决于系统类型及其配置。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+CBID
+ a| 
+内容块 ID
+ a| 
+要从外部归档介质系统检索的内容块的唯一标识符。
+
+
+
+ a| 
+VLID
+ a| 
+卷标识符
+ a| 
+用于归档对象数据的卷的标识符。
+
+
+
+ a| 
+RSLT
+ a| 
+结果
+ a| 
+归档删除过程的完成状态：
+
+* SUC ：成功
+* Arun ：失败（外部归档存储系统不可用）
+* GERR ：失败（一般错误）
+
+
+|===

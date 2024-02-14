@@ -1,0 +1,107 @@
+---
+permalink: upgrade/whats-new.html 
+sidebar: sidebar 
+keywords: what is new in StorageGRID 11.8 
+summary: 此版本的 StorageGRID 引入了以下功能。 
+---
+= StorageGRID 11.8.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此版本的StorageGRID 引入了以下特性和功能变更。
+
+
+
+== 安装、升级、修补程序
+
+临时安装密码:: 当您 link:../vmware/deploying-storagegrid-node-as-virtual-machine.html["将StorageGRID节点部署为虚拟机"] 或使用VMware vSphere link:../vmware/automating-grid-node-deployment-in-vmware-vsphere.html["自动执行网格节点部署"]，此时将提示您设置临时安装密码。只有在新节点加入网格之前需要访问VM控制台或使用SSH时、才会使用此密码。
+
+
+
+
+== 设备
+
+设备文档站点:: StorageGRID设备的文档已移至新的 link:https://docs.netapp.com/us-en/storagegrid-appliances/["设备文档站点"^]。
+FIPS支持:: 支持FIPS 140-2验证加密法。
+增强了GF6112:: StorageGRID 11.8和StorageGRID设备安装程序固件版本3.8.0支持：
++
+--
+* 显著提高了新安装的GF6112的Put性能。
+* 在升级后的和新的SGF6112节点上启用UEFI安全启动。
+* DAS NVMe SSD驱动器密码的本地密钥管理器。
+
+
+--
+
+
+
+
+== 配置和管理
+
+网格范围的一致性默认值:: 您可以更改 link:../s3/consistency-controls.html["网格范围的默认一致性"] 使用的网格管理器或网格配置端点 link:../admin/using-grid-management-api.html["网格管理私有API"]。新的默认值将应用于更改后创建的分段。
+ILM策略标记:: 允许使用存储分段标记控制每个存储分段的ILM策略。可以同时存在多个活动和非活动ILM策略。请参见 link:../ilm/ilm-policy-overview.html["ILM策略：概述"]。
+Kafka端点:: 支持的Kafka端点 link:../tenant/understanding-notifications-for-buckets.html["存储分段事件通知"]。
+用于管理接口流量的负载平衡器:: 创建负载平衡器端点以管理管理节点上的管理接口工作负载。请参见 link:../admin/managing-load-balancing.html["负载平衡注意事项"]。作为此更改的一部分、现在在为S3或Swift客户端访问创建HTTPS负载平衡器端点时、您可以使用网格管理器和租户管理器端口443、8443和9443。
+管理驱动器选项卡:: 已添加 link:../monitor/viewing-manage-drives-tab.html["管理驱动器选项卡"] 适用于GF6112设备。
+纯元数据存储节点:: 现在、您可以指定新的 link:../primer/what-storage-node-is.html#types-of-storage-nodes["基于软件的存储节点"] 将仅用于存储元数据、而不是同时存储对象和元数据。
+SSO支持用户主体名称:: 时间 link:../admin/configuring-sso.html["配置单点登录(SSO)"] 现在、对于Active Directory联合身份验证服务(AD FS)或PingFederation、您可以将用户主体名称映射到 `Name ID` 在索赔规则或至中 `sAMAccountName=${username}` 在适配器实例中。
+TLS策略配置和KMIP支持::
++
+--
+* 现在、StorageGRID支持对KMIP连接使用TLS 1.2或TLS 1.3协议。请参见 link:../admin/kms-considerations-and-requirements.html["使用密钥管理服务器的注意事项和要求"]。
+* link:../admin/kms-configuring-storagegrid-as-client.html["KMIP现在完全支持Hashitorp"]。
+* 对进行了增强 link:../admin/manage-tls-ssh-policy.html["TLS策略配置"]。
+
+
+--
+
+
+
+
+== 扩展网格、维护网格、恢复或更换节点
+
+改进了帐户克隆:: 现有帐户可以克隆到远程网格。请参见 link:../admin/grid-federation-what-is-account-clone.html["什么是帐户克隆"]。
+可以停用归档节点:: 现在、您可以使用停用节点操作步骤删除与网格断开连接的任何未使用的归档节点。请参见 link:../maintain/decommissioning-disconnected-grid-nodes.html["停用已断开连接的网格节点"]。
++
+--
+
+NOTE: 归档节点在StorageGRID 11.7中已弃用。
+
+--
+自动卷还原:: 添加了自动执行卷还原的切换。请参见 link:../maintain/restoring-volume.html["使用网格管理器还原对象数据"]。
+纠删编码、更改配置和重新平衡操作步骤:: 对纠删编码配置进行了改进。
++
+--
+在现有存储节点和新存储节点之间重新分布已进行过数据整理的片段。重新计算维护任务期间的余额、以便在任务完成时更好地进行分配。请参见 link:../expand/rebalancing-erasure-coded-data-after-adding-storage-nodes.html["纠删编码重新平衡操作步骤"]。
+
+--
+管理API堆栈跟踪:: 通过*管理API堆栈跟踪*安全设置，您可以控制是否在Grid Manager和租户管理器API错误响应中返回堆栈跟踪。请参见 link:../admin/changing-browser-session-timeout-interface.html["更改接口安全设置"]。
+滚动重新启动操作步骤:: 现在、您可以使用 link:../maintain/rolling-reboot-procedure.html["滚动重新启动操作步骤"] 在不导致服务中断的情况下重新启动多个网格节点。
+
+
+
+
+== 网格管理器
+
+不可信客户端网络、有关其他端口的信息:: 现在，对不可信客户端网络开放的网格管理器端口列表位于名为“开放给不可信客户端网络”的列中，位于*configuration*>*Network*>*Load均衡器端点*>*Management interface*(以前位于防火墙控制页)。请参见 link:../admin/configuring-load-balancer-endpoints.html["配置负载平衡器端点"]。
+
+
+
+
+== 租户管理器
+
+S3控制台不再处于试验阶段:: 中介绍的其他功能 link:../tenant/use-s3-console.html["使用S3控制台"]。
+租户权限:: 。 link:../tenant/tenant-management-permissions.html["租户管理权限"]，查看所有存储分段，已添加。
+
+
+
+
+== S3 REST API
+
+* link:../s3/changes-to-s3-rest-api-support.html["对 S3 REST API 支持的更改"]。
+* S3删除具有UUID的标记。请参见 link:../ilm/how-objects-are-deleted.html#delete-s3-versioned-objects["如何删除对象"] 和 link:../audit/sdel-s3-delete.html["SDEL ： S3 delete"]。
+* link:../s3/select-object-content.html["S3选择扫描范围"] 在CSV和镶木地板文件请求中提供时使用。
+

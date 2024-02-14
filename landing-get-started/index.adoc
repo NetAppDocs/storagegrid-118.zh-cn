@@ -1,0 +1,13 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: landing-get-started/index.html 
+summary: 在安装和使用StorageGRID系统之前、请花一些时间了解什么是StorageGRID。 
+---
+= 开始使用StorageGRID系统
+:hardbreaks:
+:allow-uri-read: 
+:linkattrs: 
+:imagesdir: ./media/
+
+

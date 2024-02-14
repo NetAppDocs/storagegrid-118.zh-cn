@@ -1,0 +1,20 @@
+---
+permalink: admin/completing-archive-node-setup.html 
+sidebar: sidebar 
+keywords: archive node setup 
+summary: 完成安装过程后，归档节点无法正常运行。在 StorageGRID 系统将对象保存到 TSM 归档节点之前，您必须完成 TSM 服务器的安装和配置，并配置归档节点以与 TSM 服务器进行通信。 
+---
+= 完成归档节点设置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+完成安装过程后，归档节点无法正常运行。在 StorageGRID 系统将对象保存到 TSM 归档节点之前，您必须完成 TSM 服务器的安装和配置，并配置归档节点以与 TSM 服务器进行通信。
+
+在准备 TSM 服务器以便与 StorageGRID 系统中的归档节点集成时，请根据需要参考以下 IBM 文档：
+
+* http://www.ibm.com/support/docview.wss?rs=577&uid=ssg1S7002972["《 IBM 磁带设备驱动程序安装和用户指南》"^]
+* http://www.ibm.com/support/docview.wss?rs=577&uid=ssg1S7003032["《 IBM 磁带设备驱动程序编程参考》"^]
+

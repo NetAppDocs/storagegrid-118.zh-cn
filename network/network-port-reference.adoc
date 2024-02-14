@@ -1,0 +1,16 @@
+---
+permalink: network/network-port-reference.html 
+sidebar: sidebar 
+keywords: network port reference 
+summary: 您必须确保网络基础架构能够在网格内的节点之间以及与外部客户端和服务之间提供内部和外部通信。您可能需要跨内部和外部防火墙，交换系统和路由系统进行访问。 
+---
+= 网络端口参考
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必须确保网络基础架构能够在网格内的节点之间以及与外部客户端和服务之间提供内部和外部通信。您可能需要跨内部和外部防火墙，交换系统和路由系统进行访问。
+
+请使用为提供的详细信息 link:internal-grid-node-communications.html["内部网格节点通信"] 和 link:external-communications.html["外部通信"] 以确定如何配置所需的每个端口。

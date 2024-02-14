@@ -1,0 +1,54 @@
+---
+permalink: audit/arce-archive-object-retrieve-end.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, ARCE, Archive Object Retrieve End 
+summary: 当归档节点尝试从外部归档存储系统检索对象数据时，将生成此消息。如果成功，则此消息指示已从归档位置完全读取请求的对象数据，并已成功验证。检索并验证对象数据后，这些数据将传送到请求服务。 
+---
+= Arce ：归档对象检索结束
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+当归档节点尝试从外部归档存储系统检索对象数据时，将生成此消息。如果成功，则此消息指示已从归档位置完全读取请求的对象数据，并已成功验证。检索并验证对象数据后，这些数据将传送到请求服务。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+CBID
+ a| 
+内容块 ID
+ a| 
+要从外部归档存储系统检索的内容块的唯一标识符。
+
+
+
+ a| 
+VLID
+ a| 
+卷标识符
+ a| 
+数据已归档到的卷的标识符。如果未找到内容的归档位置、则返回卷ID 0。
+
+
+
+ a| 
+RSLT
+ a| 
+检索结果
+ a| 
+归档检索过程的完成状态：
+
+* SUC ：成功
+* VRFL ：失败（对象验证失败）
+* Arun ：失败（外部归档存储系统不可用）
+* 取消：失败（已取消检索操作）
+* GERR ：失败（一般错误）
+
+
+|===
+将此消息与相应的 ARCB 消息进行匹配可以指示执行归档检索所需的时间。此消息指示检索是否成功，如果失败，则指示检索内容块失败的发生原因 。

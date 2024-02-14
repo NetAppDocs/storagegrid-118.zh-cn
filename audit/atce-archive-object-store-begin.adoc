@@ -1,0 +1,54 @@
+---
+permalink: audit/atce-archive-object-store-begin.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, ATCE, Archive Object Store Begin 
+summary: 此消息表示已开始向外部归档存储写入内容块。 
+---
+= ATCE ：开始归档对象存储
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此消息表示已开始向外部归档存储写入内容块。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+CBID
+ a| 
+内容块 ID
+ a| 
+要归档的内容块的唯一标识符。
+
+
+
+ a| 
+VLID
+ a| 
+卷标识符
+ a| 
+将内容块写入到的卷的唯一标识符。如果操作失败，则返回卷 ID 0 。
+
+
+
+ a| 
+RSLT
+ a| 
+结果
+ a| 
+指示内容块传输的结果。当前定义的值为：
+
+* SUC ：成功（已成功存储内容块）
+* exis ：忽略（内容块已存储）
+* ISFD ：发生故障（磁盘空间不足）
+* ster ：失败（存储 CBID 时出错）
+* OFFL ：失败（归档已脱机）
+* GERR ：失败（一般错误）
+
+
+|===

@@ -1,0 +1,44 @@
+---
+permalink: admin/configuring-archive-store-for-tsm-middleware-connection.html 
+sidebar: sidebar 
+keywords: archive node, tsm server, tivoli storage manager, archive store 
+summary: 如果归档节点连接到 TSM 中间件服务器，则可以将归档节点的归档存储状态配置为联机或脱机。您还可以在归档节点首次启动时禁用归档存储，或者重置为关联警报跟踪的故障计数。 
+---
+= 配置 TSM 的归档状态和计数器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果归档节点连接到 TSM 中间件服务器，则可以将归档节点的归档存储状态配置为联机或脱机。您还可以在归档节点首次启动时禁用归档存储，或者重置为关联警报跟踪的故障计数。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 存储 * 。
+. 选择 * 配置 * > * 主 * 。
++
+image::../media/archive_store_tsm.gif[为 TSM 中间件连接配置归档存储]
+
+. 根据需要修改以下设置：
++
+** 存储状态：将组件状态设置为：
++
+*** 联机：归档节点可用于处理要存储到归档存储系统的对象数据。
+*** 脱机：归档节点不可用于将要存储的对象数据处理到归档存储系统。
+
+
+** 启动时禁用归档存储：选中后，重新启动时归档存储组件将保持只读状态。用于持久禁用目标归档存储系统的存储。当目标归档存储系统无法接受内容时，此功能非常有用。
+** Reset Store Failure Count ：重置存储故障计数器。此选项可用于清除 ARVF （存储故障）警报。
+
+
+. 选择 * 应用更改 * 。
+
+
+.相关信息
+link:managing-archive-node-when-tsm-server-reaches-capacity.html["在 TSM 服务器达到容量时管理归档节点"]

@@ -1,0 +1,69 @@
+---
+permalink: s3/complete-multipart-upload.html 
+sidebar: sidebar 
+keywords: multipart upload, object, object size 
+summary: CompleteMultipartUpload操作通过整合先前上传的部件来完成对象的多部分上传。 
+---
+= CompleteMultipartUpload
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+CompleteMultipartUpload操作通过整合先前上传的部件来完成对象的多部分上传。
+
+
+
+== 解决冲突
+
+冲突的客户端请求（例如，两个客户端写入同一密钥）将以 " 最新成功 " 为基础进行解决。" 最新赢单 " 评估的时间取决于 StorageGRID 系统何时完成给定请求，而不是 S3 客户端何时开始操作。
+
+
+
+== 请求标题
+
+。 `x-amz-storage-class` 支持请求标头、如果匹配的ILM规则指定"双提交"或"已平衡"、则会影响StorageGRID创建的对象副本数 link:../ilm/data-protection-options-for-ingest.html[""INGest"选项"]。
+
+* `STANDARD`
++
+（默认）指定在 ILM 规则使用双提交选项或 balanced-option 回退到创建中间副本时执行双提交载入操作。
+
+* `REDUCED_REDUNDANCY`
++
+指定在 ILM 规则使用双提交选项或 balanced-option 回退为创建中间副本时执行单提交载入操作。
+
++
+
+NOTE: 如果要在启用了S3对象锁定的情况下将对象载入存储分段、则会显示 `REDUCED_REDUNDANCY` 选项将被忽略。如果要将对象载入旧的合规存储分段、则会显示 `REDUCED_REDUNDANCY` 选项返回错误。StorageGRID 将始终执行双提交载入，以确保满足合规性要求。
+
+
+
+
+CAUTION: 如果多部分上传未在 15 天内完成，则此操作将标记为非活动，并从系统中删除所有关联数据。
+
+
+NOTE: 。 `ETag` 返回的值不是数据的MD5之和、而是遵循的Amazon S3 API实施 `ETag` 多部分对象的值。
+
+
+
+== 版本控制
+
+此操作将完成多部分上传。如果为分段启用了版本控制、则在完成多部分上传后创建对象版本。
+
+如果为存储分段启用了版本控制、则为唯一的 `versionId` 会自动为所存储对象的版本生成。这 `versionId` 也会使用在响应中返回 `x-amz-version-id` 响应标头。
+
+如果版本控制已暂停、则存储对象版本时为空 `versionId` 如果已存在空版本、则该版本将被覆盖。
+
+
+NOTE: 如果为存储分段启用了版本控制，则完成多部分上传始终会创建新版本，即使在同一对象密钥上同时完成多部分上传也是如此。如果某个存储分段未启用版本控制，则可以先启动多部分上传，然后再对同一对象密钥启动并完成另一个多部分上传。在非版本控制的存储分段上，最后完成的多部分上传将优先。
+
+
+
+== 复制，通知或元数据通知失败
+
+如果为平台服务配置了进行多部分上传的存储分段，则即使关联的复制或通知操作失败，多部分上传也会成功。
+
+如果发生这种情况，则会在网格管理器中针对总事件（ SMT ）发出警报。对于其通知失败的最后一个对象、最后一条事件消息将显示"Ffailed to puber-nameobject key的通知"。（要查看此消息，请选择 * 节点 * > * 存储节点 _* > * 事件 * 。在表顶部查看上次事件。)事件消息也会在中列出 `/var/local/log/bycast-err.log`。
+
+租户可以通过更新对象的元数据或标记来触发失败的复制或通知。租户可以重新提交现有值，以避免进行不必要的更改。

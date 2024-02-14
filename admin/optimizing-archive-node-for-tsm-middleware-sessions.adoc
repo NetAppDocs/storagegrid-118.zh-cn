@@ -1,0 +1,33 @@
+---
+permalink: admin/optimizing-archive-node-for-tsm-middleware-sessions.html 
+sidebar: sidebar 
+keywords: archive node optimization 
+summary: 您可以通过配置归档节点的会话来优化连接到 Tivoli Server Manager （ TSM\ ）的归档节点的性能。 
+---
+= 针对 TSM 中间件会话优化归档节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以通过配置归档节点的会话来优化连接到 Tivoli Server Manager （ TSM ）的归档节点的性能。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.关于此任务
+通常，归档节点向 TSM 中间件服务器打开的并发会话数会设置为 TSM 服务器专用于归档节点的磁带驱动器数。一个磁带驱动器分配给存储，而其余磁带驱动器分配给检索。但是，如果要从归档节点副本重建存储节点或归档节点以只读模式运行，则可以通过将最大检索会话数设置为与并发会话数相同来优化 TSM 服务器性能。这样，所有驱动器都可以同时用于检索，如果适用，这些驱动器中最多有一个也可以用于存储。
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 目标 * 。
+. 选择 * 配置 * > * 主 * 。
+. 将 * 最大检索会话数 * 更改为与 * 会话数 * 相同。
++
+image::../media/optimizing_tivoli_storage_manager.gif[归档节点的配置页面]
+
+. 选择 * 应用更改 * 。
+

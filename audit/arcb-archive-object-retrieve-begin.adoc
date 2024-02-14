@@ -1,0 +1,38 @@
+---
+permalink: audit/arcb-archive-object-retrieve-begin.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, ARCB, Archive Object Retrieve Begin 
+summary: 在请求检索归档的对象数据且检索过程开始时会生成此消息。检索请求会立即处理，但可以重新排序，以提高从磁带等线性介质检索的效率。 
+---
+= ARCB ：开始归档对象检索
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在请求检索归档的对象数据且检索过程开始时会生成此消息。检索请求会立即处理，但可以重新排序，以提高从磁带等线性介质检索的效率。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+CBID
+ a| 
+内容块 ID
+ a| 
+要从外部归档存储系统检索的内容块的唯一标识符。
+
+
+
+ a| 
+RSLT
+ a| 
+结果
+ a| 
+指示启动归档检索过程的结果。当前定义的值为： suC ：已收到内容请求并排队等待检索。
+
+|===
+此审核消息用于标记归档检索的时间。通过该选项，您可以将该消息与相应的 Arce End 消息进行匹配，以确定归档检索的持续时间以及操作是否成功。

@@ -1,0 +1,36 @@
+---
+permalink: swift/how-storagegrid-implements-swift-rest-api.html 
+sidebar: sidebar 
+keywords: implement swift rest api 
+summary: 客户端应用程序可以使用 Swift REST API 调用连接到存储节点和网关节点以创建容器以及存储和检索对象。这样，为 OpenStack Swift 开发的面向服务的应用程序便可与 StorageGRID 系统提供的内部对象存储相连接。 
+---
+= StorageGRID 如何实施 Swift REST API
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+客户端应用程序可以使用 Swift REST API 调用连接到存储节点和网关节点以创建容器以及存储和检索对象。这样，为 OpenStack Swift 开发的面向服务的应用程序便可与 StorageGRID 系统提供的内部对象存储相连接。
+
+
+
+== Swift 对象管理
+
+在StorageGRID系统中加入Swift对象后、这些对象将通过活动ILM策略中的信息生命周期管理(ILM)规则进行管理。 link:../ilm/what-ilm-rule-is.html["ILM 规则"] 和 link:../ilm/creating-ilm-policy.html["ILM策略"] 确定StorageGRID 如何创建和分发对象数据的副本、以及如何在一段时间内管理这些副本。例如， ILM 规则可能适用于特定 Swift 容器中的对象，并可能指定在一定年数内将多个对象副本保存到多个数据中心。
+
+如果您需要了解网格的ILM规则和策略如何影响Swift租户帐户中的对象、请联系您的NetApp专业服务顾问或StorageGRID 管理员。
+
+
+
+== 客户端请求冲突
+
+冲突的客户端请求（例如，两个客户端写入同一密钥）将以 " 最新成功 " 为基础进行解决。" 最新赢单 " 评估的时间取决于 StorageGRID 系统何时完成给定请求，而不是 Swift 客户端何时开始操作。
+
+
+
+== 一致性保证和控制
+
+默认情况下， StorageGRID 为新创建的对象提供读写一致性，并为对象更新和机头操作提供最终一致性。任意 link:get-container-consistency-request.html["获取"] 成功完成后执行 link:put-container-consistency-request.html["PUT"] 将能够读取新写入的数据。对现有对象的覆盖，元数据更新和删除最终保持一致。覆盖通常需要几秒钟或几分钟才能传播，但可能需要长达 15 天的时间。
+
+此外，您还可以通过 StorageGRID 控制每个容器的一致性。一致性值可根据应用程序的要求、在不同存储节点和站点之间的对象可用性与这些对象的一致性之间实现平衡。

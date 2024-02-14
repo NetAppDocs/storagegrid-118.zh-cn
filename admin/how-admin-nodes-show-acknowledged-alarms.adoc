@@ -1,0 +1,20 @@
+---
+permalink: admin/how-admin-nodes-show-acknowledged-alarms.html 
+sidebar: sidebar 
+keywords: admin node, acknowledge alarm 
+summary: 在一个管理节点上确认警报时，已确认的警报不会复制到任何其他管理节点。由于确认不会复制到其他管理节点，因此对于每个管理节点，网格拓扑树可能看起来不同。 
+---
+= 管理节点如何显示已确认的警报（旧系统）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在一个管理节点上确认警报时，已确认的警报不会复制到任何其他管理节点。由于不会将此类信息复制到其他管理节点、因此每个管理节点的网格拓扑树可能看起来不同。
+
+在连接 Web 客户端时，这种差异非常有用。根据管理员的需求， Web 客户端可以具有不同的 StorageGRID 系统视图。
+
+image::../media/grid_topology_with_differing_alarm_acknowledgments.gif[多个管理节点和警报确认]
+
+请注意，通知是从发生确认的管理节点发送的。

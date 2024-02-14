@@ -1,0 +1,75 @@
+---
+permalink: tenant/object-metadata-included-in-metadata-notifications.html 
+sidebar: sidebar 
+keywords: object metadata notification 
+summary: 下表列出了启用搜索集成后发送到目标端点的 JSON 文档中包含的所有字段。 
+---
+= 元数据通知中包含的对象元数据
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+下表列出了启用搜索集成后发送到目标端点的 JSON 文档中包含的所有字段。
+
+文档名称包括存储分段名称，对象名称和版本 ID （如果存在）。
+
+[cols="1a,2a"]
+|===
+| Type | 项目名称和问题描述 
+
+
+ a| 
+存储分段和对象信息
+ a| 
+`bucket`：存储分段的名称
+
+
+
+ a| 
+`key`：对象密钥名称
+
+
+
+ a| 
+`versionID`：对象版本、用于受版本控制的分段中的对象
+
+
+
+ a| 
+`region`：例如、Bucket区域 `us-east-1`
+
+
+
+ a| 
+系统元数据
+ a| 
+`size`：HTTP客户端可见的对象大小(以字节为单位)
+
+
+
+ a| 
+`md5`：对象哈希
+
+
+
+ a| 
+用户元数据
+ a| 
+`metadata`：对象的所有用户元数据、作为键值对
+
+`key:value`
+
+
+
+ a| 
+Tags
+ a| 
+`tags`：为对象定义的所有对象标记、作为键值对
+
+`key:value`
+
+|===
+
+NOTE: 对于标记和用户元数据， StorageGRID 会将日期和数字作为字符串或 S3 事件通知传递给 Elasticsearch 。要配置 Elasticsearch 以将这些字符串解释为日期或数字，请按照 Elasticsearch 说明进行动态字段映射和映射日期格式。在配置搜索集成服务之前，必须在索引上启用动态字段映射。为文档编制索引后、无法在索引中编辑文档的域类型。

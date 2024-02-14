@@ -1,0 +1,74 @@
+---
+permalink: admin/configuring-connection-settings-for-s3-api.html 
+sidebar: sidebar 
+keywords: archive node connection to s3, arc service 
+summary: 如果要使用 S3 接口连接到归档节点，则必须配置 S3 API 的连接设置。在配置这些设置之前，由于无法与外部归档存储系统进行通信，因此， ARC-Service 将保持主要警报状态。 
+---
+= 配置 S3 API 的连接设置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果要使用 S3 接口连接到归档节点，则必须配置 S3 API 的连接设置。在配置这些设置之前，由于无法与外部归档存储系统进行通信，因此， ARC-Service 将保持主要警报状态。
+
+[CAUTION]
+====
+对归档节点的支持已弃用、将在未来版本中删除。通过 S3 API 将对象从归档节点移动到外部归档存储系统已被 ILM 云存储池所取代，它可提供更多功能。
+
+Cloud Tiering—Simple Storage Service (S3)选项也已弃用。如果您当前正在使用具有此选项的归档节点、 link:../admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html["将对象迁移到云存储池"] 而是。
+
+此外、您还应从StorageGRID 11.7或更早版本中的活动ILM策略中删除归档节点。删除存储在归档节点上的对象数据将简化将来的升级。请参见 link:../ilm/working-with-ilm-rules-and-ilm-policies.html["使用ILM规则和ILM策略"]。
+
+====
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+* 您已在目标归档存储系统上创建存储分段：
++
+** 此存储分段专用于一个归档节点。其他归档节点或其他应用程序不能使用它。
+** 存储分段已为您的位置选择相应的区域。
+** 应在存储分段配置中暂停版本控制。
+
+
+* 已启用对象分段，并且最大分段大小小于或等于 4.5 GiB （ 4 ， 831 ， 838 ， 208 字节）。如果使用 S3 作为外部归档存储系统，超过此值的 S3 API 请求将失败。
+
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * 归档节点 * > * ARE* > * 目标 * 。
+. 选择 * 配置 * > * 主 * 。
++
+image::../media/archive_node_s3_middleware.gif[归档节点的配置页面]
+
+. 从目标类型下拉列表中选择 * 云分层 - 简单存储服务（ S3 ） * 。
++
+
+NOTE: 只有在选择目标类型后，配置设置才可用。
+
+. 配置云分层（ S3 ）帐户，归档节点将通过该帐户连接到支持 S3 的目标外部归档存储系统。
++
+此页面上的大多数字段都是不言自明的。下面介绍了可能需要指导的字段。
+
++
+** * 地区 * ：仅在选择 * 使用 AWS* 时可用。您选择的区域必须与存储分段的区域匹配。
+** * 端点 * 和 * 使用 AWS* ：对于 Amazon Web Services （ AWS ），请选择 * 使用 AWS* 。然后，系统会根据 " 分段名称 " 和 " 区域 " 属性自动为 * 端点 * 填充端点 URL 。例如：
++
+`\https://bucket.region.amazonaws.com`
+
++
+对于非 AWS 目标，输入托管存储分段的系统的 URL ，包括端口号。例如：
+
++
+`\https://system.com:1080`
+
+** * 端点身份验证 * ：默认情况下处于启用状态。如果外部归档存储系统的网络可信、则可以清除此复选框以禁用目标外部归档存储系统的端点SSL证书和主机名验证。如果StorageGRID 系统的另一个实例是目标归档存储设备、并且系统配置了公共签名证书、则可以保持选中此复选框。
+** * 存储类 * ：选择 * 标准（默认） * 作为常规存储。仅为易于重新创建的对象选择 * 精简冗余 * 。* 冗余减少 * 可降低存储成本，降低可靠性。如果目标归档存储系统是 StorageGRID 系统的另一个实例，则如果在目标系统上载入对象时使用了双提交，则 * 存储类 * 将控制在目标系统上载入时为该对象创建的中间副本数。
+
+
+. 选择 * 应用更改 * 。
++
+系统将验证指定的配置设置并将其应用于 StorageGRID 系统。应用设置后、无法更改目标。
+
+

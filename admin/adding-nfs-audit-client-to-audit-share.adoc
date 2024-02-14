@@ -1,0 +1,95 @@
+---
+permalink: admin/adding-nfs-audit-client-to-audit-share.html 
+sidebar: sidebar 
+keywords: nfs, audit client, audit share 
+summary: NFS 审核客户端将根据其 IP 地址获得对审核共享的访问权限。通过将新 NFS 审核客户端的 IP 地址添加到审核共享，将审核共享的访问权限授予给该客户端。 
+---
+= 将 NFS 审核客户端添加到审核共享
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NFS 审核客户端将根据其 IP 地址获得对审核共享的访问权限。通过将新 NFS 审核客户端的 IP 地址添加到审核共享，将审核共享的访问权限授予给该客户端。
+
+
+NOTE: 对NFS的支持已弃用、将在未来版本中删除。
+
+.开始之前
+* 您拥有 `Passwords.txt` 具有root/admin帐户密码的文件。
+* 您拥有 `Configuration.txt` 文件(在恢复软件包中提供)。
+* 审核客户端正在使用 NFS 版本 3 （ NFSv3 ）。
+
+
+.步骤
+. 登录到主管理节点：
++
+.. 输入以下命令： `ssh admin@_primary_Admin_Node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
++
+以root用户身份登录后、提示符将从变为 `$` to `#`。
+
+
+
+. 启动NFS配置实用程序： `config_nfs.rb`
++
+[listing]
+----
+
+-----------------------------------------------------------------
+| Shares               | Clients              | Config          |
+-----------------------------------------------------------------
+| add-audit-share      | add-ip-to-share      | validate-config |
+| enable-disable-share | remove-ip-from-share | refresh-config  |
+|                      |                      | help            |
+|                      |                      | exit            |
+-----------------------------------------------------------------
+----
+. 输入 ... `add-ip-to-share`
++
+此时将显示在管理节点上启用的 NFS 审核共享列表。审核共享列出为： `/var/local/log`
+
+. 输入审核共享的编号： `_audit_share_number_`
+. 出现提示时、输入审核客户端的审核共享IP地址或IP地址范围： `_client_IP_address_`
++
+此时，审核客户端将添加到审核共享中。
+
+. 出现提示时，按 * 输入 * 。
++
+此时将显示 NFS 配置实用程序。
+
+. 对应添加到审核共享中的每个审核客户端重复上述步骤。
+. (可选)验证您的配置： `validate-config`
++
+此时将检查并显示这些服务。
+
++
+.. 出现提示时，按 * 输入 * 。
++
+此时将显示 NFS 配置实用程序。
+
+
+
+. 关闭NFS配置实用程序： `exit`
+. 如果 StorageGRID 部署是单个站点，请转至下一步。
++
+否则，如果 StorageGRID 部署包括其他站点的管理节点，则可以根据需要选择启用这些审核共享：
+
++
+.. 远程登录到站点的管理节点：
++
+... 输入以下命令： `ssh admin@_grid_node_IP_`
+... 输入中列出的密码 `Passwords.txt` 文件
+... 输入以下命令切换到root： `su -`
+... 输入中列出的密码 `Passwords.txt` 文件
+
+
+.. 重复上述步骤为每个管理节点配置审核共享。
+.. 关闭远程安全Shell登录到远程管理节点： `exit`
+
+
+. 从命令Shell中注销： `exit`
+

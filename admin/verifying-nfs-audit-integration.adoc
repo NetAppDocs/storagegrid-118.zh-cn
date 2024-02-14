@@ -1,0 +1,35 @@
+---
+permalink: admin/verifying-nfs-audit-integration.html 
+sidebar: sidebar 
+keywords: nfs, audit share, audit client 
+summary: 配置审核共享并添加 NFS 审核客户端后，您可以挂载审核客户端共享并验证这些文件是否可从审核共享访问。 
+---
+= 验证 NFS 审核集成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+配置审核共享并添加 NFS 审核客户端后，您可以挂载审核客户端共享并验证这些文件是否可从审核共享访问。
+
+
+NOTE: 对NFS的支持已弃用、将在未来版本中删除。
+
+.步骤
+. 使用托管 AMS 服务的管理节点的客户端 IP 地址验证连接（或客户端系统的变体）。输入 ... `ping IP_address`
++
+验证服务器是否响应，指示连接。
+
+. 使用适用于客户端操作系统的命令挂载审核只读共享。例如、Linux命令为(一行输入)：
++
+`mount -t nfs -o hard,intr _Admin_Node_IP_address_:/var/local/log _myAudit_`
+
++
+使用托管 AMS 服务的管理节点的 IP 地址以及审核系统的预定义共享名称。挂载点可以是客户端选择的任何名称(例如、 `_myAudit_` 在上一个命令中)。
+
+. 验证这些文件是否可从审核共享访问。输入 ... `ls _myAudit_ /*`
++
+其中： `_myAudit_` 是审核共享的挂载点。应至少列出一个日志文件。
+
+

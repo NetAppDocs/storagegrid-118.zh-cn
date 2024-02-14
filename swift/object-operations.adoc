@@ -1,0 +1,211 @@
+---
+permalink: swift/object-operations.html 
+sidebar: sidebar 
+keywords: swift object operations 
+summary: 对对象执行以下 Swift API 操作。 
+---
+= 对象操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+对对象执行以下 Swift API 操作。可以在中跟踪这些操作 link:monitoring-and-auditing-operations.html["StorageGRID 审核日志"]。
+
+
+
+== 删除对象
+
+此操作将从 StorageGRID 系统中删除对象的内容和元数据。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+* `Object`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+成功执行将返回以下响应标头和 `HTTP/1.1 204 No Content` 响应：
+
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `X-Trans-Id`
+
+
+在处理删除对象请求时， StorageGRID 会尝试立即从所有存储位置删除此对象的所有副本。如果成功， StorageGRID 会立即向客户端返回响应。如果无法在30秒内删除所有副本(例如、由于某个位置暂时不可用)、则StorageGRID 会将这些副本排队等待删除、然后向客户端指示删除成功。
+
+有关详细信息，请参见 link:../ilm/how-objects-are-deleted.html["如何删除对象"]。
+
+
+
+== 获取对象
+
+此操作将检索对象内容并从 StorageGRID 系统获取对象元数据。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+* `Object`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+以下请求标头是可选的：
+
+* `Accept-Encoding`
+* `If-Match`
+* `If-Modified-Since`
+* `If-None-Match`
+* `If-Unmodified-Since`
+* `Range`
+
+
+成功执行将返回以下标头和 `HTTP/1.1 200 OK` 响应：
+
+* `Accept-Ranges`
+*  `Content-Disposition`、只有在出现此情况时才返回 `Content-Disposition` 已设置元数据
+*  `Content-Encoding`、只有在出现此情况时才返回 `Content-Encoding` 已设置元数据
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `ETag`
+* `Last-Modified`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+
+
+
+== head 对象
+
+此操作将从 StorageGRID 系统检索所载入对象的元数据和属性。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+* `Object`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+成功执行将返回以下标头并显示 "HTTP/1.1 200 OK" 响应：
+
+* `Accept-Ranges`
+*  `Content-Disposition`、只有在出现此情况时才返回 `Content-Disposition` 已设置元数据
+*  `Content-Encoding`、只有在出现此情况时才返回 `Content-Encoding` 已设置元数据
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `ETag`
+* `Last-Modified`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+
+
+
+== PUT 对象
+
+此操作将使用数据和元数据创建新对象，或者将现有对象替换为 StorageGRID 系统中的数据和元数据。
+
+StorageGRID 支持大小高达 5 TiB （ 5 ， 497 ， 556 ， 138 ， 880 字节）的对象。
+
+
+NOTE: 冲突的客户端请求（例如，两个客户端写入同一密钥）将以 " 最新成功 " 为基础进行解决。" 最新赢单 " 评估的时间取决于 StorageGRID 系统何时完成给定请求，而不是 Swift 客户端何时开始操作。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+* `Object`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+以下请求标头是可选的：
+
+* `Content-Disposition`
+* `Content-Encoding`
++
+请勿使用chunked `Content-Encoding` 如果ILM规则要求对对象进行适用场景 筛选、并在载入时使用同步放置(用于载入行为的平衡或严格选项)。
+
+* `Transfer-Encoding`
++
+请勿使用压缩或分块 `Transfer-Encoding` 如果ILM规则要求对对象进行适用场景 筛选、并在载入时使用同步放置(用于载入行为的平衡或严格选项)。
+
+* `Content-Length`
++
+如果ILM规则按大小筛选对象并在载入时使用同步放置、则必须指定 `Content-Length`。
+
++
+
+NOTE: 如果您未遵循这些准则、请执行以下操作 `Content-Encoding`， `Transfer-Encoding`，和 `Content-Length`、StorageGRID 必须先保存该对象、然后才能确定对象大小并应用ILM规则。换言之， StorageGRID 必须默认为在载入时创建对象的临时副本。也就是说， StorageGRID 必须对载入行为使用双提交选项。
+
++
+有关同步放置和ILM规则的详细信息、请参见 link:../ilm/data-protection-options-for-ingest.html["用于载入的数据保护选项"]。
+
+* `Content-Type`
+* `ETag`
+* `X-Object-Meta-<name\>` (与对象相关的元数据)
++
+如果要使用*用户定义的创建时间*选项作为ILM规则的参考时间，则必须将该值存储在名为的用户定义标头中 `X-Object-Meta-Creation-Time`。例如：
+
++
+[listing]
+----
+X-Object-Meta-Creation-Time: 1443399726
+----
++
+自 1970 年 1 月 1 日以来，此字段的评估值为秒。
+
+* `X-Storage-Class: reduced_redundancy`
++
+如果与所载入对象匹配的 ILM 规则指定了双重提交或平衡的载入行为，则此标头会影响 StorageGRID 创建的对象副本数。
+
++
+** * 双提交 * ：如果 ILM 规则为载入行为指定了双提交选项，则 StorageGRID 会在载入对象时创建一个临时副本（单个提交）。
+** *均衡*：如果ILM规则指定了均衡选项，则只有当系统无法立即创建规则中指定的所有副本时，StorageGRID 才会创建一个临时副本。如果 StorageGRID 可以执行同步放置，则此标头不起作用。
++
+。 `reduced_redundancy` 如果与对象匹配的ILM规则创建一个复制副本、则最好使用标题。在这种情况下、使用 `reduced_redundancy` 无需在每次载入操作中创建和删除额外的对象副本。
+
++
+使用 `reduced_redundancy` 在其他情况下不建议使用标头、因为它会增加载入期间丢失对象数据的风险。例如，如果最初将单个副本存储在发生故障的存储节点上，而此存储节点未能进行 ILM 评估，则可能会丢失数据。
+
++
+
+CAUTION: 在任何一段时间内只复制一个副本会使数据面临永久丢失的风险。如果某个对象只存在一个复制副本，则在存储节点出现故障或出现严重错误时，该对象将丢失。在升级等维护过程中，您还会暂时失去对对象的访问权限。
+
+
+
++
+请注意、请指定 `reduced_redundancy` 仅影响首次载入对象时创建的副本数。它不会影响通过活动ILM策略评估对象时为对象创建的副本数、也不会导致数据在StorageGRID系统中以较低的冗余级别进行存储。
+
+
+
+成功执行将返回以下标头，并显示 "HTTP/1.1 201 Created " 响应：
+
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `ETag`
+* `Last-Modified`
+* `X-Trans-Id`
+

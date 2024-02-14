@@ -1,0 +1,45 @@
+---
+permalink: swift/options-request.html 
+sidebar: sidebar 
+keywords: swift options request 
+summary: 选项请求会检查单个 Swift 服务的可用性。选项请求由 URL 中指定的存储节点或网关节点处理。 
+---
+= 选项请求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+选项请求会检查单个 Swift 服务的可用性。选项请求由 URL 中指定的存储节点或网关节点处理。
+
+
+
+== options 方法
+
+例如，客户端应用程序可以在不提供 Swift 身份验证凭据的情况下将选项请求问题描述 到存储节点上的 Swift 端口，以确定存储节点是否可用。您可以使用此请求进行监控，也可以允许外部负载平衡器确定存储节点何时关闭。
+
+与信息 URL 或存储 URL 结合使用时， options 方法将返回给定 URL 支持的动词列表（例如 head ， get ， options 和 put ）。选项方法不能与身份验证URL结合使用。
+
+以下请求参数为必填项：
+
+* `Account`
+
+
+以下请求参数是可选的：
+
+* `Container`
+* `Object`
+
+
+成功执行将返回以下标头、并返回"HTTP/1.1 204 No Content"响应。对存储 URL 的选项请求不要求目标存在。
+
+* `Allow` (给定URL支持的动词列表、例如head、get、options、和PUT)
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `X-Trans-Id`
+
+
+.相关信息
+link:supported-swift-api-endpoints.html["支持的 Swift API 端点"]

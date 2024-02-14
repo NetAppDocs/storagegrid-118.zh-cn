@@ -1,0 +1,64 @@
+---
+permalink: audit/asct-archive-store-cloud-tier.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, ASCT, Archive Store Cloud-Tier 
+summary: 将归档对象数据存储到外部归档存储系统时会生成此消息，该系统通过 S3 API 连接到 StorageGRID 。 
+---
+= SCT ：归档存储云层
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+将归档对象数据存储到外部归档存储系统时会生成此消息，该系统通过 S3 API 连接到 StorageGRID 。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+CBID
+ a| 
+内容块 ID
+ a| 
+已检索到的内容块的唯一标识符。
+
+
+
+ a| 
+CSIZ
+ a| 
+内容大小
+ a| 
+对象的大小（以字节为单位）。
+
+
+
+ a| 
+RSLT
+ a| 
+结果代码
+ a| 
+返回成功（ SUC ）或后端报告的错误。
+
+
+
+ a| 
+SUID
+ a| 
+存储唯一标识符
+ a| 
+存储内容的云层的唯一标识符（ UUID ）。
+
+
+
+ a| 
+时间
+ a| 
+时间
+ a| 
+请求的总处理时间，以微秒为单位。
+
+|===

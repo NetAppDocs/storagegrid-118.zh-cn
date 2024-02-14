@@ -1,0 +1,69 @@
+---
+permalink: monitor/logs-for-third-party-software.html 
+sidebar: sidebar 
+keywords: troubleshooting, logs 
+summary: 您可以使用第三方软件日志对问题进行故障排除。 
+---
+= 第三方软件的日志
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用第三方软件日志对问题进行故障排除。
+
+[cols="1a,2a,3a,1a"]
+|===
+| 类别 | 文件名 | 注释： | 在上找到 
+
+
+ a| 
+归档
+| /var/local/log/dsierror.log  a| 
+TSM 客户端 API 的错误信息。
+ a| 
+归档节点
+
+
+
+ a| 
+MySQL
+| /var/local/log/myql.err
+
+/var/local/log/mysql-slow.log  a| 
+MySQL 生成的日志文件。
+
+`mysql.err` 捕获数据库错误和事件、例如、开始和关闭。
+
+`mysql-slow.log` (慢速查询日志)捕获执行时间超过10秒的SQL语句。
+ a| 
+管理节点
+
+
+
+ a| 
+操作系统
+| /var/local/log/messages  a| 
+此目录包含操作系统的日志文件。这些日志中包含的错误也会显示在网格管理器中。选择 * 支持 * > * 工具 * > * 网格拓扑 * 。然后选择 * 拓扑 * > * 站点 _* > * 节点 _* > * SSM* > * 事件 * 。
+ a| 
+所有节点
+
+
+
+ a| 
+NTP
+| /var/local/log/ntp.log
+
+/var/lib/ntp/var/log/ntpstats/  a| 
+`/var/local/log/ntp.log` 包含NTP错误消息的日志文件。
+
+`/var/lib/ntp/var/log/ntpstats/` 目录包含NTP时间统计信息。
+
+`loopstats` 记录环路筛选器统计信息。
+
+`peerstats` 记录对等统计信息。
+ a| 
+所有节点
+
+|===

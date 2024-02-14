@@ -1,0 +1,76 @@
+---
+permalink: audit/asce-archive-object-store-end.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, ASCE, Archive Object Store End 
+summary: 此消息表示向外部归档存储系统写入内容块的操作已结束。 
+---
+= ASCE ：归档对象存储结束
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此消息表示向外部归档存储系统写入内容块的操作已结束。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+CBID
+ a| 
+内容块标识符
+ a| 
+存储在外部归档存储系统上的内容块的标识符。
+
+
+
+ a| 
+VLID
+ a| 
+卷标识符
+ a| 
+将对象数据写入到的归档卷的唯一标识符。
+
+
+
+ a| 
+VRN
+ a| 
+已启用验证
+ a| 
+指示是否对内容块执行验证。当前定义的值为：
+
+* vena ：已启用验证
+* VDSA ：已禁用验证
+
+
+
+
+ a| 
+MCLS
+ a| 
+管理类
+ a| 
+一个字符串，用于标识内容块分配到的 TSM 管理类（如果适用）。
+
+
+
+ a| 
+RSLT
+ a| 
+结果
+ a| 
+指示归档过程的结果。当前定义的值为：
+
+* SUC ：成功（归档过程成功）
+* OFFL ：失败（归档已脱机）
+* VRFL ：失败（对象验证失败）
+* Arun ：失败（外部归档存储系统不可用）
+* GERR ：失败（一般错误）
+
+
+|===
+此审核消息表示指定的内容块已写入外部归档存储系统。如果写入失败，则结果将提供有关故障发生位置的基本故障排除信息。有关归档故障的更多详细信息，请参见 StorageGRID 系统中的归档节点属性。

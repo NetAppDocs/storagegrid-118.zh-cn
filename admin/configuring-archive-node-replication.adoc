@@ -1,0 +1,43 @@
+---
+permalink: admin/configuring-archive-node-replication.html 
+sidebar: sidebar 
+keywords: archive node replication 
+summary: 您可以为归档节点配置复制设置并禁用入站和出站复制，或者重置为关联警报跟踪的故障计数。 
+---
+= 配置归档节点复制
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以为归档节点配置复制设置并禁用入站和出站复制，或者重置为关联警报跟踪的故障计数。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 复制 * 。
+. 选择 * 配置 * > * 主 * 。
++
+image::../media/archive_node_replication.gif[" 归档节点配置 " 页面 >" 复制设置 "]
+
+. 根据需要修改以下设置：
++
+** * 重置入站复制失败计数 * ：选择此项可重置入站复制失败的计数器。此操作可用于清除 RIRF （入站复制 - 失败）警报。
+** * 重置出站复制失败计数 * ：选择此项可重置出站复制失败的计数器。此操作可用于清除 RORF （出站复制 - 失败）警报。
+** * 禁用入站复制 * ：选择此项可在维护或测试操作步骤 过程中禁用入站复制。在正常操作期间保持清除状态。
++
+禁用入站复制后、可以从ARC服务检索对象数据、以便复制到StorageGRID 系统中的其他位置、但无法从其他系统位置将对象复制到此ARC服务。此‐服务为只读。
+
+** *禁用出站复制*：选中此复选框可在维护或测试操作步骤 期间禁用出站复制(包括HTTP检索的内容请求)。在正常操作期间保持未选中状态。
++
+禁用出站复制后、可以将对象数据复制到此ARC服务以满足ILM规则、但无法从ARC服务检索对象数据以复制到StorageGRID 系统中的其他位置。此 ARC 服务为 write‐only 。
+
+
+
+. 选择 * 应用更改 * 。
+

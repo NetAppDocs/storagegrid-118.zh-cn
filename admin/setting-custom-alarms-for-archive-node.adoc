@@ -1,0 +1,22 @@
+---
+permalink: admin/setting-custom-alarms-for-archive-node.html 
+sidebar: sidebar 
+keywords: archive node, custom alarm, arql, arrl 
+summary: 您应为 ARQL 和 ARLRL 属性建立自定义警报，用于监控归档节点从归档存储系统检索对象数据的速度和效率。 
+---
+= 为归档节点设置自定义警报
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您应为 ARQL 和 ARLRL 属性建立自定义警报，用于监控归档节点从归档存储系统检索对象数据的速度和效率。
+
+* ARQL ：平均队列长度。从归档存储系统中检索对象数据的平均排队时间（以微秒为单位）。
+* ARRL ：平均请求延迟。归档节点从归档存储系统检索对象数据所需的平均时间（以微秒为单位）。
+
+
+这些属性的可接受值取决于归档存储系统的配置和使用方式。（转至 * ARC/ * * 检索 * > * 概述 * > * 主要 * 。） 为请求超时设置的值以及可用于检索请求的会话数尤其具有影响。
+
+集成完成后，监控归档节点的对象数据检索，以确定正常检索时间和队列长度的值。然后，为 ARQL 和 ARLRL 创建自定义警报，以便在出现异常运行状况时触发警报。请参见的说明 link:../monitor/managing-alarms.html["管理警报(传统系统)"]。

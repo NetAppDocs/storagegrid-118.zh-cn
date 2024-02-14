@@ -1,0 +1,98 @@
+---
+permalink: audit/using-audit-explain-tool.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, tool, audit-explain, audit explain, translate audit messages, translate messages, translate audit message, translate message 
+summary: 您可以使用audy-解释 工具将审核日志中的审核消息转换为易于阅读的格式。 
+---
+= 使用审核解释工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `audit-explain` 用于将审核日志中的审核消息转换为易于阅读的格式的工具。
+
+.开始之前
+* 您已拥有 link:../admin/admin-group-permissions.html["特定访问权限"]。
+* 您必须具有 `Passwords.txt` 文件
+* 您必须知道主管理节点的 IP 地址。
+
+
+.关于此任务
+。 `audit-explain` 主管理节点上提供的工具可在审核日志中提供审核消息的简化摘要。
+
+
+NOTE: 。 `audit-explain` 此工具主要供技术支持在故障排除操作期间使用。正在处理 `audit-explain` 查询可能会占用大量CPU资源、这可能会影响StorageGRID 操作。
+
+此示例显示了中的典型输出 `audit-explain` 工具。这四个 link:sput-s3-put.html["SPUT"] 如果帐户ID为92484777680322627870的S3租户使用S3 Put请求创建名为bucket1的分段并向该分段添加三个对象、则会生成审核消息。
+
+[listing]
+----
+SPUT S3 PUT bucket bucket1 account:92484777680322627870 usec:124673
+SPUT S3 PUT object bucket1/part1.txt tenant:92484777680322627870  cbid:9DCB157394F99FE5 usec:101485
+SPUT S3 PUT object bucket1/part2.txt tenant:92484777680322627870  cbid:3CFBB07AB3D32CA9 usec:102804
+SPUT S3 PUT object bucket1/part3.txt tenant:92484777680322627870  cbid:5373D73831ECC743 usec:93874
+----
+。 `audit-explain` 工具可执行以下操作：
+
+* 处理普通或压缩的审核日志。例如：
++
+`audit-explain audit.log`
+
++
+`audit-explain 2019-08-12.txt.gz`
+
+* 同时处理多个文件。例如：
++
+`audit-explain audit.log 2019-08-12.txt.gz 2019-08-13.txt.gz`
+
++
+`audit-explain /var/local/log/*`
+
+* 接受来自管道的输入、这样您可以使用筛选和预处理输入 `grep` 命令或其他方式。例如：
++
+`grep SPUT audit.log | audit-explain`
+
++
+`grep bucket-name audit.log | audit-explain`
+
+
+
+由于审核日志可能非常大且解析速度较慢、因此您可以筛选要查看和运行的部分来节省时间 `audit-explain` 而不是整个文件。
+
+[NOTE]
+====
+。 `audit-explain` 工具不接受将压缩文件作为管道输入。要处理压缩的文件、请以命令行参数形式提供其文件名、或者使用 `zcat` 用于先解压缩文件的工具。例如：
+
+`zcat audit.log.gz | audit-explain`
+
+====
+使用 `help (-h)` 选项以查看可用选项。例如：
+
+`$ audit-explain -h`
+
+.步骤
+. 登录到主管理节点：
++
+.. 输入以下命令： `ssh admin@_primary_Admin_Node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
++
+以root用户身份登录后、提示符将从变为 `$` to `#`。
+
+
+
+. 输入以下命令、其中 `/var/local/log/audit.log` 表示要分析的一个或多个文件的名称和位置：
++
+`$ audit-explain /var/local/log/audit.log`
+
++
+。 `audit-explain` 该工具可打印指定文件中所有消息的可读解释。
+
++
+
+NOTE: 为了缩短线长并提高可读性、默认情况下不会显示时间戳。如果要查看时间戳、请使用时间戳 (`-t`)选项。
+
+

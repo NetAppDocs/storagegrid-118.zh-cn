@@ -1,0 +1,44 @@
+---
+permalink: maintain/forcing-service-to-terminate.html 
+sidebar: sidebar 
+keywords: storagegrid, terminate service, terminating service, force terminate 
+summary: '如果需要立即停止服务、可以使用 `force-stop` 命令：' 
+---
+= 强制终止服务
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果需要立即停止服务、可以使用 `force-stop` 命令：
+
+.开始之前
+您拥有 `Passwords.txt` 文件
+
+.步骤
+. 登录到网格节点：
++
+.. 输入以下命令： `ssh admin@_grid_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
+
+
++
+以root用户身份登录后、提示符将从变为 `$` to `#`。
+
+. 手动强制终止服务： `service _servicename_ force-stop`
++
+例如：
+
++
+[listing]
+----
+service ldr force-stop
+----
++
+系统将等待 30 秒，然后再终止此服务。
+
+. 从命令Shell中注销： `exit`
+

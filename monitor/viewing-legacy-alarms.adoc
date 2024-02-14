@@ -1,0 +1,101 @@
+---
+permalink: monitor/viewing-legacy-alarms.html 
+sidebar: sidebar 
+keywords: legacy alarms 
+summary: 当系统属性达到警报阈值时，系统会触发警报 \ （原有系统 \ ）。您可以从当前警报页面查看当前活动的警报。 
+---
+= 查看旧警报
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+当系统属性达到警报阈值时，将触发警报（传统系统）。您可以从当前警报页面查看当前活动的警报。
+
+
+NOTE: 虽然传统警报系统仍受支持，但警报系统具有显著优势，并且更易于使用。
+
+.开始之前
+* 您必须使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+
+
+.步骤
+. 选择 * 支持 * > * 警报（原有） * > * 当前警报 * 。
++
+image::../media/current_alarms_page.png[当前警报页面]
+
++
+警报图标指示每个警报的严重性，如下所示：
+
++
+[cols="1a,1a,1a,3a"]
+|===
+| 图标。 | 颜色 | 警报严重性 | 含义 
+
+
+ a| 
+image:../media/icon_alarm_yellow_notice.gif["黄色方形图标"]
+ a| 
+黄色
+ a| 
+通知
+ a| 
+节点已连接到网格，但存在不影响正常操作的异常情况。
+
+
+
+ a| 
+image:../media/icon_alert_yellow_minor.png["浅橙色钻石图标"]
+ a| 
+浅橙色
+ a| 
+次要
+ a| 
+节点已连接到网格，但存在异常情况，可能会影响未来的运行。您应进行调查以防止上报。
+
+
+
+ a| 
+image:../media/icon_alert_orange_major.png["深橙色钻石图标"]
+ a| 
+深橙色
+ a| 
+major
+ a| 
+节点已连接到网格，但存在当前影响操作的异常情况。这需要立即引起注意，以防止升级。
+
+
+
+ a| 
+image:../media/icon_alert_red_critical.png["红色 x 图标"]
+ a| 
+红色
+ a| 
+严重
+ a| 
+节点已连接到网格，但存在已停止正常操作的异常情况。您应立即解决此问题描述 。
+
+|===
+. 要了解触发警报的属性，请右键单击表中的属性名称。
+. 要查看有关警报的其他详细信息，请单击表中的服务名称。
++
+此时将显示选定服务的警报选项卡（ * 支持 * > * 工具 * > * 网格拓扑 * > * 网格节点 _* > * 服务 _* > * 警报 * ）。
+
++
+image::../media/alarms_acknowledging.png[警报确认]
+
+. 如果要清除当前警报计数，您可以选择执行以下操作：
++
+** 确认警报。已确认的警报将不再包含在原有警报计数中，除非它在下一严重性级别触发，或者已解决并再次发生。
+** 为整个系统禁用特定的默认警报或全局自定义警报，以防止再次触发该警报。
+
+
+
+
+.相关信息
+link:alarms-reference.html["警报参考（旧系统）"]
+
+link:managing-alarms.html["确认当前警报（旧系统）"]
+
+link:managing-alarms.html["禁用警报（旧系统）"]

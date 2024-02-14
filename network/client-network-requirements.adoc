@@ -1,0 +1,18 @@
+---
+permalink: network/client-network-requirements.html 
+sidebar: sidebar 
+keywords: client network 
+summary: 客户端网络是可选的。如果您计划配置客户端网络，请注意以下事项。 
+---
+= 客户端网络要求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+客户端网络是可选的。如果您计划配置客户端网络，请注意以下事项。
+
+客户端网络用于支持来自 S3 和 Swift 客户端的流量。如果已配置，客户端网络网关将成为节点的默认网关。
+
+如果您使用客户端网络，则可以通过仅接受显式配置的负载平衡器端点上的入站客户端流量来帮助保护 StorageGRID 免受恶意攻击。请参见 link:../admin/manage-firewall-controls.html["管理防火墙控制"] 和 link:../admin/configuring-load-balancer-endpoints.html["配置负载平衡器端点"]。

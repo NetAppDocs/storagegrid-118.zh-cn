@@ -1,0 +1,172 @@
+---
+permalink: audit/object-storage-audit-messages.html 
+sidebar: sidebar 
+keywords: audit, object storage, object management, object retrieval, node transfer, verification, APCT, ARCB, ARCE, ARCT, AREM, ASCE, ASCT, ATCE, AVCC, BROR, CBSE, CBRE, CGRR, EBDL, EBKR, SCMT, SREM 
+summary: 您应熟悉属于对象存储审核类别的审核消息。这些事件与 StorageGRID 系统中对象的存储和管理相关。其中包括对象存储和检索，网格节点到网格节点的传输以及验证。 
+---
+= 对象存储审核消息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+属于对象存储审核类别的审核消息用于与StorageGRID 系统中的对象存储和管理相关的事件。其中包括对象存储和检索，网格节点到网格节点的传输以及验证。
+
+[cols="1a,2a,1a"]
+|===
+| 代码 | Description | 请参见 
+
+
+ a| 
+APCT
+ a| 
+从云层清除归档：已归档的对象数据将从外部归档存储系统中删除，该系统通过 S3 API 连接到 StorageGRID 。
+ a| 
+link:apct-archive-purge-from-cloud-tier.html["APCT ：从云层清除归档"]
+
+
+
+ a| 
+ARCB
+ a| 
+归档对象检索开始： ARC-Service 开始从外部归档存储系统检索对象数据。
+ a| 
+link:arcb-archive-object-retrieve-begin.html["ARCB ：开始归档对象检索"]
+
+
+
+ a| 
+Arce
+ a| 
+归档对象检索结束：对象数据已从外部归档存储系统中检索，并且 ARC-Service 会报告检索操作的状态。
+ a| 
+link:arce-archive-object-retrieve-end.html["Arce ：归档对象检索结束"]
+
+
+
+ a| 
+ARCT
+ a| 
+从云层检索归档：归档对象数据从外部归档存储系统中检索，该系统通过 S3 API 连接到 StorageGRID 。
+ a| 
+link:arct-archive-retrieve-from-cloud-tier.html["ARCT ：从云层检索归档"]
+
+
+
+ a| 
+AREM
+ a| 
+归档对象删除：已从外部归档存储系统成功或未成功删除内容块。
+ a| 
+link:arem-archive-object-remove.html["AREM ：归档对象删除"]
+
+
+
+ a| 
+ASCE
+ a| 
+归档对象存储结束：已将内容块写入外部归档存储系统，并且 ARC-Service 会报告写入操作的状态。
+ a| 
+link:asce-archive-object-store-end.html["ASCE ：归档对象存储结束"]
+
+
+
+ a| 
+上一个月
+ a| 
+归档存储云层：对象数据存储到外部归档存储系统，该系统通过 S3 API 连接到 StorageGRID 。
+ a| 
+link:asct-archive-store-cloud-tier.html["SCT ：归档存储云层"]
+
+
+
+ a| 
+ATCE
+ a| 
+归档对象存储开始：已开始向外部归档存储写入内容块。
+ a| 
+link:atce-archive-object-store-begin.html["ATCE ：开始归档对象存储"]
+
+
+
+ a| 
+AVCC
+ a| 
+归档验证云层配置：提供的帐户和存储分段设置已成功验证或未成功验证。
+ a| 
+link:avcc-archive-validate-cloud-tier-configuration.html["AVCC ：归档验证云层配置"]
+
+
+
+ a| 
+运动内衣
+ a| 
+存储分段只读请求：存储分段已进入或退出只读模式。
+ a| 
+link:bror-bucket-read-only-request.html["BROR：存储分段只读请求"]
+
+
+
+ a| 
+CBSE
+ a| 
+对象发送结束：源实体完成了网格节点到网格节点的数据传输操作。
+ a| 
+link:cbse-object-send-end.html["CBSE ：对象发送结束"]
+
+
+
+ a| 
+CBRE
+ a| 
+对象接收结束：目标实体完成了网格节点到网格节点的数据传输操作。
+ a| 
+link:cbre-object-receive-end.html["CBRE ：对象接收结束"]
+
+
+
+ a| 
+CRR
+ a| 
+跨网格复制请求：StorageGRID 尝试执行跨网格复制操作、以便在网格联合连接中的分段之间复制对象。
+ a| 
+link:cgrr-cross-grid-replication-request.html["CGRR：跨网格复制请求"]
+
+
+
+ a| 
+EBDL
+ a| 
+清空存储分段删除：ILM扫描程序删除存储分段中正在删除所有对象的对象(执行空存储分段操作)。
+ a| 
+link:ebdl-empty-bucket-delete.html["EBDL：清空存储分段删除"]
+
+
+
+ a| 
+EBKR
+ a| 
+空分段请求：用户发送了打开或关闭空分段的请求(即删除分段对象或停止删除对象)。
+ a| 
+link:ebkr-empty-bucket-request.html["EBKR：空分段请求"]
+
+
+
+ a| 
+SCMT
+ a| 
+对象存储提交：内容块已完全存储和验证，现在可以请求。
+ a| 
+link:scmt-object-store-commit.html["SCMT：对象存储提交请求"]
+
+
+
+ a| 
+Srem
+ a| 
+对象存储删除：已从网格节点中删除内容块，无法再直接请求。
+ a| 
+link:srem-object-store-remove.html["Srem ：对象存储删除"]
+
+|===

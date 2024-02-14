@@ -1,0 +1,111 @@
+---
+permalink: swift/error-responses-to-swift-api-operations.html 
+sidebar: sidebar 
+keywords: swift api error responses 
+summary: 了解可能的错误响应有助于您对操作进行故障排除。 
+---
+= 对 Swift API 操作的错误响应
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解可能的错误响应有助于您对操作进行故障排除。
+
+如果操作期间发生错误，可能会返回以下 HTTP 状态代码：
+
+|===
+| Swift 错误名称 | HTTP 状态 
+
+
+ a| 
+AccountNameTooLong ， ContainerNameTooLong ， HeaderTooBig ， InContainvaliderName ， InvalidRequest ， InvalidURI ， MetadataNameTooLong ， MetadataValueTooBig ， MissingSecurityHeader ， ObjectNameTooLong ， TooManyContainers ， TooManyMetadataItems ， TotalMetadataTooLarge
+ a| 
+400 个错误请求
+
+
+
+ a| 
+ACCESSDENIED
+ a| 
+403 已禁用
+
+
+
+ a| 
+ContainerNotEmpty ， ContainerAlreadyExists
+ a| 
+409 冲突
+
+
+
+ a| 
+内部错误
+ a| 
+500 内部服务器错误
+
+
+
+ a| 
+InvalidRange
+ a| 
+416 无法满足请求的范围
+
+
+
+ a| 
+方法未使用
+ a| 
+不允许使用 405 方法
+
+
+
+ a| 
+MissingContent长度
+ a| 
+411 需要长度
+
+
+
+ a| 
+未找到
+ a| 
+未找到 404
+
+
+
+ a| 
+未实施
+ a| 
+501 未实施
+
+
+
+ a| 
+预条件已启用
+ a| 
+412- 前提条件失败
+
+
+
+ a| 
+ResourceNotFound
+ a| 
+未找到 404
+
+
+
+ a| 
+未授权
+ a| 
+401 未授权
+
+
+
+ a| 
+UnprocessableEntity
+ a| 
+422 不可处理实体
+
+|===

@@ -1,0 +1,135 @@
+---
+permalink: admin/defining-tsm-tape-and-disk-storage-pools.html 
+sidebar: sidebar 
+keywords: archive node, tsm, tape storage pool, tivoli storage manager 
+summary: 归档节点将写入磁盘存储池。要将内容归档到磁带，必须配置磁盘存储池以将内容移动到磁带存储池。 
+---
+= 定义 TSM 磁带和磁盘存储池
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+归档节点将写入磁盘存储池。要将内容归档到磁带，必须配置磁盘存储池以将内容移动到磁带存储池。
+
+.关于此任务
+对于 TSM 服务器，您必须在 Tivoli Storage Manager 中定义磁带存储池和磁盘存储池。定义磁盘池后，创建一个磁盘卷并将其分配给磁盘池。如果您的 TSM 服务器仅使用磁盘‐存储，则不需要磁带池。
+
+您必须先在TSM服务器上完成多个步骤、然后才能创建磁带存储池。（在磁带库中创建一个磁带库和至少一个驱动器。定义从服务器到库以及从服务器到驱动器的路径，然后为驱动器定义设备类。） 根据站点的硬件配置和存储要求，这些步骤的详细信息可能会有所不同。有关详细信息，请参见 TSM 文档。
+
+以下一组说明说明了此过程。请注意，根据部署要求，您的站点可能会有所不同。有关配置详细信息和说明，请参见 TSM 文档。
+
+
+NOTE: 您必须使用管理权限登录到服务器、并使用dsmadmc工具执行以下命令。
+
+.步骤
+. 创建磁带库。
++
+`define library _tapelibrary_ libtype=_scsi_`
+
++
+其中 `_tapelibrary_` 是为磁带库选择的任意名称以及的值 `libtype` 可能因磁带库类型而异。
+
+. 定义从服务器到磁带库的路径。
++
+`define path _servername tapelibrary_ srctype=server desttype=library device=_lib-devicename_`
+
++
+** `_servername_` 是TSM服务器的名称
+** `_tapelibrary_` 是您定义的磁带库名称
+** `_lib-devicename_` 是磁带库的设备名称
+
+
+. 为库定义驱动器。
++
+`define drive _tapelibrary_ _drivename_`
+
++
+** `_drivename_` 是要为驱动器指定的名称
+** `_tapelibrary_` 是您定义的磁带库名称
++
+根据您的硬件配置，您可能需要配置一个或多个驱动器。（例如，如果 TSM 服务器连接到一个光纤通道交换机，而该交换机具有来自磁带库的两个输入，则您可能需要为每个输入定义一个驱动器。）
+
+
+
+. 定义从服务器到您定义的驱动器的路径。
++
+`define path _servername_ drivename srctype=server desttype=drive library=_tapelibrary_ device=_drive-dname_`
+
++
+** `_drive-dname_` 是驱动器的设备名称
+** `_tapelibrary_` 是您定义的磁带库名称
++
+使用单独的对为磁带库定义的每个驱动器重复上述步骤 `_drivename_` 和 `_drive-dname_` 每个驱动器。
+
+
+
+. 为驱动器定义设备类。
++
+`define devclass _DeviceClassName_ devtype=_lto_ library=_tapelibrary_ format=_tapetype_`
+
++
+** `_DeviceClassName_` 是设备类的名称
+** `_lto_` 是连接到服务器的驱动器类型
+** `_tapelibrary_` 是您定义的磁带库名称
+** `_tapetype_` 是磁带类型；例如ultrium3
+
+
+. 将磁带卷添加到库的清单中。
++
+`checkin libvolume _tapelibrary_`
+
++
+`_tapelibrary_` 是您定义的磁带库名称。
+
+. 创建主磁带存储池。
++
+`define stgpool _SGWSTapePool_ _DeviceClassName_ description=_description_ _collocate=filespace_ maxscratch=_XX_`
+
++
+** `_SGWSTapePool_` 是归档节点的磁带存储池的名称。您可以为磁带存储池选择任何名称（只要该名称使用 TSM 服务器预期的语法约定）。
+** `_DeviceClassName_` 是磁带库的设备类名称。
+** `_description_` 是存储池的问题描述 、可以使用在TSM服务器上显示 `query stgpool` 命令：例如："归档节点的磁带存储池"。
+** `_collocate=filespace_` 指定TSM服务器应将同一文件空间中的对象写入单个磁带。
+** `XX` 是以下项之一：
++
+*** 磁带库中的空磁带数量（如果归档节点是唯一使用该库的应用程序）。
+*** 分配给 StorageGRID 系统使用的磁带数量（在共享磁带库的情况下）。
+
+
+
+
+. 在 TSM 服务器上，创建磁盘存储池。在 TSM 服务器的管理控制台中，输入
++
+`define stgpool _SGWSDiskPool_ disk description=_description_ maxsize=_maximum_file_size nextstgpool=SGWSTapePool_ highmig=_percent_high_ lowmig=_percent_low_`
+
++
+** `_SGWSDiskPool_` 是归档节点的磁盘池的名称。您可以为磁盘存储池选择任何名称（只要该名称使用 TSM 预期的语法约定）。
+** `_description_` 是存储池的问题描述 、可以使用在TSM服务器上显示 `query stgpool` 命令：例如、"归档节点的磁盘存储池"。
+**  `_maximum_file_size_` 强制将大于此大小的对象直接写入磁带、而不是缓存在磁盘池中。建议设置 `_maximum_file_size_` 到10 GB。
+** `_nextstgpool=SGWSTapePool_` 将磁盘存储池引用为归档节点定义的磁带存储池。
+**  `_percent_high_` 设置磁盘池开始将其内容迁移到磁带池时的值。建议设置 `_percent_high_` 设置为0、以便立即开始数据迁移
+**  `_percent_low_` 设置停止迁移到磁带池的值。建议设置 `_percent_low_` 设置为0以清除磁盘池。
+
+
+. 在 TSM 服务器上，创建一个或多个磁盘卷并将其分配给磁盘池。
++
+`define volume _SGWSDiskPool_ _volume_name_ formatsize=_size_`
+
++
+** `_SGWSDiskPool_` 是磁盘池名称。
+** `_volume_name_` 是卷所在位置的完整路径(例如、 `/var/local/arc/stage6.dsm`)、以便写入磁盘池的内容、以便为传输到磁带做好准备。
+** `_size_` 是磁盘卷的大小、以MB为单位。
++
+例如，要创建一个磁盘卷，使磁盘池的内容填满一个磁带，请在磁带卷的容量为 200 GB 时将大小值设置为 200 ， 000 。
+
++
+但是，可能需要创建多个较小大小的磁盘卷，因为 TSM 服务器可以向磁盘池中的每个卷写入数据。例如，如果磁带大小为 250 GB ，请创建 25 个磁盘卷，每个卷的大小为 10 GB （ 10000 ）。
+
++
+TSM 服务器会在目录中为磁盘卷预先分配空间。此操作可能需要一段时间才能完成（对于 200 GB 磁盘卷，需要三个多小时）。
+
+
+
+

@@ -1,0 +1,27 @@
+---
+permalink: maintain/resetting-archive-node-connection-to-cloud.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, archive node connection, reset archive node connection, resetting archive node connection, reset cloud connection, resetting cloud connections 
+summary: 通过 S3 API 恢复以云为目标的归档节点后，您需要修改配置设置以重置连接。如果归档节点无法检索对象数据，则会触发出站复制状态 \ （ ORSU\ ）警报。 
+---
+= 将归档节点连接重置为云
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过 S3 API 恢复以云为目标的归档节点后，您需要修改配置设置以重置连接。如果归档节点无法检索对象数据，则会触发出站复制状态（ ORSU ）警报。
+
+
+NOTE: 如果归档节点通过TSM中间件连接到外部存储、则该节点会自动重置、您无需重新配置。
+
+.开始之前
+您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * 归档节点 * > * ARE* > * 目标 * 。
+. 输入不正确的值以编辑 * 访问密钥 * 字段，然后单击 * 应用更改 * 。
+. 输入正确的值以编辑 * 访问密钥 * 字段，然后单击 * 应用更改 * 。
+

@@ -1,0 +1,25 @@
+---
+permalink: upgrade/changes-to-tenant-management-api.html 
+sidebar: sidebar 
+keywords: tenant management api, api, api version, swagger, rest api 
+summary: StorageGRID 11.8使用租户管理API版本4。版本4已弃用版本3；但是、版本1、2和3仍受支持。 
+---
+= 对租户管理 API 进行的更改
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 11.8使用租户管理API版本4。版本4已弃用版本3；但是、版本1、2和3仍受支持。
+
+
+NOTE: 您可以继续在StorageGRID 11.8中使用已弃用的租户管理API版本；但是、在StorageGRID的未来版本中、将不再支持这些版本的API。升级到StorageGRID 11.8后、可以使用停用已弃用的API `PUT /grid/config/management` API。
+
+要了解更多信息，请访问 link:../tenant/understanding-tenant-management-api.html["了解租户管理 API"]。
+
+
+
+== ILM策略标记的新端点
+
+您可以使用*/ org/ilm-policy-tags*和*/ org/containers/｛tucetName｝/ilm-policy-tags* API端点执行与ILM策略标记相关的操作。

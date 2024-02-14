@@ -1,0 +1,82 @@
+---
+permalink: upgrade/linux-installing-rpm-or-deb-package-on-all-hosts.html 
+sidebar: sidebar 
+keywords: upgrade, linux, rpm, deb, 
+summary: 如果在Linux主机上部署了任何StorageGRID节点、请在开始升级之前在每个主机上安装一个额外的RPM或DEB软件包。 
+---
+= Linux：在所有主机上下载并安装RPM或DEB软件包
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果在Linux主机上部署了任何StorageGRID节点、请在开始升级之前、在每个主机上下载并安装额外的RPM或DEB软件包。
+
+
+
+== 下载升级、Linux和修补程序文件
+
+从网格管理器执行StorageGRID 升级时、系统会提示您首先下载升级归档和任何所需的修补程序。但是、如果您需要下载文件来升级Linux主机、则可以通过提前下载所有必需的文件来节省时间。
+
+.步骤
+. 转至 https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["NetApp 下载： StorageGRID"^]。
+. 选择用于下载最新版本的按钮，或者从下拉菜单中选择其他版本并选择 * 执行 * 。
++
+StorageGRID 软件版本采用以下格式： 11._x.y_ 。StorageGRID 修补程序采用以下格式： 11._x.y.z_ 。
+
+. 使用您的 NetApp 帐户的用户名和密码登录。
+. 如果出现警告/须知通知，请记下热修补程序编号，然后选中该复选框。
+. 阅读最终用户许可协议，选中复选框，然后选择*接受并继续*。
++
+此时将显示选定版本的下载页面。此页面包含三列。
+
+. 从第二列(*升级StorageGRID *)下载两个文件：
++
+** 最新版本的升级归档文件(这是标记为*vmware、SG1000或SG100主管理节点*的部分中的文件)。虽然在执行升级之前不需要此文件、但现在下载它可以节省时间。
+** 其中任何一个中的RPM或DEB归档文件 `.tgz` 或 `.zip` 格式。选择 `.zip` 如果您在服务笔记本电脑上运行Windows、则将文件保存。
++
+*** Red Hat Enterprise Linux +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz`
+*** Ubuntu或Debian +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz`
+
+
+
+
+. 如果由于需要修补程序而需要同意警告/必须注意的通知，请下载该修补程序：
++
+.. 返回到 https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["NetApp 下载： StorageGRID"^]。
+.. 从下拉列表中选择修补程序编号。
+.. 再次同意警告通知和EULA。
+.. 下载并保存修补程序及其自述文件。
++
+开始升级时、系统将提示您上传StorageGRID 升级页面上的修补程序文件。
+
+
+
+
+
+
+
+== 在所有Linux主机上安装归档文件
+
+在升级StorageGRID 软件之前、请执行以下步骤。
+
+.步骤
+. 从安装文件中提取 RPM 或 Deb 软件包。
+. 在所有 Linux 主机上安装 RPM 或 Deb 软件包。
++
+请参见安装说明中的StorageGRID 主机服务安装步骤：
+
++
+** link:../rhel/installing-storagegrid-webscale-host-service.html["Red Hat Enterprise Linux：安装StorageGRID主机服务"]
+** link:../ubuntu/installing-storagegrid-webscale-host-services.html["Ubuntu或Debian：安装StorageGRID 主机服务"]
+
+
++
+新软件包将作为附加软件包进行安装。请勿删除现有软件包。
+
+

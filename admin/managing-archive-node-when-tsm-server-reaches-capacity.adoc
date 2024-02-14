@@ -1,0 +1,59 @@
+---
+permalink: admin/managing-archive-node-when-tsm-server-reaches-capacity.html 
+sidebar: sidebar 
+keywords: archive node, tsm server, full capacity, node is full 
+summary: 当 TSM 数据库或 TSM 服务器管理的归档介质存储即将达到容量时， TSM 服务器无法通知归档节点。可以通过主动监控 TSM 服务器来避免这种情况。 
+---
+= 在 TSM 服务器达到容量时管理归档节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+当 TSM 数据库或 TSM 服务器管理的归档介质存储即将达到容量时， TSM 服务器无法通知归档节点。可以通过主动监控 TSM 服务器来避免这种情况。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.关于此任务
+在 TSM 服务器停止接受新内容后，归档节点将继续接受要传输到 TSM 服务器的对象数据。无法将此内容写入TSM服务器管理的介质。如果发生这种情况，将触发警报。
+
+
+
+== 阻止应用程序保护服务向 TSM 服务器发送内容
+
+为了防止此 ARC-Service 向 TSM 服务器发送更多内容，您可以使归档节点的 * ARC/ * 组件脱机，从而使其 * 存储 * 组件脱机。此操作步骤 还有助于防止在 TSM 服务器不可维护时发出警报。
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 存储 * 。
+. 选择 * 配置 * > * 主 * 。
++
+image::../media/tsm_offline.gif[归档节点的配置页面]
+
+. 将*存储状态*更改为 `Offline`。
+. 选择 * 启动时已禁用归档存储 * 。
+. 选择 * 应用更改 * 。
+
+
+
+
+== 如果 TSM 中间件达到容量，请将归档节点设置为只读
+
+如果目标 TSM 中间件服务器达到容量，则可以对归档节点进行优化，使其仅执行检索。
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 目标 * 。
+. 选择 * 配置 * > * 主 * 。
+. 将最大检索会话数更改为与会话数中列出的并发会话数相同。
+. 将最大存储会话数更改为 0 。
++
+
+NOTE: 如果归档节点为只读，则无需将最大存储会话数更改为 0 。不会创建存储会话。
+
+. 选择 * 应用更改 * 。
+

@@ -1,0 +1,17 @@
+---
+permalink: admin/installing-new-tsm-server.html 
+sidebar: sidebar 
+keywords: install tsm server, tivoli storage manager, integrate archive node with tsm 
+summary: 您可以将归档节点与新的或现有的 TSM 服务器集成在一起。如果要安装新的 TSM 服务器，请按照 TSM 文档中的说明完成安装。 
+---
+= 安装新的 TSM 服务器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将归档节点与新的或现有的 TSM 服务器集成在一起。如果要安装新的 TSM 服务器，请按照 TSM 文档中的说明完成安装。
+
+
+NOTE: 归档节点不能与TSM服务器共同托管。

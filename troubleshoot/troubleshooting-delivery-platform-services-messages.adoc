@@ -1,0 +1,35 @@
+---
+permalink: troubleshoot/troubleshooting-delivery-platform-services-messages.html 
+sidebar: sidebar 
+keywords: how to troubleshoot delivery of platform services message, how to troubleshoot smtt alarm 
+summary: '如果平台服务消息传送到无法接受数据的目标、则会在网格管理器中触发总事件\(SMTT\)警报。' 
+---
+= 对平台服务消息的传送进行故障排除（ SMTTT 警报）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果平台服务消息发送到无法接受数据的目标、则会在网格管理器中触发总事件(SMTT)警报。
+
+.关于此任务
+例如、即使无法将关联的复制或通知消息传送到已配置的端点、S3多部分上传也可以成功。或者，如果元数据过长，则可能无法传送有关 CloudMirror 复制的消息。
+
+SMTTT警报包含最后一个事件消息、该消息指出： `Failed to publish notifications for _bucket-name object key_` 通知失败的最后一个对象。
+
+事件消息也会在中列出 `/var/local/log/bycast-err.log` 日志文件。请参见 link:../monitor/logs-files-reference.html["日志文件参考"]。
+
+对于追加信息，请参见 link:../admin/troubleshooting-platform-services.html["对平台服务进行故障排除"]。您可能需要 link:../tenant/signing-in-to-tenant-manager.html["从租户管理器访问租户"] 调试平台服务错误。
+
+.步骤
+. 要查看警报，请选择 * 节点 * > * 站点 _* > * 网格节点 _* > * 事件 * 。
+. 在表顶部查看上次事件。
++
+事件消息也会在中列出 `/var/local/log/bycast-err.log`。
+
+. 按照 SMT 警报内容中提供的指导更正问题描述 。
+. 选择 * 重置事件计数 * 。
+. 将尚未传送平台服务消息的对象通知租户。
+. 指示租户通过更新对象的元数据或标记来触发失败的复制或通知。
+

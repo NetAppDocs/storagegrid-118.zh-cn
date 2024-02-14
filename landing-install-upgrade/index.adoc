@@ -1,0 +1,13 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: landing-install-upgrade/index.html 
+summary: StorageGRID 系统由单个基于硬件和基于软件的节点组成。首先、请为每个设备节点安装硬件并配置每个Linux或VMware主机。然后、在每个设备或软件主机上安装StorageGRID软件、并将节点连接到网格中。 
+---
+= 安装、升级和修复StorageGRID
+:hardbreaks:
+:allow-uri-read: 
+:linkattrs: 
+:imagesdir: ./media/
+
+

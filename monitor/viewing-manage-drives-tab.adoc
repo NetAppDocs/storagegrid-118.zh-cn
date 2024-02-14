@@ -1,0 +1,28 @@
+---
+permalink: monitor/viewing-manage-drives-tab.html 
+sidebar: sidebar 
+keywords: Manage drives tab, hardware diagnostics, fail drive, logically replace drive 
+summary: 通过管理驱动器选项卡、您可以访问有关SGF6112设备中驱动器的详细信息并对其执行故障排除和维护任务。 
+---
+= 查看管理驱动器选项卡(仅限GF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过管理驱动器选项卡、您可以访问有关SGF6112设备中驱动器的详细信息并对其执行故障排除和维护任务。
+
+
+NOTE: 只有SGF6112存储设备节点才会显示管理驱动器选项卡。
+
+使用管理驱动器选项卡、您可以执行以下操作：
+
+* 查看设备中的数据存储驱动器布局
+* 查看一个表、其中列出了每个驱动器位置、类型、状态、固件版本和序列号
+* 对每个驱动器执行故障排除和维护功能
+
+
+要访问管理驱动器选项卡、您必须具有 link:../admin/admin-group-permissions.html["存储设备管理员或root访问权限"]。
+
+有关使用管理驱动器选项卡的信息、请参阅 https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/manage-drives-tab.html["使用管理驱动器选项卡"^]。

@@ -1,0 +1,137 @@
+---
+permalink: swift/container-operations.html 
+sidebar: sidebar 
+keywords: swift container operations 
+summary: 每个 Swift 帐户最多支持 1 ， 000 个容器。 StorageGRID对容器执行以下 Swift API 操作。 
+---
+= 容器操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每个 Swift 帐户最多支持 1 ， 000 个容器。 StorageGRID对容器执行以下 Swift API 操作。
+
+
+
+== 删除容器
+
+此操作会从 StorageGRID 系统中的 Swift 帐户中删除一个空容器。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+成功执行将返回以下标头并显示 "HTTP/1.1 204 No Content" 响应：
+
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `X-Trans-Id`
+
+
+
+
+== 获取容器
+
+此操作将检索与此容器关联的对象列表以及 StorageGRID 系统中的容器统计信息和元数据。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+以下支持的请求查询参数是可选的：
+
+* `Delimiter`
+* `End_marker`
+* `Format`
+* `Limit`
+* `Marker`
+* `Path`
+* `Prefix`
+
+
+成功执行将返回以下标头，并显示 "HTTP/1.1 200 successful" 或 "HTTP/1.1 204 No Content" 响应：
+
+* `Accept-Ranges`
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `X-Container-Bytes-Used`
+* `X-Container-Object-Count`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+
+
+
+== 机头容器
+
+此操作将从 StorageGRID 系统检索容器统计信息和元数据。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+成功执行将返回以下标头并显示 "HTTP/1.1 204 No Content" 响应：
+
+* `Accept-Ranges`
+* `Content-Length`
+* `Date`
+* `X-Container-Bytes-Used`
+* `X-Container-Object-Count`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+
+
+
+== 放入容器
+
+此操作将为 StorageGRID 系统中的帐户创建一个容器。
+
+需要以下请求参数：
+
+* `Account`
+* `Container`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+成功执行将返回以下标头，并显示 "HTTP/1.1 201 Created " 或 "HTTP/1.1 202 Accept" （如果此帐户下已存在此容器）响应：
+
+* `Content-Length`
+* `Date`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+
+容器名称在 StorageGRID 命名空间中必须是唯一的。如果容器位于其他帐户下，则返回以下标头： "HTTP/1.1 409 conflict 。 "
+
+.相关信息
+link:monitoring-and-auditing-operations.html["监控和审核操作"]

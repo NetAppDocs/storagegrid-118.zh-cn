@@ -1,0 +1,13 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: landing-recover/index.html 
+summary: 如果网格节点发生故障，您可以通过更换发生故障的物理或虚拟服务器，重新安装 StorageGRID 软件以及还原可恢复的数据来恢复该节点。 
+---
+= 恢复或更换节点
+:hardbreaks:
+:allow-uri-read: 
+:linkattrs: 
+:imagesdir: ./media/
+
+

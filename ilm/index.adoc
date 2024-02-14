@@ -1,0 +1,46 @@
+---
+permalink: ilm/index.html 
+sidebar: sidebar 
+keywords: information lifecycle management overview, about information lifecycle management, ilm overview, about ilm 
+summary: 'ILM策略中的信息生命周期管理(ILM)规则指示StorageGRID如何创建和分发对象数据副本以及如何随着时间的推移管理这些副本。' 
+---
+= 使用 ILM 管理对象
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ILM策略中的信息生命周期管理(ILM)规则指示StorageGRID如何创建和分发对象数据副本以及如何长期管理这些副本。
+
+
+
+== 关于这些说明
+
+设计和实施ILM规则和策略需要仔细规划。您必须了解操作要求， StorageGRID 系统的拓扑结构，对象保护需求以及可用存储类型。然后，您必须确定希望如何复制，分发和存储不同类型的对象。
+
+按照以下说明执行以下操作：
+
+* 了解StorageGRID ILM、包括 link:how-ilm-operates-throughout-objects-life.html["ILM如何在对象的整个生命周期内运行"]。
+* 了解如何配置 link:what-storage-pool-is.html["存储池"]， link:what-cloud-storage-pool-is.html["云存储池"]，和 link:what-ilm-rule-is.html["ILM 规则"]。
+* 了解操作方法 link:creating-ilm-policy.html["创建、模拟和激活ILM策略"] 这样可以保护一个或多个站点上的对象数据。
+* 了解操作方法 link:managing-objects-with-s3-object-lock.html["使用S3对象锁定管理对象"]，有助于确保特定S3存储分段中的对象在指定的时间内不会被删除或覆盖。
+
+
+
+
+== 了解更多信息。
+
+要了解更多信息，请查看以下视频：
+
+* https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cb6294c0-e9cf-4d04-9d73-b0b901025b2f["视频：StorageGRID 11.8."^]。
++
+[link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cb6294c0-e9cf-4d04-9d73-b0b901025b2f]
+image::../media/video-screenshot-ilm-rules-118.png[视频：StorageGRID 11.8.]
+
+* https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fb967139-e032-49ef-b529-b0ba00a7f0ad["视频：StorageGRID中的信息生命周期管理策略11.8."^]
++
+[link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fb967139-e032-49ef-b529-b0ba00a7f0ad]
+image::../media/video-screenshot-ilm-policies-118.png[视频：StorageGRID中的信息生命周期管理策略11.8.]
+
+

@@ -1,0 +1,37 @@
+---
+permalink: tenant/using-search-integration-service.html 
+sidebar: sidebar 
+keywords: how to use search integration service 
+summary: 搜索集成服务是三种 StorageGRID 平台服务之一。您可以启用此服务，以便在创建，删除对象或更新其元数据或标记时将对象元数据发送到目标搜索索引。 
+---
+= 使用搜索集成服务
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+搜索集成服务是三种 StorageGRID 平台服务之一。您可以启用此服务，以便在创建，删除对象或更新其元数据或标记时将对象元数据发送到目标搜索索引。
+
+您可以使用租户管理器将自定义 StorageGRID 配置 XML 应用于存储分段来配置搜索集成。
+
+
+NOTE: 由于搜索集成服务会将对象元数据发送到目标，因此其配置 XML 称为 _metadata notification configuration xml_ 。此配置 XML 与用于启用事件通知的 _notification 配置 xml_ 不同。
+
+请参见 link:../s3/index.html["有关实施 S3 客户端应用程序的说明"] 有关以下自定义 StorageGRID S3 REST API 操作的详细信息：
+
+* 删除存储分段元数据通知配置
+* 获取存储分段元数据通知配置
+* PUT 存储分段元数据通知配置
+
+
+.相关信息
+link:configuration-xml-for-search-configuration.html["用于搜索集成的配置 XML"]
+
+link:object-metadata-included-in-metadata-notifications.html["元数据通知中包含的对象元数据"]
+
+link:json-generated-by-search-integration-service.html["由搜索集成服务生成的 JSON"]
+
+link:configuring-search-integration-service.html["配置搜索集成服务"]
+
+link:../s3/index.html["使用S3 REST API"]

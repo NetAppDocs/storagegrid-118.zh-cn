@@ -1,0 +1,13 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: landing-configure-manage/index.html 
+summary: 您需要对新StorageGRID 系统执行的配置任务取决于您使用网格的方式。您至少需要设置系统访问、使用FabricPool 和S3向导以及管理各种存储和安全设置。 
+---
+= 配置和管理StorageGRID系统
+:hardbreaks:
+:allow-uri-read: 
+:linkattrs: 
+:imagesdir: ./media/
+
+

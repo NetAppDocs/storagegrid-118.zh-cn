@@ -1,0 +1,107 @@
+---
+permalink: swift/supported-swift-api-endpoints.html 
+sidebar: sidebar 
+keywords: swift api endpoint support 
+summary: StorageGRID 支持以下 Swift API 端点：信息 URL ，身份验证 URL 和存储 URL 。 
+---
+= 支持的 Swift API 端点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 支持以下 Swift API 端点：信息 URL ，身份验证 URL 和存储 URL 。
+
+
+
+== 信息 URL
+
+您可以通过向带有 /info 路径的 Swift 基础 URL 发出 GET 请求来确定 StorageGRID Swift 实施的功能和限制。
+
+`https://_FQDN_ | _Node IP:Swift Port_/info/`
+
+在请求中：
+
+* `_FQDN_` 是完全限定域名。
+* `_Node IP_` 是StorageGRID 网络上存储节点或网关节点的IP地址。
+* `_Swift Port_` 是用于存储节点或网关节点上的Swift API连接的端口号。
+
+
+例如，以下信息 URL 将从 IP 地址为 10.99.106.103 且使用端口 18083 的存储节点请求信息。
+
+`\https://10.99.106.103:18083/info/`
+
+此响应包括 Swift 实施的功能，可用作 JSON 词典。客户端工具可以解析 JSON 响应以确定实施的功能，并将其用作后续存储操作的约束。
+
+通过实施 StorageGRID ， Swift 可以对信息 URL 进行未经身份验证的访问。
+
+
+
+== 身份验证 URL
+
+客户端可以使用 Swift 身份验证 URL 作为租户帐户用户进行身份验证。
+
+`https://_FQDN_ | _Node IP:Swift Port_/auth/v1.0/`
+
+您必须在中提供租户帐户ID、用户名和密码作为参数 `X-Auth-User` 和 `X-Auth-Key` 请求标题、如下所示：
+
+`X-Auth-User: _Tenant_Account_ID:Username_`
+
+`X-Auth-Key: _Password_`
+
+在请求标题中：
+
+* `_Tenant_Account_ID_` 是StorageGRID 在创建Swift租户时分配的帐户ID。这与租户管理器登录页面上使用的租户帐户 ID 相同。
+* `_Username_` 是已在租户管理器中创建的租户用户的名称。此用户必须属于具有 Swift 管理员权限的组。无法将租户的root用户配置为使用Swift REST API。
++
+如果为租户帐户启用了身份联合，请从 LDAP 服务器提供联合用户的用户名和密码。或者，也可以提供 LDAP 用户的域名。例如：
+
++
+`X-Auth-User: _Tenant_Account_ID:Username@Domain_Name_`
+
+* `_Password_` 是租户用户的密码。用户密码在租户管理器中创建和管理。
+
+
+对成功的身份验证请求的响应将返回存储 URL 和身份验证令牌，如下所示：
+
+`X-Storage-Url: https://_FQDN_ | _Node_IP:Swift_Port_/v1/_Tenant_Account_ID_`
+
+`X-Auth-Token: _token_`
+
+`X-Storage-Token: _token_`
+
+默认情况下，令牌在生成后 24 小时内有效。
+
+为特定租户帐户生成令牌。一个帐户的有效令牌不会授权用户访问另一个帐户。
+
+
+
+== 存储 URL
+
+客户端应用程序可以通过问题描述 Swift REST API 调用对网关节点或存储节点执行支持的帐户，容器和对象操作。存储请求会发送到身份验证响应中返回的存储 URL 。此请求还必须包含从身份验证请求返回的 X-Auth-Token 标头和值。
+
+`\https://FQDN | _IP:Swift_Port_/v1/_Tenant_Account_ID_`
+
+`[_/container_][_/object_]`
+
+`X-Auth-Token: _token_`
+
+某些包含使用情况统计信息的存储响应标头可能无法反映最近修改的对象的准确数字。准确的数字可能需要几分钟才能显示在这些标题中。
+
+帐户和容器操作的以下响应标头是包含使用情况统计信息的示例：
+
+* `X-Account-Bytes-Used`
+* `X-Account-Object-Count`
+* `X-Container-Bytes-Used`
+* `X-Container-Object-Count`
+
+
+.相关信息
+link:configuring-tenant-accounts-and-connections.html["配置租户帐户和连接"]
+
+link:account-operations.html["帐户操作"]
+
+link:container-operations.html["容器操作"]
+
+link:object-operations.html["对象操作"]

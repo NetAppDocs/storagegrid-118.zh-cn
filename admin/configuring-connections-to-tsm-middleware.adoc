@@ -1,0 +1,59 @@
+---
+permalink: admin/configuring-connections-to-tsm-middleware.html 
+sidebar: sidebar 
+keywords: archive node connection to tsm, tivoli storage manager 
+summary: '要使归档节点能够与Tivoli Storage Manager \(TSM\)中间件进行通信、您必须先配置多项设置。' 
+---
+= 配置与 TSM 中间件的连接
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+要使归档节点能够与Tivoli Storage Manager (TSM)中间件进行通信、您必须先配置多项设置。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.关于此任务
+在配置这些设置之前，由于无法与 Tivoli Storage Manager 进行通信，因此，此 ARC-Service 仍会处于主要警报状态。
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 目标 * 。
+. 选择 * 配置 * > * 主 * 。
++
+image::../media/configuring_tsm_middleware.gif[目标 TSM 帐户]
+
+. 从 * 目标类型 * 下拉列表中，选择 * Tivoli Storage Manager （ TSM ） * 。
+. 对于 * Tivoli Storage Manager State* ，请选择 * 脱机 * 以防止从 TSM 中间件服务器进行检索。
++
+默认情况下， Tivoli Storage Manager 状态设置为联机，这意味着归档节点能够从 TSM 中间件服务器检索对象数据。
+
+. 填写以下信息：
++
+** * 服务器 IP 或主机名 * ：指定用于此 ART 服务的 TSM 中间件服务器的 IP 地址或完全限定域名。默认 IP 地址为 127.0.0.1 。
+** * 服务器端口 * ：指定此 ARE 服务将连接到的 TSM 中间件服务器上的端口号。默认值为 1500 。
+** * 节点名称 * ：指定归档节点的名称。您必须输入在 TSM 中间件服务器上注册的名称（ arc‐user ）。
+** * 用户名 * ：指定应用程序中心服务用于登录到 TSM 服务器的用户名。输入为归档节点指定的默认用户名（ arc‐user ）或管理用户。
+** * 密码 * ：指定用于登录到 TSM 服务器的应用程序服务的密码。
+** * 管理类 * ：指定在将对象保存到 StorageGRID 系统时未指定管理类或在 TSM 中间件服务器上未定义指定管理类时要使用的默认管理类。
+** * 会话数 * ：指定 TSM 中间件服务器上专用于归档节点的磁带驱动器数量。归档节点会同时为每个挂载点最多创建一个会话，并另外创建少量会话（少于五个）。
++
+您必须将此值更改为与注册或更新归档节点时为 MAXNUMMP （最大挂载点数）设置的值相同。（在 register 命令中，如果未设置任何值，则使用的 MAXNUMMP 默认值为 1 。）
+
++
+此外，您还必须将 TSM 服务器的 MaxSessions 值更改为至少与为该应用程序服务设置的会话数相同的数字。TSM 服务器上的 MaxSessions 默认值为 25 。
+
+** * 最大检索会话数 * ：指定可由应用程序控制的服务为 TSM 中间件服务器打开以执行检索操作的最大会话数。在大多数情况下，适当的值为会话数减去最大存储会话数。如果需要共享一个磁带驱动器以进行存储和检索，请指定一个等于会话数的值。
+** * 最大存储会话数 * ：指定可通过应用程序中心服务打开到 TSM 中间件服务器进行归档操作的最大并发会话数。
++
+此值应设置为 1 ，但目标归档存储系统已满且只能执行检索时除外。将此值设置为零可使用所有会话进行检索。
+
+
+
+. 选择 * 应用更改 * 。
+

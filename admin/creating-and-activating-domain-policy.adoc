@@ -1,0 +1,64 @@
+---
+permalink: admin/creating-and-activating-domain-policy.html 
+sidebar: sidebar 
+keywords: domain policy for tsm, tivoli storage manager policy 
+summary: 您必须创建一个域策略，然后将其激活，以配置 TSM 服务器以保存从归档节点发送的数据。 
+---
+= 创建并激活域策略
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必须创建一个域策略，然后将其激活，以配置 TSM 服务器以保存从归档节点发送的数据。
+
+.步骤
+. 创建域策略。
++
+`copy domain standard tsm-domain`
+
+. 如果不使用现有管理类、请输入以下内容之一：
++
+`define policyset tsm-domain standard`
+
++
+`define mgmtclass tsm-domain standard _default_`
+
++
+`_default_` 是部署的默认管理类。
+
+. 创建一个副本组到相应的存储池。在一行中输入：
++
+`define copygroup tsm-domain standard _default_ type=archive destination=SGWSDiskPool retinit=event retmin=0 retver=0`
+
++
+`_default_` 是归档节点的默认管理类。的值 `retinit`， `retmin`，和 `retver` 已选择此选项以反映归档节点当前使用的保留行为
+
++
+
+NOTE: 请勿设置 `retinit` to `retinit=create`。正在设置 ... `retinit=create` 阻止归档节点删除内容、因为保留事件用于从TSM服务器中删除内容。
+
+. 将管理类分配为默认值。
++
+`assign defmgmtclass _tsm-domain_ standard _default_`
+
+. 将新策略集设置为活动。
++
+`activate policyset tsm-domain standard`
+
++
+忽略输入activate命令时出现的"无备份副本组"警告。
+
+. 注册一个节点以使用在 TSM 服务器上设置的新策略。在 TSM 服务器上，输入（在一行上）：
++
+`register node arc-user arc-password passexp=0 domain=tsm-domain MAXNUMMP=number-of-sessions`
+
++
+arc-user 和 arc-password 与您在归档节点上定义的客户端节点名称和密码相同，并且 MAXNUMMP 的值设置为为归档节点存储会话预留的磁带驱动器数量。
+
++
+
+NOTE: 默认情况下，注册节点会创建一个由客户端所有者授权的管理用户 ID ，并为此节点定义密码。
+
+

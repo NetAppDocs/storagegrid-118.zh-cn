@@ -1,0 +1,37 @@
+---
+permalink: audit/avcc-archive-validate-cloud-tier-configuration.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, AVCC, Archive Validate Cloud-Tier Configuration 
+summary: 验证 Cloud Tiering - Simple Storage Service \ （ S3\ ）目标类型的配置设置后，将生成此消息。 
+---
+= AVCC ：归档验证云层配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+验证 Cloud Tiering - Simple Storage Service （ S3 ）目标类型的配置设置时，会生成此消息。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+RSLT
+ a| 
+结果代码
+ a| 
+返回成功（ SUC ）或后端报告的错误。
+
+
+
+ a| 
+SUID
+ a| 
+存储唯一标识符
+ a| 
+与要验证的外部归档存储系统关联的 UUID 。
+
+|===

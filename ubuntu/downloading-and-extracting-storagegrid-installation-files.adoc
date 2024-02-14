@@ -1,0 +1,123 @@
+---
+permalink: ubuntu/downloading-and-extracting-storagegrid-installation-files.html 
+sidebar: sidebar 
+keywords: how to download ubuntu or debian installation files 
+summary: 您必须下载 StorageGRID 安装归档并提取所需文件。 
+---
+= 下载并提取 StorageGRID 安装文件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必须下载 StorageGRID 安装归档并提取所需文件。
+
+.步骤
+. 转至 https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["StorageGRID 的 "NetApp 下载 " 页面"^]。
+. 选择用于下载最新版本的按钮，或者从下拉菜单中选择其他版本并选择 * 执行 * 。
+. 使用您的 NetApp 帐户的用户名和密码登录。
+. 如果显示Cauy/MustRead语句，请阅读该语句并选中该复选框。
++
+
+CAUTION: 安装 StorageGRID 版本后，您必须应用任何所需的修补程序。有关详细信息，请参见 link:../maintain/storagegrid-hotfix-procedure.html["恢复和维护说明中的热修补程序操作步骤"]
+
+. 阅读最终用户许可协议，选中复选框，然后选择*接受并继续*。
++
+此时将显示选定版本的下载页面。此页面包含三列：
+
+. 在 * 安装 StorageGRID * 列中，为 Ubuntu 或 Debian 选择 .tgz 或 .zip 文件。
++
+
+NOTE: 选择 `.zip` 如果您在服务笔记本电脑上运行Windows、则将文件保存。
+
+. 保存并提取归档文件。
+. 从以下列表中选择所需的文件。
++
+所需的文件集取决于您规划的网格拓扑以及如何部署 StorageGRID 网格。
+
++
+
+NOTE: 表中列出的路径与提取的安装归档所安装的顶级目录相对。
+
+
+
+[cols="1a,1a"]
+|===
+| 路径和文件名 | Description 
+
+
+| /debs/README  a| 
+一个文本文件，用于描述 StorageGRID 下载文件中包含的所有文件。
+
+
+
+| ./debs/NLF000000.txt  a| 
+非生产 NetApp 许可证文件，可用于测试和概念验证部署。
+
+
+
+| ./debs/storagegrid-webscale-images-version-SHA.deb  a| 
+用于在 Ubuntu 或 Debian 主机上安装 StorageGRID 节点映像的 Deb 软件包。
+
+
+
+| ./debs/storagegrid-webscale-images-version-SHA.deb.md5  a| 
+文件的MD5校验和 `/debs/storagegrid-webscale-images-version-SHA.deb`。
+
+
+
+| ./debs/storagegrid-webscale-service-version-SHA.deb  a| 
+用于在 Ubuntu 或 Debian 主机上安装 StorageGRID 主机服务的 Deb 软件包。
+
+
+
+| 部署脚本工具 | Description 
+
+
+| ./debs/configure-storagegrid.py  a| 
+一种用于自动配置 StorageGRID 系统的 Python 脚本。
+
+
+
+| ./debs/configure-sga.py  a| 
+一种用于自动配置 StorageGRID 设备的 Python 脚本。
+
+
+
+| ./debs/storagegrid-ssoauth.py  a| 
+一个示例 Python 脚本，启用单点登录后，您可以使用该脚本登录到网格管理 API 。您也可以将此脚本用于Ping联盟。
+
+
+
+| ./debs/configure-storaggrid.sample.json  a| 
+用于的示例配置文件 `configure-storagegrid.py` 脚本。
+
+
+
+| ./debs/configure-storaggrid.blank.json  a| 
+用于的空白配置文件 `configure-storagegrid.py` 脚本。
+
+
+
+| ./debs/Extras / Ansible  a| 
+用于为 StorageGRID 容器部署配置 Ubuntu 或 Debian 主机的 Ansible 角色示例和攻略手册。您可以根据需要自定义角色或攻略手册。
+
+
+
+| storagegrid-ssoauth-azure.py  a| 
+一个Python脚本示例、在使用Active Directory或Ping联合启用单点登录(Single Sign On、SSO)时、您可以使用该脚本登录到网格管理API。
+
+
+
+| ./debs/storagegrid—ssoauth-azure.js  a| 
+由伴侣调用的帮助程序脚本 `storagegrid-ssoauth-azure.py` 用于与Azure执行SSO交互的Python脚本。
+
+
+
+| ./debs/ExtrS/API 架构  a| 
+StorageGRID 的 API 架构。
+
+*注意*：如果您没有用于升级兼容性测试的非生产StorageGRID 环境，则在执行升级之前，可以使用这些模式来确认为使用StorageGRID 管理API而编写的任何代码是否与新的StorageGRID 版本兼容。
+
+|===

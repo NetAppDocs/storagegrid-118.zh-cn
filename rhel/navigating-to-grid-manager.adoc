@@ -1,0 +1,44 @@
+---
+permalink: rhel/navigating-to-grid-manager.html 
+sidebar: sidebar 
+keywords: how to navigate to grid manager 
+summary: 您可以使用网格管理器定义配置 StorageGRID 系统所需的所有信息。 
+---
+= 导航到网格管理器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用网格管理器定义配置 StorageGRID 系统所需的所有信息。
+
+.开始之前
+必须部署主管理节点，并且已完成初始启动序列。
+
+.步骤
+. 打开 Web 浏览器并导航到以下地址之一：
++
+`https://_primary_admin_node_ip_`
+
++
+`_client_network_ip_`
+
++
+或者，您也可以通过端口 8443 访问网格管理器：
+
++
+`https://_primary_admin_node_ip_:8443`
+
++
+
+NOTE: 根据您的网络配置，您可以使用网格网络或管理网络上的主管理节点 IP 的 IP 地址。
+
+. 选择*安装StorageGRID 系统*。
++
+此时将显示用于配置 StorageGRID 系统的页面。
+
++
+image::../media/gmi_installer_first_screen.gif[此图通过周围的文本进行了说明。]
+
+

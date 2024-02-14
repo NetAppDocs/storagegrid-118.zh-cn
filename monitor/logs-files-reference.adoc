@@ -1,0 +1,188 @@
+---
+permalink: monitor/logs-files-reference.html 
+sidebar: sidebar 
+keywords: log, logs, log files 
+summary: StorageGRID 提供了用于捕获事件，诊断消息和错误情况的日志。系统可能会要求您收集日志文件并将其转发给技术支持以协助进行故障排除。 
+---
+= 日志文件参考：概述
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 提供了用于捕获事件，诊断消息和错误情况的日志。系统可能会要求您收集日志文件并将其转发给技术支持以协助进行故障排除。
+
+这些日志分为以下几类：
+
+* link:storagegrid-software-logs.html["StorageGRID 软件日志"]
+* link:deployment-and-maintenance-logs.html["部署和维护日志"]
+* link:logs-for-third-party-software.html["第三方软件的日志"]
+* link:about-bycast-log.html["关于 bycast.log"]
+
+
+
+NOTE: 为每种日志类型提供的详细信息仅供参考。这些日志可供技术支持进行高级故障排除。使用审核日志和应用程序日志文件重建问题历史记录的高级技术不在本说明的范围之内。
+
+
+
+== 访问日志
+
+要访问日志、您可以 link:collecting-log-files-and-system-data.html["收集日志文件和系统数据"] 从一个或多个节点作为单个日志文件归档。或者，如果主管理节点不可用或无法访问特定节点，您可以按如下所示访问每个网格节点的各个日志文件：
+
+. 输入以下命令： `ssh admin@grid_node_IP`
+. 输入中列出的密码 `Passwords.txt` 文件
+. 输入以下命令切换到root： `su -`
+. 输入中列出的密码 `Passwords.txt` 文件
+
+
+
+
+== 日志文件类别
+
+StorageGRID 日志文件归档包含为每个类别描述的日志以及包含指标和调试命令输出的其他文件。
+
+[cols="1a,3a"]
+|===
+| 归档位置 | Description 
+
+
+| 审核  a| 
+在正常系统操作期间生成的审核消息。
+
+
+
+| 基础操作系统日志  a| 
+基本操作系统信息，包括 StorageGRID 映像版本。
+
+
+
+| 捆绑包  a| 
+全局配置信息（捆绑包）。
+
+
+
+| Cassandra  a| 
+Cassandra 数据库信息和 Reaper 修复日志。
+
+
+
+| EC  a| 
+按配置文件ID列出的有关当前节点和EC组信息的vCS信息。
+
+
+
+| 网格  a| 
+常规网格日志、包括调试 (`bycast.log`)和 `servermanager` 日志。
+
+
+
+| grid.xml  a| 
+网格配置文件在所有节点之间共享。
+
+
+
+| hagroup  a| 
+高可用性组指标和日志。
+
+
+
+| 安装  a| 
+`Gdu-server` 并安装日志。
+
+
+
+| lumberjack.log  a| 
+与日志收集相关的调试消息。
+
+
+
+| lambda-arbitrator  a| 
+与 S3 Select 代理请求相关的日志。
+
+
+
+| 指标  a| 
+Grafana ， Jaeger ，节点导出程序和 Prometheus 的服务日志。
+
+
+
+| 错误  a| 
+其他访问和错误日志。
+
+
+
+| MySQL  a| 
+MariaDB 数据库配置和相关日志。
+
+
+
+| 网络  a| 
+网络相关脚本和动态 IP 服务生成的日志。
+
+
+
+| nginx  a| 
+负载平衡器和网格联合配置文件和日志。还包括 Grid Manager 和租户管理器流量日志。
+
+
+
+| nginx 网关  a| 
+负载平衡器和网格联合配置文件和日志。
+
+
+
+| NTP  a| 
+NTP 配置文件和日志。
+
+
+
+| os  a| 
+节点和网格状态文件、包括服务 `pid`。
+
+
+
+| 其他  a| 
+下的日志文件 `/var/local/log` 未收集到其他文件夹中的。
+
+
+
+| 性能  a| 
+CPU ，网络和磁盘 I/O 的性能信息
+
+
+
+| Prometheus-data  a| 
+当前 Prometheus 指标（如果日志收集包含 Prometheus 数据）。
+
+
+
+| 配置  a| 
+与网格配置过程相关的日志。
+
+
+
+| 草稿  a| 
+来自平台服务中使用的 raft 集群的日志。
+
+
+
+| SSH  a| 
+与SSH配置和服务相关的日志。
+
+
+
+| SNMP  a| 
+用于发送 SNMP 通知的 SNMP 代理配置和警报允许 / 拒绝列表。
+
+
+
+| 套接字数据  a| 
+用于网络调试的套接字数据。
+
+
+
+| system-commands.txt  a| 
+StorageGRID 容器命令的输出。包含系统信息，例如网络连接和磁盘使用情况。
+
+|===

@@ -1,0 +1,84 @@
+---
+permalink: swift/account-operations.html 
+sidebar: sidebar 
+keywords: swift account operations 
+summary: 对帐户执行以下 Swift API 操作。 
+---
+= 帐户操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+对帐户执行以下 Swift API 操作。
+
+
+
+== 获取帐户
+
+此操作将检索与帐户和帐户使用情况统计信息关联的容器列表。
+
+以下请求参数为必填项：
+
+* `Account`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+以下支持的请求查询参数是可选的：
+
+* `Delimiter`
+* `End_marker`
+* `Format`
+* `Limit`
+* `Marker`
+* `Prefix`
+
+
+如果找到帐户且没有容器或容器列表为空、则成功执行将返回以下标头并返回"HTTP/1.1 204 No Content"响应；如果找到帐户且容器列表不为空、则返回"HTTP/1.1 200 Ok"响应：
+
+* `Accept-Ranges`
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `X-Account-Bytes-Used`
+* `X-Account-Container-Count`
+* `X-Account-Object-Count`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+
+
+
+== 主帐户
+
+此操作将从 Swift 帐户检索帐户信息和统计信息。
+
+以下请求参数为必填项：
+
+* `Account`
+
+
+以下请求标头为必填项：
+
+* `X-Auth-Token`
+
+
+成功执行将返回以下标头并显示 "HTTP/1.1 204 No Content" 响应：
+
+* `Accept-Ranges`
+* `Content-Length`
+* `Date`
+* `X-Account-Bytes-Used`
+* `X-Account-Container-Count`
+* `X-Account-Object-Count`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+
+.相关信息
+link:swift-operations-tracked-in-audit-logs.html["审核日志中跟踪的 Swift 操作"]

@@ -1,0 +1,21 @@
+---
+permalink: maintain/recovering-from-system-drive-failure.html 
+sidebar: sidebar 
+keywords: recover, system drive failure, workflow 
+summary: 如果基于软件的存储节点上的系统驱动器发生故障，则此存储节点不可用于 StorageGRID 系统。您必须完成一组特定任务才能从系统驱动器故障中恢复。 
+---
+= 从系统驱动器故障中恢复：工作流
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果基于软件的存储节点上的系统驱动器发生故障，则此存储节点不可用于 StorageGRID 系统。您必须完成一组特定任务才能从系统驱动器故障中恢复。
+
+使用此操作步骤 从基于软件的存储节点上的系统驱动器故障中恢复。此操作步骤 提供了在任何存储卷同时发生故障或无法重新挂载时应遵循的步骤。
+
+
+NOTE: 仅限此基于 操作步骤 适用场景 软件的存储节点。您必须遵循不同的操作步骤 link:recovering-storagegrid-appliance-storage-node.html["恢复设备存储节点"]。
+
+image::../media/storage_node_recovery_system_drive.gif[基于软件的存储节点上发生故障的系统驱动器的恢复步骤]

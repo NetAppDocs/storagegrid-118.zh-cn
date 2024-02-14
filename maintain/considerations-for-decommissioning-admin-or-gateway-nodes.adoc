@@ -1,0 +1,64 @@
+---
+permalink: maintain/considerations-for-decommissioning-admin-or-gateway-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission admin node, gateway node, archive node 
+summary: 查看停用管理节点、网关节点或归档节点的注意事项。 
+---
+= 停用管理节点、网关节点或归档节点的注意事项
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+查看停用管理节点、网关节点或归档节点的注意事项。
+
+
+
+== 管理节点注意事项
+
+* 您不能停用主管理节点。
+* 如果某个管理节点的某个网络接口属于高可用性(HA)组、则无法停用该节点。您必须先从 HA 组中删除网络接口。请参见的说明 link:../admin/managing-high-availability-groups.html["管理HA组"]。
+* 在停用管理节点时、您可以根据需要安全地更改ILM策略。
+* 如果停用管理节点并为 StorageGRID 系统启用了单点登录（ SSO ），则必须记住从 Active Directory 联合身份验证服务（ AD FS ）中删除该节点的依赖方信任。
+* 如果您使用 link:../admin/grid-federation-overview.html["网格联盟"]下，确保未为网格联合连接指定要停用的节点的IP地址。
+* 停用已断开连接的管理节点时，该节点上的审核日志将丢失；但是，这些日志也应存在于主管理节点上。
+
+
+
+
+== 网关节点的注意事项
+
+* 如果某个网关节点的某个网络接口属于高可用性(HA)组、则无法停用该节点。您必须先从 HA 组中删除网络接口。请参见的说明 link:../admin/managing-high-availability-groups.html["管理HA组"]。
+* 在停用网关节点时、您可以根据需要安全地更改ILM策略。
+* 如果您使用 link:../admin/grid-federation-overview.html["网格联盟"]下，确保未为网格联合连接指定要停用的节点的IP地址。
+* 您可以在网关节点断开连接时安全地停用它。
+
+
+
+
+== [[Considuss-for -archive-node ]]归档节点的注意事项
+
+
+NOTE: 已弃用对归档节点和Cloud Tiering—Simple Storage Service (S3)选项的支持。归档节点支持将在未来版本中彻底删除。
+
+* 如果归档节点仍连接到网格、则无法停用该节点。要删除归档节点、请确认此节点不再使用、数据已迁移到其他位置、并且此节点已关闭。然后、对已断开连接的节点使用停用操作步骤。
+* 如果归档节点仍在使用中、请确保您的计划有足够的时间将任何现有数据移动到存储节点或云存储池。从归档节点移动数据可能需要几天或几周时间。
+
+
+.步骤
+. 如果您当前正在将归档节点与Cloud Tiering - Simple Storage Service (S3)选项结合使用、 link:../admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html["将对象迁移到云存储池"]。
+. 确认此归档节点不再由活动ILM策略中的任何ILM规则使用。
++
+.. 转到*ILM >*存储池*页面。
+.. 从存储池列表中、选择仅包含归档节点的任何存储池。
+.. 选择*ILM usage*选项卡。
+.. 如果列出了任何ILM规则、请查看*用于活动策略*列、以确定归档节点存储池是否正在活动策略中使用。
+.. 如果正在使用存储池、 link:../ilm/creating-ilm-policy.html["创建新的ILM策略"] 不再使用归档节点。
+.. 激活新策略。
+.. 等待所有对象从归档节点存储池中移动。这可能需要几天或几周时间。
+
+
+. 确定所有对象均已从归档节点移动后、关闭该节点。
+. 执行 link:decommissioning-disconnected-grid-nodes.html["停用已断开连接节点的操作步骤"]。
+

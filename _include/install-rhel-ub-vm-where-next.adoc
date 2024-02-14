@@ -1,0 +1,30 @@
+= 可选任务
+:allow-uri-read: 
+
+
+* link:../admin/managing-tenants.html["创建租户帐户"] 用于在StorageGRID 系统上存储对象的每个客户端协议(Swift或S3)。
+* link:../admin/controlling-storagegrid-access.html["控制系统访问"] 配置组和用户帐户。您也可以选择 link:../admin/using-identity-federation.html["配置联合身份源"] (如Active Directory或OpenLDAP)、以便您可以导入管理组和用户。或者、您也可以 link:../admin/managing-users.html#create-a-local-user["创建本地组和用户"]。
+* 集成并测试 link:../s3/configuring-tenant-accounts-and-connections.html["S3 API"] 或 link:../swift/configuring-tenant-accounts-and-connections.html["Swift API"] 用于将对象上传到StorageGRID 系统的客户端应用程序。
+* link:../ilm/index.html["配置信息生命周期管理(ILM)规则和ILM策略"] 您希望使用来保护对象数据。
+* 如果您的安装包含设备存储节点、请使用SANtricity OS完成以下任务：
++
+** 连接到每个 StorageGRID 设备。
+** 验证是否收到 AutoSupport 数据。
++
+请参见 https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/configuring-hardware.html["设置硬件"^]。
+
+
+
+* 查看并遵循 link:../harden/index.html["StorageGRID 系统强化准则"] 以消除安全风险。
+* link:../monitor/email-alert-notifications.html["为系统警报配置电子邮件通知"]。
+* 如果StorageGRID 系统包含任何归档节点(已弃用)、请配置归档节点与目标外部归档存储系统的连接。
+
+
+
+
+== 可选任务
+
+* link:../maintain/changing-ip-addresses-and-mtu-values-for-all-nodes-in-grid.html["更新网格节点IP地址"] 如果在您规划部署并生成恢复软件包之后这些设置发生了更改。
+* link:../admin/changing-network-options-object-encryption.html["配置存储加密"]，如果需要。
+* link:../admin/configuring-stored-object-compression.html["配置存储压缩"] 根据需要减小已存储对象的大小。
+

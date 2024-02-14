@@ -1,0 +1,31 @@
+---
+indexpage:
+  tiles:
+  - title: 入门
+    links:
+    - title: 维护概述
+      url: "../maintain/index.html"
+    - title: 下载恢复包
+      url: "../maintain/downloading-recovery-package.html"
+  - title: 停用节点或站点
+    links:
+    - title: 概述
+      url: "../maintain/decommission-procedure.html"
+    - title: 删除网格节点
+      url: "../maintain/grid-node-decommissioning.html"
+    - title: 删除站点
+      url: "../maintain/considerations-for-removing-site.html"
+  - title: 其他维护程序
+    links:
+    - title: 重命名网格、站点或节点
+      url: "../maintain/rename-grid-site-node-overview.html"
+    - title: 节点过程
+      url: "../maintain/grid-node-procedures.html"
+    - title: 网络过程
+      url: "../maintain/updating-subnets-for-grid-network.html"
+    - title: 主机和中间件过程
+      url: "../maintain/linux-migrating-grid-node-to-new-host.html"
+  - title: 维护StorageGRID设备
+    links:
+    - title: StorageGRID设备文档
+      url: https://docs.netapp.com/us-en/storagegrid-appliances/

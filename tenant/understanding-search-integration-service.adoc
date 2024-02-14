@@ -1,0 +1,47 @@
+---
+permalink: tenant/understanding-search-integration-service.html 
+sidebar: sidebar 
+keywords: how to understand search integration service 
+summary: 如果要对对象元数据使用外部搜索和数据分析服务，则可以为 S3 存储分段启用搜索集成。 
+---
+= 了解搜索集成服务
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果要对对象元数据使用外部搜索和数据分析服务，则可以为 S3 存储分段启用搜索集成。
+
+搜索集成服务是一种自定义 StorageGRID 服务，每当更新对象或其元数据时，该服务都会自动异步地将 S3 对象元数据发送到目标端点。然后，您可以使用目标服务提供的复杂搜索，数据分析，可视化或机器学习工具来搜索，分析对象数据并从中获得洞察力。
+
+您可以为任何版本控制或未版本控制的存储分段启用搜索集成服务。搜索集成是通过将元数据通知配置 XML 与用于指定要对哪些对象执行操作的存储分段以及对象元数据的目标进行关联来配置的。
+
+通知以 JSON 文档的形式生成，该文档使用分段名称，对象名称和版本 ID （如果有）命名。除了对象的所有标记和用户元数据之外，每个元数据通知还包含一组标准的对象系统元数据。
+
+
+NOTE: 对于标记和用户元数据， StorageGRID 会将日期和数字作为字符串或 S3 事件通知传递给 Elasticsearch 。要配置 Elasticsearch 以将这些字符串解释为日期或数字，请按照 Elasticsearch 说明进行动态字段映射和映射日期格式。在配置搜索集成服务之前，必须在索引上启用动态字段映射。为文档编制索引后、无法在索引中编辑文档的域类型。
+
+每当出现以下情况时，都会生成通知并将其排队以供传送：
+
+* 已创建对象。
+* 删除对象，包括因网格的 ILM 策略操作而删除对象的时间。
+* 添加，更新或删除对象元数据或标记。更新时始终会发送一组完整的元数据和标记，而不仅仅是更改后的值。
+
+
+将元数据通知配置 XML 添加到存储分段后，系统会为您创建的任何新对象以及您通过更新其数据，用户元数据或标记来修改的任何对象发送通知。但是、不会为存储分段中已有的任何对象发送通知。要确保将存储分段中所有对象的对象元数据发送到目标，应执行以下任一操作：
+
+* 创建存储分段后以及添加任何对象之前，请立即配置搜索集成服务。
+* 对存储分段中已有的所有对象执行操作，此操作将触发元数据通知消息以发送到目标。
+
+
+StorageGRID 搜索集成服务支持将 Elasticsearch 集群作为目标。与其他平台服务一样，目标也会在端点中指定，而此端点的 URN 会在该服务的配置 XML 中使用。使用 https://imt.netapp.com/matrix/#welcome["NetApp 互操作性表工具"^] 确定支持的 Elasticsearch 版本。
+
+.相关信息
+link:configuration-xml-for-search-configuration.html["用于搜索集成的配置 XML"]
+
+link:object-metadata-included-in-metadata-notifications.html["元数据通知中包含的对象元数据"]
+
+link:json-generated-by-search-integration-service.html["由搜索集成服务生成的 JSON"]
+
+link:configuring-search-integration-service.html["配置搜索集成服务"]

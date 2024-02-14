@@ -1,0 +1,36 @@
+---
+permalink: ubuntu/installing-linux.html 
+sidebar: sidebar 
+keywords: how to install Linux 
+summary: 您必须在所有Ubuntu或Debian网格主机上安装StorageGRID。有关支持的版本列表、请使用NetApp互操作性表工具。 
+---
+= 安装 Linux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必须在所有Ubuntu或Debian网格主机上安装StorageGRID。有关支持的版本列表、请使用NetApp互操作性表工具。
+
+
+NOTE: 确保您的操作系统已升级到Linux内核4.15或更高版本。
+
+.步骤
+. 按照分销商的说明或您的标准操作步骤 在所有物理或虚拟网格主机上安装 Linux 。
++
+
+NOTE: 不要安装任何图形桌面环境。安装 Ubuntu 时，必须选择 * 标准系统实用程序 * 。建议选择 * OpenSSH 服务器 * 以启用对 Ubuntu 主机的 ssh 访问。所有其他选项均可保持清除状态。
+
+. 确保所有主机均可访问 Ubuntu 或 Debian 软件包存储库。
+. 如果已启用交换：
++
+.. 运行以下命令： `$ sudo swapoff --all`
+.. 删除中的所有交换条目 `/etc/fstab` 以保留设置。
++
+
+NOTE: 如果未完全禁用交换，则会严重降低性能。
+
+
+
+

@@ -1,0 +1,86 @@
+---
+permalink: swift/configuring-tenant-accounts-and-connections.html 
+sidebar: sidebar 
+keywords: swift test connection, cli, python-swiftclient 
+summary: 您可以使用Swift命令行界面测试与StorageGRID系统的连接、并验证是否可以读取和写入对象。 
+---
+= 测试Swift REST API配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用Swift命令行界面测试与StorageGRID系统的连接、并验证是否可以读取和写入对象。
+
+.开始之前
+* 您已下载并安装Swift命令行客户端： https://platform.swiftstack.com/docs/integration/python-swiftclient.html["SwiftStack ： Python-swiftclient"^]
+* 您也可以选择 link:../admin/configuring-load-balancer-endpoints.html["已创建负载平衡器端点"]。否则、您知道要连接到的存储节点的IP地址以及要使用的端口号。请参见 link:../admin/summary-ip-addresses-and-ports-for-client-connections.html["客户端连接的IP地址和端口"]。
+* 您已拥有 link:../admin/creating-tenant-account.html["已创建Swift租户帐户"]。
+* 您已登录到租户帐户并至少创建了一个组和用户。请参见 link:../tenant/creating-groups-for-swift-tenant.html["为 Swift 租户创建组"]。
++
+
+NOTE: Swift租户用户必须具有管理员组权限才能向Swift REST API进行身份验证。
+
+
+
+.关于此任务
+如果尚未配置安全性、则必须添加 `--insecure` 标记这些命令中的每个命令。
+
+.步骤
+. 查询 StorageGRID Swift 部署的信息 URL ：
++
+[listing]
+----
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/info
+capabilities
+----
++
+这足以测试您的 Swift 部署是否正常运行。要通过存储对象进一步测试帐户配置，请继续执行其他步骤。
+
+. 将对象放入容器中：
++
+[listing]
+----
+touch test_object
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
+upload test_container test_object
+--object-name test_object
+----
+. 获取用于验证对象的容器：
++
+[listing]
+----
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
+list test_container
+----
+. 删除对象：
++
+[listing]
+----
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
+delete test_container test_object
+----
+. 删除容器：
++
+[listing]
+----
+swift
+-U `<_Tenant_Account_ID:Account_User_Name_>`
+-K `<_User_Password_>`
+-A `\https://<_FQDN_ | _IP_>:<_Port_>/auth/v1.0'
+delete test_container
+----
+

@@ -1,0 +1,82 @@
+---
+permalink: tenant/configuring-cross-origin-resource-sharing-cors.html 
+sidebar: sidebar 
+keywords: how to configure cross-origin resource sharing, cors 
+summary: '如果您希望S3存储分段和该存储分段中的对象可供其他域中的Web应用程序访问、则可以为该存储分段配置跨源站资源共享(CORS\)。' 
+---
+= 配置跨源资源共享（ CORS ）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您希望S3存储分段和该存储分段中的对象可供其他域中的Web应用程序访问、则可以为该存储分段配置跨源站资源共享(CORS)。
+
+.开始之前
+* 您将使用登录到租户管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您属于具有的用户组 link:tenant-management-permissions.html["管理所有分段或root访问权限"]。这些权限将覆盖组或存储分段策略中的权限设置。
+
+
+.关于此任务
+跨源资源共享（ CORS ）是一种安全机制，允许一个域中的客户端 Web 应用程序访问不同域中的资源。例如、假设您使用名为的S3存储分段 `Images` 以存储图形。通过为配置CORS `Images` 存储分段中的图像、您可以在网站上显示该存储分段中的图像 `+http://www.example.com+`。
+
+
+
+== 为存储分段启用CORS
+
+.步骤
+. 使用文本编辑器创建所需的XML。
++
+此示例显示了用于为 S3 存储分段启用 CORS 的 XML 。此XML允许任何域向存储分段发送GET请求、但仅允许 `+http://www.example.com+` 用于发送POST和删除请求的域。允许使用所有请求标头。
+
++
+[listing]
+----
+<CORSConfiguration
+    xmlns="http://s3.amazonaws.com/doc/2020-10-22/">
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+    <CORSRule>
+        <AllowedOrigin>http://www.example.com</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedMethod>POST</AllowedMethod>
+        <AllowedMethod>DELETE</AllowedMethod>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
+----
++
+有关 CORS 配置 XML 的详细信息，请参见 http://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html["Amazon Web Services （ AWS ）文档：《 Amazon Simple Storage Service 开发人员指南》"^]。
+
+. 从信息板中选择*查看存储分段*，或选择*存储(S3)*>*存储分段*。
+. 从表中选择分段名称。
++
+此时将显示存储分段详细信息页面。
+
+. 从*存储分段访问*选项卡中，选择*跨源资源共享(CORS)*可接触式。
+. 选中*启用CORS*复选框。
+. 将CORS配置XML粘贴到文本框中。
+. 选择 * 保存更改 * 。
+
+
+
+
+== 修改CORS设置
+
+.步骤
+. 更新文本框中的CORS配置XML，或选择*Clear*重新开始。
+. 选择 * 保存更改 * 。
+
+
+
+
+== 禁用CORS设置
+
+.步骤
+. 清除*启用CORS*复选框。
+. 选择 * 保存更改 * 。
+

@@ -1,0 +1,26 @@
+---
+permalink: admin/defining-domain-policy-and-registering-node.html 
+sidebar: sidebar 
+keywords: domain policy, tsm, tivoli storage manager 
+summary: 您需要为从归档节点保存的数据定义一个使用 TSM 管理类的域策略，然后注册一个节点以使用此域策略。 
+---
+= 定义域策略并注册节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您需要为从归档节点保存的数据定义一个使用 TSM 管理类的域策略，然后注册一个节点以使用此域策略。
+
+
+NOTE: 如果 Tivoli Storage Manager （ TSM ）中归档节点的客户端密码过期，则归档节点进程可能会泄漏内存。确保已配置 TSM 服务器，以便归档节点的客户端用户名 / 密码永不过期。
+
+在 TSM 服务器上注册节点以使用归档节点（或更新现有节点）时，必须通过在注册节点命令中指定 MAXNUMMP 参数来指定节点可用于写入操作的挂载点数量。挂载点的数量通常等于分配给归档节点的磁带驱动器头的数量。为TSM服务器上的MAXNUMMP指定的数字必须至少与为归档节点的*ARC*>*目标*>*配置*>*主*>*最大存储会话数*设置的值相同， 值设置为0或1、因为归档节点不支持并发存储会话。
+
+为 TSM 服务器设置的 MaxSessions 值用于控制所有客户端应用程序可向 TSM 服务器打开的最大会话数。在 TSM 上指定的 MaxSessions 值必须至少与在网格管理器中为归档节点指定的 * ARC* > * 目标 * > * 配置 * > * 主 * > * 会话数 * 的值相同。归档节点会同时为每个挂载点最多创建一个会话，并另外创建少量（ < 5 ）个会话。
+
+分配给归档节点的TSM节点使用自定义域策略 `tsm-domain`。。 `tsm-domain` 域策略是"标准"域策略的修改版本、配置为写入磁带、并将归档目标设置为StorageGRID系统的存储池 (`_SGWSDiskPool_`）。
+
+
+NOTE: 您必须使用管理权限登录到 TSM 服务器，并使用 dsmadc 工具创建和激活域策略。

@@ -1,0 +1,60 @@
+---
+permalink: swift/recommendations-for-implementing-swift-rest-api.html 
+sidebar: sidebar 
+keywords: implement swift rest api 
+summary: 在实施用于 StorageGRID 的 Swift REST API 时，应遵循以下建议。 
+---
+= 实施 Swift REST API 的建议
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在实施用于 StorageGRID 的 Swift REST API 时，应遵循以下建议。
+
+
+
+== 针对不存在的对象的建议
+
+如果应用程序定期检查某个对象是否位于您不希望该对象实际存在的路径上、则应使用"可用"一致性。例如、如果应用程序在对某个位置执行Put操作之前对该位置执行机头操作、则应使用"可用"一致性。
+
+否则，如果 head 操作未找到对象，则在一个或多个存储节点不可用时，可能会收到大量 500 个内部服务器错误。
+
+您可以使用为每个容器设置"可用"一致性 link:put-container-consistency-request.html["提交容器一致性请求"]。您可以查看使用为每个容器设置"可用"一致性 link:get-container-consistency-request.html["获取容器一致性请求"]。
+
+
+
+== 对象名称建议
+
+对于在 StorageGRID 11.4 或更高版本中创建的容器，不再需要限制对象名称以满足性能最佳实践。例如，现在可以对对象名称的前四个字符使用随机值。
+
+对于在 StorageGRID 11.4 之前的版本中创建的容器，请继续对对象名称遵循以下建议：
+
+* 不应使用随机值作为对象名称的前四个字符。这与 AWS 以前针对名称前缀的建议不同。而应使用非随机、非唯一前缀、例如 `image`。
+* 如果您按照以前的 AWS 建议在名称前缀中使用随机和唯一字符，则应在对象名称前添加目录名称。也就是说，请使用以下格式：
++
+[listing]
+----
+mycontainer/mydir/f8e3-image3132.jpg
+----
++
+而不是以下格式：
+
++
+[listing]
+----
+mycontainer/f8e3-image3132.jpg
+----
+
+
+
+
+== "范围读取"建议
+
+如果 link:../admin/configuring-stored-object-compression.html["用于压缩存储对象的全局选项"] 已启用、则Swift客户端应用程序应避免执行指定要返回的字节数范围的GET对象操作。这些"范围读取"操作效率低下、因为StorageGRID必须有效地解压缩对象才能访问请求的字节。从非常大的对象请求少量字节的 GET 对象操作效率尤其低下；例如，从 50 GB 压缩对象读取 10 MB 范围的操作效率非常低。
+
+如果从压缩对象读取范围，则客户端请求可能会超时。
+
+
+NOTE: 如果需要压缩对象，并且客户端应用程序必须使用范围读取，请增加应用程序的读取超时时间。

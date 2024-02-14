@@ -1,0 +1,229 @@
+---
+permalink: maintain/archive-node-maintenance-for-tsm-middleware.html 
+sidebar: sidebar 
+keywords: storagegrid, archive node, tsm, tsm middleware, middleware 
+summary: 可以将归档节点配置为通过 TSM 中间件服务器锁定磁带或通过 S3 API 将云锁定。配置完成后、无法更改归档节点目标。 
+---
+= TSM 中间件的归档节点维护
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+可以将归档节点配置为通过 TSM 中间件服务器锁定磁带或通过 S3 API 将云锁定。配置完成后、无法更改归档节点的目标。
+
+如果托管归档节点的服务器发生故障，请更换该服务器并按照相应的恢复操作步骤 进行操作。
+
+
+
+== 归档存储设备出现故障
+
+如果您确定归档节点通过 Tivoli Storage Manager （ TSM ）访问的归档存储设备存在故障，请使归档节点脱机，以限制 StorageGRID 系统中显示的警报数量。然后，您可以使用 TSM 服务器或存储设备的管理工具或这两者来进一步诊断和解决问题。
+
+
+
+=== 使目标组件脱机
+
+在对 TSM 中间件服务器进行任何可能导致其不可供归档节点使用的维护之前，请使目标组件脱机，以限制在 TSM 中间件服务器不可用时触发的警报数量。
+
+.开始之前
+您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * 归档节点 * > * ARC* > * 目标 * > * 配置 * > * 主 * 。
+. 将 Tivoli Storage Manager State 的值更改为 * 脱机 * ，然后单击 * 应用更改 * 。
+. 维护完成后，将 Tivoli Storage Manager State 的值更改为 * 联机 * ，然后单击 * 应用更改 * 。
+
+
+
+
+== Tivoli Storage Manager 管理工具
+
+dsmadc 工具是安装在归档节点上的 TSM 中间件服务器的管理控制台。您可以通过键入来访问此工具 `dsmadmc` 在服务器的命令行上。使用与为 ARC-Service 配置的管理用户名和密码相同的管理用户名和密码登录到管理控制台。
+
+。 `tsmquery.rb` 创建脚本是为了以更易读的形式从dsmadc生成状态信息。您可以通过在归档节点的命令行中输入以下命令来运行此脚本： `/usr/local/arc/tsmquery.rb status`
+
+有关 TSM 管理控制台 dsmadc 的详细信息，请参见 _Tivoli Storage Manager for Linux ： Administratorʹs Referation_.
+
+
+
+== 对象永久不可用
+
+当归档节点从 Tivoli Storage Manager （ TSM ）服务器请求对象而检索失败时，归档节点会在 10 秒间隔后重试此请求。如果对象永久不可用（例如，由于对象在磁带上损坏）， TSM API 无法向归档节点指示此情况，因此归档节点会继续重试此请求。
+
+发生这种情况时，系统会触发警报，并且此值会继续增加。要查看警报，请选择 * 支持 * > * 工具 * > * 网格拓扑 * 。然后，选择 * 归档节点 * > * ARC/ * 检索 * > * 请求故障 * 。
+
+如果对象永久不可用，则必须确定该对象，然后按照操作步骤 中所述手动取消归档节点的请求。 <<determining_objects_permanently_unavailable,确定对象是否永久不可用>>。
+
+如果对象暂时不可用，检索也可能失败。在这种情况下，后续检索请求最终应成功。
+
+如果将StorageGRID 系统配置为使用ILM规则创建单个对象副本、但无法检索到该副本、则对象将丢失且无法恢复。但是、您仍必须按照操作步骤确定对象是否永久不可用、以便"清理" StorageGRID系统、取消归档节点的请求以及清除丢失对象的元数据。
+
+
+
+=== 确定对象是否永久不可用
+
+您可以通过使用 TSM 管理控制台发出请求来确定对象是否永久不可用。
+
+.开始之前
+* 您已拥有 link:../admin/admin-group-permissions.html["特定访问权限"]。
+* 您拥有 `Passwords.txt` 文件
+* 您拥有管理节点的IP地址。
+
+
+.关于此任务
+本示例仅供参考。此操作步骤 无法帮助您确定可能导致对象或磁带卷不可用的所有故障条件。有关 TSM 管理的信息，请参见 TSM 服务器文档。
+
+.步骤
+. 登录到管理节点：
++
+.. 输入以下命令： `ssh admin@Admin_Node_IP`
+.. 输入中列出的密码 `Passwords.txt` 文件
+
+
+. 确定归档节点无法检索到的一个或多个对象：
++
+.. 转到包含审核日志文件的目录： `cd /var/local/log`
++
+活动的审核日志文件名为 audit.log 。每天执行一次活动 `audit.log` 此时将保存文件、并显示一个新的 `audit.log` 文件已启动。已保存文件的名称以格式指示其保存的时间 `yyyy-mm-dd.txt`。一天之后、保存的文件将按格式进行压缩和重命名 `yyyy-mm-dd.txt.gz`、用于保留原始日期。
+
+.. 在相关审核日志文件中搜索指示无法检索归档对象的消息。例如，输入： `grep ARCE audit.log | less -n`
++
+如果无法从归档节点检索对象、则ARCE审核消息(归档对象检索结束)会在结果字段中显示ARUN (归档中间件不可用)或JERR (一般错误)。审核日志中的以下示例行显示，对于 CBID 498D8A1F681F05B3 ， Arce 消息已终止，结果为 Arun 。
+
++
+[listing]
+----
+[AUDT:[CBID(UI64):0x498D8A1F681F05B3][VLID(UI64):20091127][RSLT(FC32):ARUN][AVER(UI32):7]
+[ATIM(UI64):1350613602969243][ATYP(FC32):ARCE][ANID(UI32):13959984][AMID(FC32):ARCI]
+[ATID(UI64):4560349751312520631]]
+----
++
+有关详细信息，请参见了解审核消息的说明。
+
+.. 记录请求失败的每个对象的 CBID 。
++
+您可能还需要记录 TSM 用于标识归档节点保存的对象的以下追加信息 ：
+
++
+*** * 文件空间名称 * ：等效于归档节点 ID 。要查找归档节点 ID ，请选择 * 支持 * > * 工具 * > * 网格拓扑 * 。然后，选择 * 归档节点 * > * ARC/ * 目标 * > * 概述 * 。
+*** * 高级名称 * ：相当于归档节点分配给对象的卷 ID 。卷ID采用日期的形式(例如、 `20091127`)、并作为对象的VLID记录在归档审核消息中。
+*** * 低级别名称 * ：相当于 StorageGRID 系统分配给对象的 CBID 。
+
+
+.. 从命令Shell中注销： `exit`
+
+
+. 检查 TSM 服务器，查看步骤 2 中标识的对象是否永久不可用：
++
+.. 登录到TSM服务器的管理控制台： `dsmadmc`
++
+请使用为该应用程序中心服务配置的管理用户名和密码。在网格管理器中输入用户名和密码。（要查看用户名，请选择 * 支持 * > * 工具 * > * 网格拓扑 * 。然后，选择 * 归档节点 * > * ARC* > * 目标 * > * 配置 * 。）
+
+.. 确定对象是否永久不可用。
++
+例如，您可以在 TSM 活动日志中搜索该对象的数据完整性错误。以下示例显示了在过去一天的活动日志中搜索具有CBID的对象 `498D8A1F681F05B3`。
+
++
+[listing]
+----
+> query actlog begindate=-1 search=276C14E94082CC69
+12/21/2008 05:39:15 ANR0548W Retrieve or restore
+failed for session 9139359 for node DEV-ARC-20 (Bycast ARC)
+processing file space /19130020 4 for file /20081002/
+498D8A1F681F05B3 stored as Archive - data
+integrity error detected. (SESSION: 9139359)
+>
+----
++
+根据错误的性质， CBID 可能不会记录在 TSM 活动日志中。您可能需要在日志中搜索请求失败前后的其他 TSM 错误。
+
+.. 如果整个磁带永久不可用、请确定存储在该卷上的所有对象的CBID： `query content TSM_Volume_Name`
++
+其中： `TSM_Volume_Name` 是不可用磁带的TSM名称。以下是此命令的输出示例：
+
++
+[listing]
+----
+ > query content TSM-Volume-Name
+Node Name     Type Filespace  FSID Client's Name for File Name
+------------- ---- ---------- ---- ----------------------------
+DEV-ARC-20    Arch /19130020  216  /20081201/ C1D172940E6C7E12
+DEV-ARC-20    Arch /19130020  216  /20081201/ F1D7FBC2B4B0779E
+----
++
+。 `Client’s Name for File Name` 与归档节点卷ID (或TSM "高级别名称")后跟对象CBID (或TSM "低级名称")相同。即 `Client’s Name for File Name` 采用的形式 `/Archive Node volume ID /CBID`。在示例输出的第一行中、显示 `Client’s Name for File Name` 为 `/20081201/ C1D172940E6C7E12`。
+
++
+另请回顾一下 `Filespace` 是归档节点的节点ID。
+
++
+要取消检索请求，您需要卷上存储的每个对象的 CBID 以及归档节点的节点 ID 。
+
+
+
+. 对于永久不可用的每个对象，请取消检索请求并执行问题描述 a 命令，以通知 StorageGRID 系统对象副本已丢失：
++
+
+CAUTION: 请谨慎使用 ADE 控制台。如果控制台使用不当，则可能会中断系统操作并损坏数据。请认真输入命令，并且只能使用此操作步骤 中记录的命令。
+
++
+.. 如果尚未登录到归档节点、请按如下方式登录：
++
+... 输入以下命令： `ssh admin@_grid_node_IP_`
+... 输入中列出的密码 `Passwords.txt` 文件
+... 输入以下命令切换到root： `su -`
+... 输入中列出的密码 `Passwords.txt` 文件
+
+
+.. 访问ARE服务的ADE控制台： `telnet localhost 1409`
+.. 取消对象的请求： `/proc/BRTR/cancel -c CBID`
++
+其中： `CBID` 是无法从TSM检索到的对象的标识符。
+
++
+如果对象的唯一副本位于磁带上、则会取消"批量检索"请求、并显示消息"1 Requests canceled"。如果对象的副本存在于系统中的其他位置、则对象检索由另一个模块处理、因此对消息的响应为"0 requests canceled"。
+
+.. 问题描述 一个命令、用于通知StorageGRID 系统某个对象副本已丢失、并且必须另外创建一个副本： `/proc/CMSI/Object_Lost CBID node_ID`
++
+其中： `CBID` 是无法从TSM服务器检索到的对象的标识符、和 `node_ID` 是检索失败的归档节点的节点ID。
+
++
+您必须为每个丢失的对象副本输入一个单独的命令：不支持输入 CBID 范围。
+
++
+在大多数情况下， StorageGRID 系统会立即开始为对象数据创建更多副本，以确保系统的 ILM 策略得到遵守。
+
++
+但是、如果对象的ILM规则指定只创建一个副本、而该副本现在已丢失、则无法恢复该对象。在这种情况下、运行 `Object_Lost` 命令从StorageGRID 系统清除丢失对象的元数据。
+
++
+当 `Object_Lost` 命令成功完成、将返回以下消息：
+
++
+[listing]
+----
+CLOC_LOST_ANS returned result ‘SUCS’
+----
++
+
+NOTE: 。 `/proc/CMSI/Object_Lost` 命令仅适用于存储在归档节点上的丢失对象。
+
+.. 退出ADE控制台： `exit`
+.. 从归档节点中注销： `exit`
+
+
+. 重置 StorageGRID 系统中的请求失败值：
++
+.. 转到 * 归档节点 * > * ARC* > * 检索 * > * 配置 * ，然后选择 * 重置请求失败计数 * 。
+.. 单击 * 应用更改 * 。
+
+
+
+
+.相关信息
+link:../admin/index.html["管理 StorageGRID"]
+
+link:../audit/index.html["查看审核日志"]

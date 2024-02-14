@@ -1,0 +1,113 @@
+---
+permalink: tenant/viewing-s3-bucket-details.html 
+sidebar: sidebar 
+keywords: how to view bucket details 
+summary: 您可以查看租户帐户中的存储分段。 
+---
+= 查看存储分段详细信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看租户帐户中的存储分段。
+
+.开始之前
+* 您将使用登录到租户管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您属于具有的用户组 link:tenant-management-permissions.html["root访问权限、管理所有分段权限或查看所有分段权限"]。这些权限会覆盖组或存储分段策略中的权限设置。
+
+
+.步骤
+. 从信息板中选择*查看存储分段*，或选择*存储(S3)*>*存储分段*。
++
+此时将显示"分段"页面。
+
+. 查看每个存储分段的摘要信息。
++
+您可以根据需要按任何列对信息进行排序，也可以在列表中向前和向后翻页。
+
++
+
+NOTE: 显示的对象计数和已用空间值为估计值。这些估计值受载入时间，网络连接和节点状态的影响。如果分段启用了版本控制，则删除的对象版本将包含在对象计数中。
+
++
+[cols="1a,3a"]
+|===
+| 列 | Description 
+
+
+ a| 
+Name
+ a| 
+存储分段的唯一名称、无法更改。
+
+
+
+ a| 
+已启用的功能
+ a| 
+为存储分段启用的功能列表。
+
+
+
+ a| 
+S3 对象锁定
+ a| 
+是否为存储分段启用S3对象锁定。
+
+只有在为网格启用了S3对象锁定时、才会显示此列。此列还会显示任何旧版合规存储分段的信息。
+
+
+
+ a| 
+Region
+ a| 
+无法更改的存储分段区域。
+
+
+
+ a| 
+对象计数
+ a| 
+此分段中的对象数。添加或删除对象时、此值可能不会立即更新。如果分段启用了版本控制、则此值将包含非当前对象版本。
+
+
+
+ a| 
+已用空间
+ a| 
+分段中所有对象的逻辑大小。逻辑大小不包括复制的或经过纠删编码的副本或对象元数据所需的实际空间。
+
+
+
+ a| 
+创建日期
+ a| 
+创建存储分段的日期和时间。
+
+|===
+. 要查看特定存储分段的详细信息、请从表中选择存储分段名称。
++
+此时将显示存储分段详细信息页面。如果您具有所需权限、则可以从此页面执行以下任务：
+
++
+** 配置和管理存储分段选项：
++
+*** link:ilm-policy-tags.html["ILM策略标记"]
+*** link:manage-bucket-consistency.html["管理存储分段一致性"]
+*** link:enabling-or-disabling-last-access-time-updates.html["上次访问时间更新"]
+*** link:changing-bucket-versioning.html["对象版本控制"]
+*** link:using-s3-object-lock.html["S3 对象锁定"]
+*** link:update-default-retention-settings.html["默认存储分段保留"]
+
+
+** 配置存储分段访问、例如 link:configuring-cross-origin-resource-sharing-cors.html["跨源资源共享(CORS)"]
+** link:what-platform-services-are.html["管理平台服务"] (如果租户允许)、包括CloudMirror复制、事件通知和搜索集成
+** 启用和 link:grid-federation-manage-cross-grid-replication.html["管理跨网格复制"] (如果租户允许)将此存储分段中的对象复制到另一个StorageGRID 系统
+** 访问 link:use-s3-console.html["S3控制台"] 以管理存储分段中的对象
+** link:deleting-s3-bucket-objects.html["删除存储分段中的所有对象"]
+** link:deleting-s3-bucket.html["删除存储分段"] 该值已为空
+
+
+

@@ -1,0 +1,193 @@
+---
+permalink: tenant/configuration-xml-for-search-configuration.html 
+sidebar: sidebar 
+keywords: search integration, configuration xml, metadata notification, container tag, urn 
+summary: 搜索集成服务使用 <MetadataNotificationConfiguration\> 和 </MetadataNotificationConfiguration\> 标记中包含的一组规则进行配置。每个规则都指定规则适用场景 所使用的对象以及 StorageGRID 应将这些对象的元数据发送到的目标。 
+---
+= 用于搜索集成的配置 XML
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+搜索集成服务使用中包含的一组规则进行配置 `<MetadataNotificationConfiguration>` 和 `</MetadataNotificationConfiguration>` 标记。每个规则都指定规则适用场景 所对应的对象以及 StorageGRID 应将这些对象的元数据发送到的目标。
+
+可以按对象名称的前缀筛选对象。例如、您可以发送具有前缀的对象的元数据 `images` 一个目标、并为具有前缀的对象提供元数据 `videos` 另一个。前缀重叠的配置无效、在提交时将被拒绝。例如、一种配置、其中包含一个前缀为的对象规则 `test` 和第二个规则、用于具有前缀的对象 `test2` 不允许。
+
+必须使用为搜索集成服务创建的 StorageGRID 端点的 URN 指定目标。这些端点是指 Elasticsearch 集群上定义的索引和类型。
+
+[listing]
+----
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Rule-1</ID>
+        <Status>rule-status</Status>
+        <Prefix>key-prefix</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:region:account-ID:domain/mydomain/myindex/mytype</Urn>
+        </Destination>
+    </Rule>
+    <Rule>
+        <ID>Rule-2</ID>
+         ...
+    </Rule>
+     ...
+</MetadataNotificationConfiguration>
+----
+下表介绍了元数据通知配置 XML 中的元素。
+
+[cols="2a,3a,1a"]
+|===
+| Name | Description | Required 
+
+
+ a| 
+MetadataNotificationConfiguration
+ a| 
+用于指定元数据通知的对象和目标的规则的容器标记。
+
+包含一个或多个规则元素。
+ a| 
+是的。
+
+
+
+ a| 
+规则
+ a| 
+用于标识应将其元数据添加到指定索引中的对象的规则的容器标记。
+
+拒绝前缀重叠的规则。
+
+包含在 MetadataNotificationConfiguration 元素中。
+ a| 
+是的。
+
+
+
+ a| 
+ID
+ a| 
+规则的唯一标识符。
+
+包含在 Rule 元素中。
+ a| 
+否
+
+
+
+ a| 
+Status
+ a| 
+状态可以是 " 已启用 " 或 " 已禁用 " 。不会对已禁用的规则执行任何操作。
+
+包含在 Rule 元素中。
+ a| 
+是的。
+
+
+
+ a| 
+前缀
+ a| 
+与前缀匹配的对象受此规则的影响，其元数据将发送到指定目标。
+
+要匹配所有对象，请指定一个空前缀。
+
+包含在 Rule 元素中。
+ a| 
+是的。
+
+
+
+ a| 
+目标
+ a| 
+规则目标的容器标记。
+
+包含在 Rule 元素中。
+ a| 
+是的。
+
+
+
+ a| 
+URN
+ a| 
+发送对象元数据的目标的 urn 。必须是具有以下属性的 StorageGRID 端点的 URN ：
+
+* `es` 必须是第三个元素。
+* URN必须以存储元数据的索引和类型结尾、格式为 `domain-name/myindex/mytype`。
+
+
+端点使用租户管理器或租户管理 API 进行配置。它们的形式如下：
+
+* `arn:aws:es:region:account-ID:domain/mydomain/myindex/mytype`
+* `urn:mysite:es:::mydomain/myindex/mytype`
+
+
+必须在提交配置 XML 之前配置端点，否则配置将失败并显示 404 错误。
+
+urn 包含在目标元素中。
+ a| 
+是的。
+
+|===
+使用示例元数据通知配置 XML 了解如何构建自己的 XML 。
+
+
+
+== 用于适用场景 所有对象的元数据通知配置
+
+在此示例中，所有对象的对象元数据都将发送到同一目标。
+
+[listing]
+----
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Rule-1</ID>
+        <Status>Enabled</Status>
+        <Prefix></Prefix>
+        <Destination>
+           <Urn>urn:myes:es:::sgws-notifications/test1/all</Urn>
+        </Destination>
+    </Rule>
+</MetadataNotificationConfiguration>
+----
+
+
+== 具有两个规则的元数据通知配置
+
+在此示例中、是指与前缀匹配的对象的对象元数据 `/images` 发送到一个目标、而与前缀匹配的对象的对象元数据则发送到一个目标 `/videos` 发送到另一个目标。
+
+[listing]
+----
+
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Images-rule</ID>
+        <Status>Enabled</Status>
+        <Prefix>/images</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:us-east-1:3333333:domain/es-domain/graphics/imagetype</Urn>
+        </Destination>
+    </Rule>
+    <Rule>
+        <ID>Videos-rule</ID>
+        <Status>Enabled</Status>
+        <Prefix>/videos</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:us-west-1:22222222:domain/es-domain/graphics/videotype</Urn>
+        </Destination>
+    </Rule>
+</MetadataNotificationConfiguration>
+----
+.相关信息
+link:../s3/index.html["使用S3 REST API"]
+
+link:object-metadata-included-in-metadata-notifications.html["元数据通知中包含的对象元数据"]
+
+link:json-generated-by-search-integration-service.html["由搜索集成服务生成的 JSON"]
+
+link:configuring-search-integration-service.html["配置搜索集成服务"]

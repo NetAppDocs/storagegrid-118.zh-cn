@@ -1,0 +1,142 @@
+---
+permalink: tenant/considerations-for-platform-services.html 
+sidebar: sidebar 
+keywords: considerations for using platform services 
+summary: 在实施平台服务之前，请查看有关使用这些服务的建议和注意事项。 
+---
+= 平台服务注意事项
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在实施平台服务之前，请查看有关使用这些服务的建议和注意事项。
+
+有关 S3 的信息，请参见 link:../s3/index.html["使用S3 REST API"]。
+
+
+
+== 使用平台服务的注意事项
+
+[cols="1a,3a"]
+|===
+| 注意事项 | 详细信息 
+
+
+ a| 
+目标端点监控
+ a| 
+您必须监控每个目标端点的可用性。如果与目标端点的连接长时间断开，并且存在大量请求积压，则向 StorageGRID 发出的其他客户端请求（例如 PUT 请求）将失败。当端点可访问时，您必须重试这些失败的请求。
+
+
+
+ a| 
+目标端点限制
+ a| 
+如果发送请求的速率超过目标端点接收请求的速率， StorageGRID 软件可能会限制传入的存储分段 S3 请求。只有在等待发送到目标端点的请求积压时，才会发生限制。
+
+唯一明显的影响是，传入的 S3 请求执行时间较长。如果您开始检测到性能明显较慢，则应降低载入速率或使用容量较高的端点。如果积压的请求持续增加，客户端 S3 操作（例如 PUT 请求）最终将失败。
+
+CloudMirror 请求更有可能受到目标端点性能的影响，因为这些请求所涉及的数据传输通常多于搜索集成或事件通知请求。
+
+
+
+ a| 
+订购担保
+ a| 
+StorageGRID 保证对站点中的对象执行操作的顺序。只要针对某个对象的所有操作都位于同一站点内，最终对象状态（用于复制）就始终等于 StorageGRID 中的状态。
+
+在跨 StorageGRID 站点执行操作时， StorageGRID 会尽力订购请求。例如，如果您先将某个对象写入站点 A ，然后覆盖站点 B 上的同一个对象，则 CloudMirror 复制到目标分段的最终对象不能保证为较新的对象。
+
+
+
+ a| 
+ILM 驱动的对象删除
+ a| 
+为了匹配AWS CRR和Amazon Simple Notification Service的删除行为、在因StorageGRID ILM规则而删除源存储分段中的对象时、不会发送CloudMirror和事件通知请求。例如，如果 ILM 规则在 14 天后删除某个对象，则不会发送 CloudMirror 或事件通知请求。
+
+相反，在因 ILM 而删除对象时，系统会发送搜索集成请求。
+
+
+
+ a| 
+使用Kafka端点
+ a| 
+对于Kafka端点、不支持相互TLS。因此、如果您有 `ssl.client.auth` 设置为 `required` 在Kafka代理配置中、可能会出现发生原因Kafka端点配置问题。
+
+Kafka端点的身份验证使用以下身份验证类型。这些类型与用于对其他端点(如Amazon SNS)进行身份验证的类型不同、需要用户名和密码凭据。
+
+* SASL/普通
+* SASL/SCRAM-SHA-256
+* SASL/SCRAM-SHA-512
+
+
+*注意:*配置的存储代理设置不适用于Kafka平台服务端点。
+
+|===
+
+
+== 使用 CloudMirror 复制服务的注意事项
+
+[cols="1a,3a"]
+|===
+| 注意事项 | 详细信息 
+
+
+ a| 
+复制状态
+ a| 
+StorageGRID 不支持 `x-amz-replication-status` 标题。
+
+
+
+ a| 
+对象大小
+ a| 
+CloudMirror 复制服务可复制到目标分段的对象的最大大小为 5 TiB ，与最大 _supported 对象大小相同。
+
+*注意*：单个PutObject操作的最大_Recommended_大小为5 GiB (5、368、709、120字节)。如果对象大于 5 GiB ，请改用多部分上传。
+
+
+
+ a| 
+存储分段版本控制和版本 ID
+ a| 
+如果 StorageGRID 中的源 S3 存储分段已启用版本控制，则还应为目标存储分段启用版本控制。
+
+使用版本控制时，请注意，由于 S3 协议的限制，在目标存储分段中排列对象版本是尽力而为的， CloudMirror 服务无法保证这一点。
+
+*注意*：StorageGRID 中源存储分段的版本ID与目标存储分段的版本ID无关。
+
+
+
+ a| 
+标记对象版本
+ a| 
+由于S3协议中的限制、CloudMirror服务不会复制提供版本ID的任何PutObjectTaging或DeleteObjectTagingRequests。由于源和目标的版本ID不相关、因此无法确保复制对特定版本ID的标记更新。
+
+相反、CloudMirror服务会复制未指定版本ID的PutObjectTastingclaingRequests或DeleteObjectTastingcling请求。这些请求会更新最新密钥的标记（如果分段已受版本控制，则更新最新版本的标记）。此外，还会复制具有标记（而不是标记更新）的常规载入。
+
+
+
+ a| 
+多部分上传和 `ETag` values
+ a| 
+镜像使用多部分上传方式上传的对象时， CloudMirror 服务不会保留这些部分。因此、将显示 `ETag` 镜像对象的值将与不同 `ETag` 原始对象的值。
+
+
+
+ a| 
+使用 SSI-C 加密的对象（使用客户提供的密钥进行服务器端加密）
+ a| 
+CloudMirror 服务不支持使用 SSI-C 加密的对象如果您尝试将对象载入源存储分段以进行 CloudMirror 复制，并且此请求包含 SSI-C 请求标头，则此操作将失败。
+
+
+
+ a| 
+已启用 S3 对象锁定的存储分段
+ a| 
+如果用于CloudMirror复制的目标S3存储分段已启用S3对象锁定、则尝试配置存储分段复制(PutBucketReplication)将失败、并显示AccessDenied错误。
+
+|===

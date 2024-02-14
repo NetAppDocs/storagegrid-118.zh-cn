@@ -1,0 +1,237 @@
+---
+permalink: swift/storagegrid-swift-rest-api-operations.html 
+sidebar: sidebar 
+keywords: swift rest api operations 
+summary: 在 Swift REST API 中添加了特定于 StorageGRID 系统的操作。 
+---
+= StorageGRID Swift REST API 操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在 Swift REST API 中添加了特定于 StorageGRID 系统的操作。
+
+
+
+== 获取容器一致性请求
+
+link:../s3/consistency-controls.html["一致性值"] 在不同存储节点和站点之间的对象可用性与这些对象的一致性之间取得平衡。通过GET容器一致性请求、您可以确定应用于特定容器的一致性。
+
+
+
+=== 请求
+
+[cols="2a,4a"]
+|===
+| 请求 HTTP 标头 | Description 
+
+
+| X-Auth-Token  a| 
+指定要用于请求的帐户的 Swift 身份验证令牌。
+
+
+
+| X-nta-sg-sg-sg-一致性  a| 
+指定请求的类型、其中 `true` =获取容器一致性、和 `false` =获取容器。
+
+
+
+| 主机  a| 
+请求所定向到的主机名。
+
+|===
+
+
+=== 请求示例
+
+[listing]
+----
+GET /v1/28544923908243208806/Swift container
+X-Auth-Token: SGRD_3a877009a2d24cb1801587bfa9050f29
+x-ntap-sg-consistency: true
+Host: test.com
+----
+
+
+=== 响应
+
+[cols="2a,4a"]
+|===
+| 响应 HTTP 标头 | Description 
+
+
+| Date  a| 
+响应的日期和时间。
+
+
+
+| 连接  a| 
+与服务器的连接是打开还是关闭。
+
+
+
+| X-Trans-ID  a| 
+请求的唯一事务标识符。
+
+
+
+| 内容长度  a| 
+响应正文的长度。
+
+
+
+| X-nta-sg-sg-sg-一致性  a| 
+应用于容器的一致性。支持以下值：
+
+*all*：所有节点都会立即接收数据、否则请求将失败。
+
+*强-全局*：保证所有站点中所有客户端请求的写入后读一致性。
+
+*强站点*：保证站点内所有客户端请求的写入后读一致性。
+
+*read-after-new-write*：(默认)为新对象提供写后读一致性、并最终为对象更新提供一致性。提供高可用性和数据保护保证。建议用于大多数情况。
+
+*可用*：为新对象和对象更新提供最终一致性。对于S3存储分段、请仅在需要时使用(例如、对于包含很少读取的日志值的存储分段、或者对于不存在的密钥执行HEAD或GET操作)。S3 FabricPool 存储分段不支持。
+
+|===
+
+
+=== 响应示例
+
+[listing]
+----
+HTTP/1.1 204 No Content
+Date: Sat, 29 Nov 2015 01:02:18 GMT
+Connection: CLOSE
+X-Trans-Id: 1936575373
+Content-Length: 0
+x-ntap-sg-consistency: strong-site
+----
+
+
+== 提交容器一致性请求
+
+通过Put容器一致性请求、您可以指定要应用于对容器执行的操作的一致性。默认情况下、新容器是使用"新写入后读取"一致性创建的。
+
+
+
+=== 请求
+
+[cols="2a,4a"]
+|===
+| 请求 HTTP 标头 | Description 
+
+
+| X-Auth-Token  a| 
+要用于请求的帐户的 Swift 身份验证令牌。
+
+
+
+| X-nta-sg-sg-sg-一致性  a| 
+要应用于容器上的操作的一致性。支持以下值：
+
+*all*：所有节点都会立即接收数据、否则请求将失败。
+
+*强-全局*：保证所有站点中所有客户端请求的写入后读一致性。
+
+*强站点*：保证站点内所有客户端请求的写入后读一致性。
+
+*read-after-new-write*：(默认)为新对象提供写后读一致性、并最终为对象更新提供一致性。提供高可用性和数据保护保证。建议用于大多数情况。
+
+*可用*：为新对象和对象更新提供最终一致性。对于S3存储分段、请仅在需要时使用(例如、对于包含很少读取的日志值的存储分段、或者对于不存在的密钥执行HEAD或GET操作)。S3 FabricPool 存储分段不支持。
+
+
+
+ a| 
+`Host`
+ a| 
+请求所定向到的主机名。
+
+|===
+
+
+=== 一致性和ILM规则如何相互作用以影响数据保护
+
+您可以自由选择 link:../s3/consistency-controls.html["一致性值"] ILM规则会影响对象的保护方式。这些设置可以进行交互。
+
+例如、存储对象时使用的一致性会影响对象元数据的初始放置、而会影响 link:../ilm/what-ilm-rule-is.html#ilm-rule-ingest-behavior["加热行为"] 为ILM规则选择此选项会影响对象副本的初始放置。由于StorageGRID需要同时访问对象的元数据及其数据才能满足客户端请求、因此为一致性和载入行为选择匹配的保护级别可以提供更好的初始数据保护、并提高系统响应的可预测性。
+
+
+
+=== 示例：如何交互一致性和ILM规则
+
+假设您有一个双站点网格、该网格具有以下ILM规则、并且具有以下一致性：
+
+* * ILM 规则 * ：创建两个对象副本，一个在本地站点，一个在远程站点。此时将选择严格的载入行为。
+* **：“强全局”(对象元数据立即分发到所有站点。)
+
+
+当客户端将对象存储到网格时， StorageGRID 会创建两个对象副本并将元数据分发到两个站点，然后再向客户端返回成功。
+
+在载入成功消息时，此对象将受到完全保护，不会丢失。例如，如果本地站点在载入后不久丢失，则远程站点上仍存在对象数据和对象元数据的副本。此对象完全可检索。
+
+如果您改用相同的ILM规则和"强站点"一致性、则在将对象数据复制到远程站点后、在远程站点分发对象元数据之前、客户端可能会收到一条成功消息。在这种情况下，对象元数据的保护级别与对象数据的保护级别不匹配。如果本地站点在载入后不久丢失，则对象元数据将丢失。无法检索此对象。
+
+一致性和ILM规则之间的相互关系可能很复杂。如需帮助，请联系 NetApp 。
+
+
+
+=== 请求示例
+
+[listing]
+----
+PUT /v1/28544923908243208806/_Swift container_
+X-Auth-Token: SGRD_3a877009a2d24cb1801587bfa9050f29
+x-ntap-sg-consistency: strong-site
+Host: test.com
+----
+
+
+=== 响应
+
+[cols="1a,2a"]
+|===
+| 响应 HTTP 标头 | Description 
+
+
+ a| 
+`Date`
+ a| 
+响应的日期和时间。
+
+
+
+ a| 
+`Connection`
+ a| 
+与服务器的连接是打开还是关闭。
+
+
+
+ a| 
+`X-Trans-Id`
+ a| 
+请求的唯一事务标识符。
+
+
+
+ a| 
+`Content-Length`
+ a| 
+响应正文的长度。
+
+|===
+
+
+=== 响应示例
+
+[listing]
+----
+HTTP/1.1 204 No Content
+Date: Sat, 29 Nov 2015 01:02:18 GMT
+Connection: CLOSE
+X-Trans-Id: 1936575373
+Content-Length: 0
+----

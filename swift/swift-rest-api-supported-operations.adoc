@@ -1,0 +1,34 @@
+---
+permalink: swift/swift-rest-api-supported-operations.html 
+sidebar: sidebar 
+keywords: OpenStack, Swift API, REST API 
+summary: StorageGRID 系统在 OpenStack Swift API 中支持大多数操作。在将 Swift REST API 客户端与 StorageGRID 集成之前，请查看帐户，容器和对象操作的实施详细信息。 
+---
+= Swift REST API 支持的操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 系统在 OpenStack Swift API 中支持大多数操作。在将 Swift REST API 客户端与 StorageGRID 集成之前，请查看帐户，容器和对象操作的实施详细信息。
+
+
+
+== StorageGRID 中支持的操作
+
+支持以下 Swift API 操作：
+
+* link:account-operations.html["帐户操作"]
+* link:container-operations.html["容器操作"]
+* link:object-operations.html["对象操作"]
+
+
+
+
+== 所有操作的通用响应标头
+
+StorageGRID 系统可为 OpenStack Swift 对象存储 API v1 定义的受支持操作实施所有通用标头。
+
+.相关信息
+http://docs.openstack.org/developer/swift/api/object_api_v1_overview.html["OpenStack ：对象存储 API"^]

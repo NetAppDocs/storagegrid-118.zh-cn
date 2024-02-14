@@ -1,0 +1,33 @@
+---
+permalink: admin/archiving-to-tape-through-tsm-middleware.html 
+sidebar: sidebar 
+keywords: tivoli storage manager, tsm server, archive node, tape 
+summary: 您可以将归档节点配置为以 Tivoli Storage Manager （ TSM\ ）服务器为目标，该服务器可提供逻辑接口，用于将对象数据存储和检索到随机或顺序访问存储设备，包括磁带库。 
+---
+= 通过 TSM 中间件归档到磁带
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将归档节点配置为以 Tivoli Storage Manager （ TSM ）服务器为目标，该服务器可提供逻辑接口，用于将对象数据存储和检索到随机或顺序访问存储设备，包括磁带库。
+
+归档节点的 ARC 服务充当 TSM 服务器的客户端，使用 Tivoli Storage Manager 作为与归档存储系统通信的中间件。
+
+[CAUTION]
+====
+对归档节点的支持已弃用、将在未来版本中删除。通过 S3 API 将对象从归档节点移动到外部归档存储系统已被 ILM 云存储池所取代，它可提供更多功能。
+
+Cloud Tiering—Simple Storage Service (S3)选项也已弃用。如果您当前正在使用具有此选项的归档节点、 link:../admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html["将对象迁移到云存储池"] 而是。
+
+此外、您还应从StorageGRID 11.7或更早版本中的活动ILM策略中删除归档节点。删除存储在归档节点上的对象数据将简化将来的升级。请参见 link:../ilm/working-with-ilm-rules-and-ilm-policies.html["使用ILM规则和ILM策略"]。
+
+====
+
+
+== TSM 管理类
+
+TSM 中间件定义的管理类概括了 TSMʹs 备份和归档操作的工作原理，可用于为 TSM 服务器应用的内容指定规则。此类规则独立于 StorageGRID 系统的 ILM 策略运行，并且必须符合 StorageGRID 系统的要求，即对象永久存储，并且始终可供归档节点检索。在归档节点将对象数据发送到 TSM 服务器后，将应用 TSM 生命周期和保留规则，同时将对象数据存储到 TSM 服务器管理的磁带。
+
+在归档节点将对象发送到 TSM 服务器后， TSM 服务器将使用 TSM 管理类应用数据位置或保留规则。例如，标识为数据库备份的对象（可使用较新数据覆盖的临时内容）可以与应用程序数据（必须无限期保留的固定内容）不同。

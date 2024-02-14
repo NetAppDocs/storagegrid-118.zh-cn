@@ -1,0 +1,48 @@
+---
+permalink: primer/what-archive-node-is.html 
+sidebar: sidebar 
+keywords: archive node 
+summary: 对归档节点的支持已弃用、将在未来版本中删除。 
+---
+= 什么是归档节点？
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+对归档节点的支持已弃用、将在未来版本中删除。
+
+[CAUTION]
+====
+对归档节点的支持已弃用、将在未来版本中删除。通过 S3 API 将对象从归档节点移动到外部归档存储系统已被 ILM 云存储池所取代，它可提供更多功能。
+
+Cloud Tiering—Simple Storage Service (S3)选项也已弃用。如果您当前正在使用具有此选项的归档节点、 link:../admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html["将对象迁移到云存储池"] 而是。
+
+此外、您还应从StorageGRID 11.7或更早版本中的活动ILM策略中删除归档节点。删除存储在归档节点上的对象数据将简化将来的升级。请参见 link:../ilm/working-with-ilm-rules-and-ilm-policies.html["使用ILM规则和ILM策略"]。
+
+====
+
+
+== 归档节点的主服务
+
+下表显示了归档节点的主服务；但是，此表并未列出所有节点服务。
+
+[cols="1a,2a"]
+|===
+| 服务 | 关键功能 
+
+
+ a| 
+归档（ ARC-）
+ a| 
+与 Tivoli Storage Manager （ TSM ）外部磁带存储系统通信。
+
+
+
+ a| 
+服务器状态监控器（ SSM ）
+ a| 
+监控操作系统和底层硬件。
+
+|===

@@ -1,0 +1,28 @@
+---
+permalink: maintain/recovering-from-archive-node-failures.html 
+sidebar: sidebar 
+keywords: recover, archive node failure, workflow 
+summary: 要从归档节点故障中恢复，您必须按确切顺序完成一系列任务。 
+---
+= 从归档节点故障中恢复：工作流
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+要从归档节点故障中恢复，您必须按确切顺序完成一系列任务。
+
+image::../media/overview_archive_node_recovery.gif[归档节点恢复概述流程图]
+
+归档节点恢复受以下问题影响：
+
+* 如果 ILM 策略配置为复制单个副本。
++
+在配置为创建一个对象副本的 StorageGRID 系统中，归档节点故障可能会导致无法恢复的数据丢失。如果发生故障、所有此类对象都会丢失；但是、您仍必须执行恢复过程来"清理" StorageGRID系统并从数据库中清除丢失的对象信息。
+
+* 如果在存储节点恢复期间发生归档节点故障。
++
+如果在存储节点恢复过程中处理批量检索时归档节点出现故障， 您必须重复操作步骤 以从头开始将对象数据的副本恢复到存储节点，以确保从归档节点检索到的所有对象数据都还原到存储节点。
+
+

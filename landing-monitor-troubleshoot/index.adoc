@@ -1,0 +1,13 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: landing-monitor-troubleshoot/index.html 
+summary: 系统启动并运行后、您应定期监控其活动、并对任何警报进行故障排除和解决。您可能还需要配置外部系统日志服务器、使用SNMP监控或收集其他数据。 
+---
+= 监控StorageGRID系统并对其进行故障排除
+:hardbreaks:
+:allow-uri-read: 
+:linkattrs: 
+:imagesdir: ./media/
+
+

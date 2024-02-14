@@ -1,0 +1,28 @@
+---
+permalink: admin/identifying-primary-admin-node.html 
+sidebar: sidebar 
+keywords: cmn service, primary admin node, configuration management node 
+summary: 主管理节点托管 CMN 服务。某些维护过程只能使用主管理节点执行。 
+---
+= 确定主管理节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+主管理节点托管 CMN 服务。某些维护过程只能使用主管理节点执行。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ； site_* > * 管理节点 * ，然后选择 image:../media/icon_plus_sign_black_on_white.gif["加号"] 展开拓扑树并显示此管理节点上托管的服务。
++
+主管理节点托管 CMN 服务。
+
+. 如果此管理节点不托管 CMN 服务，请检查其他管理节点。
+

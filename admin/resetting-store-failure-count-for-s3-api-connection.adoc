@@ -1,0 +1,33 @@
+---
+permalink: admin/resetting-store-failure-count-for-s3-api-connection.html 
+sidebar: sidebar 
+keywords: archive node, store failure count 
+summary: 如果归档节点通过 S3 API 连接到归档存储系统，则可以重置存储故障计数，此计数可用于清除 ARVF （存储故障）警报。 
+---
+= 重置 S3 API 连接的存储故障计数
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果归档节点通过 S3 API 连接到归档存储系统，则可以重置存储故障计数，此计数可用于清除 ARVF （存储故障）警报。
+
+.开始之前
+* 您将使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:admin-group-permissions.html["特定访问权限"]。
+
+
+.步骤
+. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+. 选择 * ：归档节点 _* > * 。 ARR* > * 存储 * 。
+. 选择 * 配置 * > * 主 * 。
++
+image::../media/archive_store_s3.gif[配置 S3 API 连接的存储设置]
+
+. 选择 * 重置存储故障计数 * 。
+. 选择 * 应用更改 * 。
++
+存储故障属性重置为零。
+
+

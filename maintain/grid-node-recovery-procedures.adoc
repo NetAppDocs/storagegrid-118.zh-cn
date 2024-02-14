@@ -1,0 +1,23 @@
+---
+permalink: maintain/grid-node-recovery-procedures.html 
+sidebar: sidebar 
+keywords: storagegrid, recovery 
+summary: 如果网格节点发生故障，您可以通过更换发生故障的物理或虚拟服务器，重新安装 StorageGRID 软件以及还原可恢复的数据来恢复该节点。 
+---
+= 网格节点恢复过程：概述
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果网格节点发生故障，您可以通过更换发生故障的物理或虚拟服务器，重新安装 StorageGRID 软件以及还原可恢复的数据来恢复该节点。
+
+如果硬件，虚拟化，操作系统或软件故障导致节点无法运行或不可靠，则网格节点可能会发生故障。可能会发生多种类型的故障，从而需要恢复网格节点。
+
+恢复网格节点的步骤因托管网格节点的平台和网格节点类型而异。每种类型的网格节点都有一个特定的恢复操作步骤 ，您必须严格遵循该恢复。
+
+通常，您会尝试尽可能保留故障网格节点中的数据，修复或更换故障节点，使用网格管理器配置替代节点并还原节点的数据。
+
+
+NOTE: 如果整个 StorageGRID 站点出现故障，请联系技术支持。技术支持将与您合作，制定和执行站点恢复计划，最大限度地提高已恢复的数据量，并满足您的业务目标。请参见 link:how-site-recovery-is-performed-by-technical-support.html["技术支持如何恢复站点"]。

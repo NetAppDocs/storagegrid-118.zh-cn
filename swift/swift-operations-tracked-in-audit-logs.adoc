@@ -1,0 +1,48 @@
+---
+permalink: swift/swift-operations-tracked-in-audit-logs.html 
+sidebar: sidebar 
+keywords: swift options request 
+summary: 所有成功的存储删除， GET ， HEAD ， POST 和 PUT 操作都会在 StorageGRID 审核日志中进行跟踪。失败以及信息、身份验证或选项请求未记录。 
+---
+= 审核日志中跟踪的 Swift 操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+所有成功的存储删除， GET ， HEAD ， POST 和 PUT 操作都会在 StorageGRID 审核日志中进行跟踪。失败以及信息、身份验证或选项请求未记录。
+
+
+
+== 帐户操作
+
+* link:account-operations.html["获取帐户"]
+* link:account-operations.html["主帐户"]
+
+
+
+
+== 容器操作
+
+* link:container-operations.html["删除容器"]
+* link:container-operations.html["获取容器"]
+* link:container-operations.html["机头容器"]
+* link:container-operations.html["放入容器"]
+
+
+
+
+== 对象操作
+
+* link:object-operations.html["删除对象"]
+* link:object-operations.html["获取对象"]
+* link:object-operations.html["head 对象"]
+* link:object-operations.html["PUT 对象"]
+
+
+.相关信息
+* link:../audit/accessing-audit-log-file.html["访问审核日志文件"]
+* link:../audit/client-write-audit-messages.html["客户端写入审核消息"]
+* link:../audit/client-read-audit-messages.html["客户端读取审核消息"]
+

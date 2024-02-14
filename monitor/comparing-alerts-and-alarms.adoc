@@ -1,0 +1,241 @@
+---
+permalink: monitor/comparing-alerts-and-alarms.html 
+sidebar: sidebar 
+keywords: how to compare alerts and alarms 
+summary: 警报系统和传统警报系统之间有几个相似之处、但警报系统具有显著优势、并且更易于使用。 
+---
+= 比较警报和警报
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+警报系统和传统警报系统之间有几个相似之处、但警报系统具有显著优势、并且更易于使用。
+
+请参见下表，了解如何执行类似操作。
+
+[cols="1a,1a,1a"]
+|===
+|  | 警报 | 警报（旧系统） 
+
+
+ a| 
+如何查看哪些警报处于活动状态？
+ a| 
+* 选择信息板上的*当前警报*链接。
+* 在 * 节点 * > * 概述 * 页面上选择警报。
+* 选择 * 警报 * > * 当前 * 。
+
+
+link:monitoring-system-health.html#view-current-and-resolved-alerts["查看当前警报"]
+ a| 
+选择 * 支持 * > * 警报（原有） * > * 当前警报 * 。
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+触发警报或警报的原因是什么？
+ a| 
+如果警报规则中的 Prometheus 表达式在特定触发条件和持续时间下评估为 true ，则会触发警报。
+
+link:view-alert-rules.html["查看警报规则"]
+ a| 
+当 StorageGRID 属性达到阈值时，将触发警报。
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+如果触发警报或警报，如何解决根本问题？
+ a| 
+电子邮件通知中包含警报的建议操作，您可以从网格管理器的警报页面中获取这些操作。
+
+StorageGRID 文档会根据需要提供追加信息 。
+
+link:alerts-reference.html["警报参考"]
+ a| 
+您可以通过选择属性名称来了解警报，也可以在 StorageGRID 文档中搜索警报代码。
+
+link:alarms-reference.html["警报参考（旧系统）"]
+
+
+
+ a| 
+在哪里可以看到已解决的警报或警报列表？
+ a| 
+选择 * 警报 * > * 已解决 * 。
+
+link:monitoring-system-health.html#view-current-and-resolved-alerts["查看当前警报和已解决警报"]
+ a| 
+选择 * 支持 * > * 警报（原有） * > * 历史警报 * 。
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+在何处管理设置？
+ a| 
+选择 * 警报 * > * 规则 * 。
+
+link:managing-alerts.html["管理警报"]
+ a| 
+选择 * 支持 * 。然后，使用菜单 * 警报（原有） * 部分中的选项。
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+我需要哪些用户组权限？
+ a| 
+* 可以登录到网格管理器的任何人都可以查看当前警报和已解决警报。
+* 您必须具有管理警报权限才能管理静音、警报通知和警报规则。
+
+
+link:../admin/index.html["管理 StorageGRID"]
+ a| 
+* 可以登录到网格管理器的任何人都可以查看旧警报。
+* 您必须具有确认警报权限才能确认警报。
+* 您必须同时具有网格拓扑页面配置和其他网格配置权限、才能管理全局警报和电子邮件通知。
+
+
+link:../admin/index.html["管理 StorageGRID"]
+
+
+
+ a| 
+如何管理电子邮件通知？
+ a| 
+选择 * 警报 * > * 电子邮件设置 * 。
+
+* 注意： * 由于警报和警报是独立的系统，因此用于警报和 AutoSupport 通知的电子邮件设置不用于警报通知。但是，您可以对所有通知使用同一邮件服务器。
+
+link:email-alert-notifications.html["为警报设置电子邮件通知"]
+ a| 
+选择 * 支持 * > * 警报（旧版） * > * 旧版电子邮件设置 * 。
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+如何管理 SNMP 通知？
+ a| 
+选择 * 配置 * > * 监控 * > * SNMP 代理 * 。
+
+link:using-snmp-monitoring.html["使用 SNMP 监控"]
+ a| 
+_不支持_
+
+
+
+ a| 
+如何控制谁接收通知？
+ a| 
+. 选择 * 警报 * > * 电子邮件设置 * 。
+. 在 * 收件人 * 部分中，为每个电子邮件列表或发生警报时应接收电子邮件的人员输入一个电子邮件地址。
+
+
+link:email-alert-notifications.html["为警报设置电子邮件通知"]
+ a| 
+. 选择 * 支持 * > * 警报（旧版） * > * 旧版电子邮件设置 * 。
+. 创建邮件列表。
+. 选择 * 通知 * 。
+. 选择邮件列表。
+
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+哪些管理节点会发送通知？
+ a| 
+一个管理节点(首选发送方)。
+
+link:../primer/what-admin-node-is.html["什么是管理节点？"]
+ a| 
+一个管理节点(首选发送方)。
+
+link:../primer/what-admin-node-is.html["什么是管理节点？"]
+
+
+
+ a| 
+如何禁止某些通知？
+ a| 
+. 选择 * 警报 * > * 静音 * 。
+. 选择要静默的警报规则。
+. 指定静默的持续时间。
+. 选择要静默的警报的严重性。
+. 选择可对整个网格，单个站点或单个节点应用静默。
+
+
+* 注 * ：如果已启用 SNMP 代理，则 Silences 还会禁止 SNMP 陷阱并通知。
+
+link:silencing-alert-notifications.html["静默警报通知"]
+ a| 
+. 选择 * 支持 * > * 警报（旧版） * > * 旧版电子邮件设置 * 。
+. 选择 * 通知 * 。
+. 选择一个邮件列表，然后选择 * 禁止 * 。
+
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+如何禁止所有通知？
+ a| 
+选择 * 警报 * > * 静音 * 。然后选择 * 所有规则 * 。
+
+* 注 * ：如果已启用 SNMP 代理，则 Silences 还会禁止 SNMP 陷阱并通知。
+
+link:silencing-alert-notifications.html["静默警报通知"]
+ a| 
+_不支持_
+
+
+
+ a| 
+如何自定义条件和触发器？
+ a| 
+. 选择 * 警报 * > * 规则 * 。
+. 选择要编辑的默认规则，或者选择 * 创建自定义规则 * 。
+
+
+link:editing-alert-rules.html["编辑警报规则"]
+
+link:creating-custom-alert-rules.html["创建自定义警报规则"]
+ a| 
+. 选择 * 支持 * > * 警报（原有） * > * 全局警报 * 。
+. 创建全局自定义警报以覆盖默认警报或监控没有默认警报的属性。
+
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+
+
+ a| 
+如何禁用单个警报？
+ a| 
+. 选择 * 警报 * > * 规则 * 。
+. 选择规则，然后选择 * 编辑规则 * 。
+. 清除*Enabled"(已启用)复选框。
+
+
+link:disabling-alert-rules.html["禁用警报规则"]
+ a| 
+. 选择 * 支持 * > * 警报（原有） * > * 全局警报 * 。
+. 选择规则，然后选择编辑图标。
+. 清除*Enabled"(已启用)复选框。
+
+
+link:managing-alarms.html["管理警报（旧系统）"]
+
+|===

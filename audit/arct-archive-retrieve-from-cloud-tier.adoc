@@ -1,0 +1,64 @@
+---
+permalink: audit/arct-archive-retrieve-from-cloud-tier.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, ARCT, Archive Retrieve from Cloud-Tier 
+summary: 从通过 S3 API 连接到 StorageGRID 的外部归档存储系统检索归档对象数据时会生成此消息。 
+---
+= ARCT ：从云层检索归档
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+从通过 S3 API 连接到 StorageGRID 的外部归档存储系统检索归档对象数据时会生成此消息。
+
+[cols="1a,1a,4a"]
+|===
+| 代码 | 字段 | Description 
+
+
+ a| 
+CBID
+ a| 
+内容块 ID
+ a| 
+已检索到的内容块的唯一标识符。
+
+
+
+ a| 
+CSIZ
+ a| 
+内容大小
+ a| 
+对象的大小（以字节为单位）。此值仅适用于成功检索。
+
+
+
+ a| 
+RSLT
+ a| 
+结果代码
+ a| 
+返回成功（ SUC ）或后端报告的错误。
+
+
+
+ a| 
+SUID
+ a| 
+存储唯一标识符
+ a| 
+外部归档存储系统的唯一标识符（ UUID ）。
+
+
+
+ a| 
+时间
+ a| 
+时间
+ a| 
+请求的总处理时间，以微秒为单位。
+
+|===

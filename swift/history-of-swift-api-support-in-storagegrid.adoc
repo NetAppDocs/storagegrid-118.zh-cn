@@ -1,0 +1,95 @@
+---
+permalink: swift/history-of-swift-api-support-in-storagegrid.html 
+sidebar: sidebar 
+keywords: swift api support history 
+summary: 您应了解 StorageGRID 系统对 Swift REST API 的支持发生了哪些变化。 
+---
+= StorageGRID 中的 Swift API 支持历史记录
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您应了解 StorageGRID 系统对 Swift REST API 的支持发生了哪些变化。
+
+[cols="1a,3a"]
+|===
+| 版本。 | 注释 
+
+
+ a| 
+11.8.
+ a| 
+
+
+
+ a| 
+11.7
+ a| 
+对Swift客户端应用程序的支持已弃用、将在未来版本中删除。
+
+
+
+ a| 
+11.6.
+ a| 
+少量编辑更改。
+
+
+
+ a| 
+11.5
+ a| 
+消除了较弱的一致性。此时将改用可用的一致性。
+
+
+
+ a| 
+11.4
+ a| 
+增加了对TLS 1.3的支持。增加了ILM与一致性之间相互关系的问题描述。
+
+
+
+ a| 
+11.3
+ a| 
+更新了 PUT 对象操作，以描述在载入时使用同步放置的 ILM 规则的影响（适用于载入行为的平衡而严格的选项）。添加了使用负载平衡器端点或高可用性组的客户端连接的问题描述 。不再支持 TLS 1.1 密码。
+
+
+
+ a| 
+11.2.
+ a| 
+对文档进行了少量编辑更改。
+
+
+
+ a| 
+11.1
+ a| 
+增加了对使用 HTTP 与网格节点建立 Swift 客户端连接的支持。已更新一致性值的定义。
+
+
+
+ a| 
+11.0
+ a| 
+增加了对每个租户帐户 1 ， 000 个容器的支持。
+
+
+
+ a| 
+10.3
+ a| 
+对文档进行管理更新和更正。删除了用于配置自定义服务器证书的部分。
+
+
+
+ a| 
+10.2
+ a| 
+StorageGRID 系统对 Swift API 的初始支持。当前支持的版本为 OpenStack Swift 对象存储 API v1 。
+
+|===

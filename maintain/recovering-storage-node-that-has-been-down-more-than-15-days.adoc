@@ -1,0 +1,95 @@
+---
+permalink: maintain/recovering-storage-node-that-has-been-down-more-than-15-days.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, storage node failure 
+summary: 如果一个存储节点脱机且未连接到其他存储节点超过 15 天，则必须在此节点上重建 Cassandra 。 
+---
+= 将存储节点恢复到关闭状态超过 15 天
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果一个存储节点脱机且未连接到其他存储节点超过 15 天，则必须在此节点上重建 Cassandra 。
+
+.开始之前
+* 您已检查是否未在执行存储节点停用，或者已暂停节点停用操作步骤 。（在网格管理器中，选择 * 维护 * > * 任务 * > * 取消配置 * 。）
+* 您已检查扩展是否未在进行中。（在网格管理器中，选择 * 维护 * > * 任务 * > * 扩展 * 。）
+
+
+.关于此任务
+存储节点具有包含对象元数据的 Cassandra 数据库。如果某个存储节点无法与其他存储节点通信超过 15 天，则 StorageGRID 会假定该节点的 Cassandra 数据库已过时。在使用其他存储节点中的信息重建Cassanda之前、存储节点无法重新加入网格。
+
+只有当一个存储节点关闭时，才可以使用此操作步骤 来重建 Cassandra 。如果其他存储节点已脱机或在过去 15 天内已在另一个存储节点上重建 Cassandra ，请联系技术支持；例如，在恢复故障存储卷或恢复故障存储节点的过程中， Cassandra 可能已重建。
+
+
+CAUTION: 如果多个存储节点出现故障（或脱机），请联系技术支持。请勿执行以下恢复操作步骤。可能发生数据丢失。
+
+
+CAUTION: 如果这是在存储节点发生故障或恢复后不到 15 天内第二个存储节点发生故障，请联系技术支持。请勿执行以下恢复操作步骤。可能发生数据丢失。
+
+
+NOTE: 如果一个站点上的多个存储节点出现故障，则可能需要一个站点恢复操作步骤 。请参见 link:how-site-recovery-is-performed-by-technical-support.html["技术支持如何恢复站点"]。
+
+.步骤
+. 如有必要，打开需要恢复的存储节点的电源。
+. 登录到网格节点：
++
+.. 输入以下命令： `ssh admin@_grid_node_IP_`
+.. 输入中列出的密码 `Passwords.txt` 文件
+.. 输入以下命令切换到root： `su -`
+.. 输入中列出的密码 `Passwords.txt` 文件
++
+以root用户身份登录后、提示符将从变为 `$` to `#`.+
+
++
+
+NOTE: 如果无法登录到网格节点，则系统磁盘可能不会损坏。转至的操作步骤  link:recovering-from-system-drive-failure.html["从系统驱动器故障中恢复"]。
+
+
+
+. 对存储节点执行以下检查：
++
+.. Issue this command: `nodetool status`
++
+输出应为 `Connection refused`
+
+.. 在网格管理器中，选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+.. 选择 * 站点 _* > * 存储节点 * > * SSM* > * 服务 * 。验证是否显示Cassandra服务 `Not Running`。
+.. 选择 * 存储节点 * > * SSM* > * 资源 * 。验证卷部分中是否没有错误状态。
+.. Issue this command: `grep -i Cassandra /var/local/log/servermanager.log`
++
+您应在输出中看到以下消息：
+
++
+[listing]
+----
+Cassandra not started because it has been offline for more than 15 day grace period - rebuild Cassandra
+----
+
+
+. 问题描述 此命令并监控脚本输出： `check-cassandra-rebuild`
++
+** 如果基于卷0的Cassand拉 服务正在运行、系统将提示您停止该服务。输入： *
++
+
+NOTE: 如果Cassand拉 服务已停止、则不会出现提示。仅对卷 0 停止 Cassandra 服务。
+
+** 查看脚本中的警告。如果不适用，请确认您要重建 Cassandra 。输入： *
++
+
+NOTE: 某些 StorageGRID 恢复过程使用 Reaper 处理 Cassandra 修复。一旦相关服务或所需服务开始，便会自动进行修复。您可能会注意到脚本输出中提到"reaper"或"cassandr修复"。 如果您看到指示修复失败的错误消息、请运行错误消息中指示的命令。
+
+
+
+. 重建完成后，请执行以下检查：
++
+.. 在网格管理器中，选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+.. 选择 * 站点 _* > * 已恢复存储节点 * > * SSM* > * 服务 * 。
+.. 确认所有服务均已运行。
+.. 选择 * DDS* > * 数据存储 * 。
+.. 确认*数据存储状态*为"已启动"且*数据存储状态*为"正常"。
+
+
+

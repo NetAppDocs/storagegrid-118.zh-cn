@@ -1,0 +1,13 @@
+---
+layout: landing-page 
+sidebar: sidebar 
+permalink: landing-use/index.html 
+summary: 完成初始配置后、StorageGRID租户帐户可以创建存储分段、并使用S3客户端应用程序来加载、检索和删除对象。 
+---
+= 使用StorageGRID租户和客户端
+:hardbreaks:
+:allow-uri-read: 
+:linkattrs: 
+:imagesdir: ./media/
+
+

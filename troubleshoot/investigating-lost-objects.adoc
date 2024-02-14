@@ -1,0 +1,198 @@
+---
+permalink: troubleshoot/investigating-lost-objects.html 
+sidebar: sidebar 
+keywords: lost objects, investigating, objects 
+summary: 触发 * 对象丢失 * 警报时，您必须立即进行调查。收集有关受影响对象的信息并联系技术支持。 
+---
+= 调查丢失的对象
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+触发 * 对象丢失 * 警报时，您必须立即进行调查。收集有关受影响对象的信息并联系技术支持。
+
+.开始之前
+* 您必须使用登录到网格管理器 link:../admin/web-browser-requirements.html["支持的 Web 浏览器"]。
+* 您已拥有 link:../admin/admin-group-permissions.html["特定访问权限"]。
+* 您必须具有 `Passwords.txt` 文件
+
+
+.关于此任务
+"* 对象丢失 * " 警报表示 StorageGRID 认为网格中没有对象副本。数据可能已永久丢失。
+
+立即调查丢失的对象警报。您可能需要采取措施以防止进一步数据丢失。在某些情况下，如果您立即采取措施，则可能能够还原丢失的对象。
+
+.步骤
+. 选择 * 节点 * 。
+. 选择 * 存储节点 _* > * 对象 * 。
+. 查看对象计数表中显示的丢失对象的数量。
++
+此数字表示此网格节点在整个 StorageGRID 系统中检测到缺少的对象总数。该值是 LDR 和 DDS 服务中数据存储组件的丢失对象计数器之和。
+
++
+image::../media/nodes_storage_nodes_objects_page_lost_object.png[节点存储节点对象页面丢失对象]
+
+. 从管理节点、 link:../audit/accessing-audit-log-file.html["访问审核日志"] 要确定触发*对象丢失*警报的对象的唯一标识符(UUID)：
++
+.. 登录到网格节点：
++
+... 输入以下命令： `ssh admin@grid_node_IP`
+... 输入中列出的密码 `Passwords.txt` 文件
+... 输入以下命令切换到root： `su -`
+... 输入中列出的密码 `Passwords.txt` 文件
+以root用户身份登录后、提示符将从变为 `$` to `#`。
+
+
+.. 更改为审核日志所在的目录。输入 ... `cd /var/local/log/`
+.. 使用 grep 提取对象丢失（ OLST ）审核消息。输入 ... `grep OLST audit_file_name`
+.. 记下消息中包含的 UUID 值。
++
+[listing]
+----
+>Admin: # grep OLST audit.log
+2020-02-12T19:18:54.780426 [AUDT:[CBID(UI64):0x38186FE53E3C49A5][UUID(CSTR):926026C4-00A4-449B-AC72-BCCA72DD1311]
+[PATH(CSTR):"source/cats"][NOID(UI32):12288733][VOLI(UI64):3222345986][RSLT(FC32):NONE][AVER(UI32):10]
+[ATIM(UI64):1581535134780426][ATYP(FC32):OLST][ANID(UI32):12448208][AMID(FC32):ILMX][ATID(UI64):7729403978647354233]]
+----
+
+
+. 使用 `ObjectByUUID` 命令以按标识符(UUID)查找对象、然后确定数据是否存在风险。
++
+.. Telnet 到 localhost 1402 以访问 LDR 控制台。
+.. 输入 ... `/proc/OBRP/ObjectByUUID UUID_value`
++
+在第一个示例中、是对象 `UUID 926026C4-00A4-449B-AC72-BCCA72DD1311` 列出了两个位置。
+
++
+[listing]
+----
+ade 12448208: /proc/OBRP > ObjectByUUID 926026C4-00A4-449B-AC72-BCCA72DD1311
+
+{
+    "TYPE(Object Type)": "Data object",
+    "CHND(Content handle)": "926026C4-00A4-449B-AC72-BCCA72DD1311",
+    "NAME": "cats",
+    "CBID": "0x38186FE53E3C49A5",
+    "PHND(Parent handle, UUID)": "221CABD0-4D9D-11EA-89C3-ACBB00BB82DD",
+    "PPTH(Parent path)": "source",
+    "META": {
+        "BASE(Protocol metadata)": {
+            "PAWS(S3 protocol version)": "2",
+            "ACCT(S3 account ID)": "44084621669730638018",
+            "*ctp(HTTP content MIME type)": "binary/octet-stream"
+        },
+        "BYCB(System metadata)": {
+            "CSIZ(Plaintext object size)": "5242880",
+            "SHSH(Supplementary Plaintext hash)": "MD5D 0xBAC2A2617C1DFF7E959A76731E6EAF5E",
+            "BSIZ(Content block size)": "5252084",
+            "CVER(Content block version)": "196612",
+            "CTME(Object store begin timestamp)": "2020-02-12T19:16:10.983000",
+            "MTME(Object store modified timestamp)": "2020-02-12T19:16:10.983000",
+            "ITME": "1581534970983000"
+        },
+        "CMSM": {
+            "LATM(Object last access time)": "2020-02-12T19:16:10.983000"
+        },
+        "AWS3": {
+            "LOCC": "us-east-1"
+        }
+    },
+    "CLCO\(Locations\)": \[
+        \{
+            "Location Type": "CLDI\(Location online\)",
+            "NOID\(Node ID\)": "12448208",
+            "VOLI\(Volume ID\)": "3222345473",
+            "Object File Path": "/var/local/rangedb/1/p/17/11/00rH0%DkRt78Ila\#3udu",
+            "LTIM\(Location timestamp\)": "2020-02-12T19:36:17.880569"
+        \},
+        \{
+            "Location Type": "CLDI\(Location online\)",
+            "NOID\(Node ID\)": "12288733",
+            "VOLI\(Volume ID\)": "3222345984",
+            "Object File Path": "/var/local/rangedb/0/p/19/11/00rH0%DkRt78Rrb\#3s;L",
+            "LTIM\(Location timestamp\)": "2020-02-12T19:36:17.934425"
+        }
+    ]
+}
+----
++
+在第二个示例中、是对象 `UUID 926026C4-00A4-449B-AC72-BCCA72DD1311` 未列出任何位置。
+
++
+[listing]
+----
+ade 12448208: / > /proc/OBRP/ObjectByUUID 926026C4-00A4-449B-AC72-BCCA72DD1311
+
+{
+    "TYPE(Object Type)": "Data object",
+    "CHND(Content handle)": "926026C4-00A4-449B-AC72-BCCA72DD1311",
+    "NAME": "cats",
+    "CBID": "0x38186FE53E3C49A5",
+    "PHND(Parent handle, UUID)": "221CABD0-4D9D-11EA-89C3-ACBB00BB82DD",
+    "PPTH(Parent path)": "source",
+    "META": {
+        "BASE(Protocol metadata)": {
+            "PAWS(S3 protocol version)": "2",
+            "ACCT(S3 account ID)": "44084621669730638018",
+            "*ctp(HTTP content MIME type)": "binary/octet-stream"
+        },
+        "BYCB(System metadata)": {
+            "CSIZ(Plaintext object size)": "5242880",
+            "SHSH(Supplementary Plaintext hash)": "MD5D 0xBAC2A2617C1DFF7E959A76731E6EAF5E",
+            "BSIZ(Content block size)": "5252084",
+            "CVER(Content block version)": "196612",
+            "CTME(Object store begin timestamp)": "2020-02-12T19:16:10.983000",
+            "MTME(Object store modified timestamp)": "2020-02-12T19:16:10.983000",
+            "ITME": "1581534970983000"
+        },
+        "CMSM": {
+            "LATM(Object last access time)": "2020-02-12T19:16:10.983000"
+        },
+        "AWS3": {
+            "LOCC": "us-east-1"
+        }
+    }
+}
+----
+.. 查看 /proc/obrp/ObjectByUUID 的输出，并采取相应的操作：
++
+[cols="2a,4a"]
+|===
+| 元数据 | 结论 
+
+
+ a| 
+未找到对象（ "error" ： "" ）
+ a| 
+如果未找到对象，则返回消息 "error" ： "" 。
+
+如果未找到此对象，您可以重置 * 丢失的对象 * 计数以清除警报。缺少对象表示该对象已被有意删除。
+
+
+
+ a| 
+位置 > 0
+ a| 
+如果输出中列出了一些位置，则 * 对象丢失 * 警报可能为误报。
+
+确认对象存在。使用输出中列出的节点 ID 和文件路径确认对象文件位于列出的位置。
+
+（的操作步骤 link:searching-for-and-restoring-potentially-lost-objects.html["正在搜索可能丢失的对象"] 介绍如何使用节点 ID 查找正确的存储节点。）
+
+如果对象存在，您可以重置 * 丢失的对象 * 计数以清除警报。
+
+
+
+ a| 
+位置 = 0
+ a| 
+如果输出中未列出任何位置，则此对象可能会丢失。您可以尝试 link:searching-for-and-restoring-potentially-lost-objects.html["搜索并还原对象"] 您也可以联系技术支持。
+
+技术支持可能会要求您确定是否正在进行存储恢复操作步骤 。请参见有关的信息 link:../maintain/restoring-volume.html["使用网格管理器还原对象数据"] 和 link:../maintain/restoring-object-data-to-storage-volume.html["将对象数据还原到存储卷"]。
+
+|===
+
+
+

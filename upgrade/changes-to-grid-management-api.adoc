@@ -1,0 +1,37 @@
+---
+permalink: upgrade/changes-to-grid-management-api.html 
+sidebar: sidebar 
+keywords: grid management api, api, api version, swagger, rest api 
+summary: StorageGRID 1.18使用网格管理API版本4。版本4已弃用版本3；但是、版本1、2和3仍受支持。 
+---
+= 对网格管理 API 进行的更改
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 1.18使用网格管理API版本4。版本4已弃用版本3；但是、版本1、2和3仍受支持。
+
+
+NOTE: 您可以继续在StorageGRID 11.8中使用已弃用的管理API版本；但是、在未来的StorageGRID版本中、将不再支持这些版本的API。升级到StorageGRID 11.8后、可以使用停用已弃用的API `PUT /grid/config/management` API。
+
+要了解更多信息，请访问 link:../admin/using-grid-management-api.html["使用网格管理 API"]。
+
+
+
+== 的更改 `ilm-policies` API v4
+
+从的StorageGRID版本4开始生效 `ilm-policies` API与版本3存在以下差异：
+
+* 不再返回历史策略。在中添加了一个用于获取历史策略和标记数据的新的单独API `/grid/ilm-history`。
+* 已删除属性： `proposed`， `historical`， `historicalRules`， `activationTime`。
+* 已添加属性： `active` (布尔值)、 `activatedBy` (将策略分配到的标记UID数组)。
+* 的可选类型查询参数 `GET ilm-policies` 现在采用这些值 `inactive` 和 `active.` 先前的值为 `proposed`， `active`，和 `historical`。
+
+
+
+
+== 用于驱动器管理的新端点
+
+您可以使用*/网格/驱动器详细信息/｛nodeId｝* API端点对特定型号的设备存储节点中的驱动器执行操作。

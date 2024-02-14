@@ -1,0 +1,31 @@
+---
+permalink: monitor/managing-alerts.html 
+sidebar: sidebar 
+keywords: alert rules, managing alerts, alerts, alert notifications. edit alert rules 
+summary: 警报系统提供了一个易于使用的界面，用于检测，评估和解决 StorageGRID 运行期间可能发生的问题。 
+---
+= 管理警报：概述
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+警报系统提供了一个易于使用的界面，用于检测，评估和解决 StorageGRID 运行期间可能发生的问题。
+
+您可以创建自定义警报、编辑或禁用警报以及管理警报通知。
+
+了解更多信息：
+
+* 观看视频： https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4506fc61-c8e9-4b86-ba00-b0b901184b38["视频：StorageGRID 11.8."^]
++
+[link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4506fc61-c8e9-4b86-ba00-b0b901184b38]
+image::../media/video-screenshot-alert-overview-118.png[视频：StorageGRID 11.8.]
+
+* 观看视频： https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e3a75bc1-47a2-44b9-a84d-b0b9011dc2d1["视频：在StorageGRID 11.8.中使用指标创建自定义警报"^]
++
+[link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e3a75bc1-47a2-44b9-a84d-b0b9011dc2d1]
+image::../media/video-screenshot-alert-create-custom-118.png[视频：在StorageGRID 11.8.中使用指标创建自定义警报]
+
+* 请参见 link:alerts-reference.html["警报参考"]。
+
