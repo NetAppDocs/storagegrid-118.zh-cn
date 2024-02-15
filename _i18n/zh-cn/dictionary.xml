@@ -10753,8 +10753,6 @@ VM_API_Gateway</block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">开放源代码</block>
   <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知文件提供有关 NetApp 软件中使用的第三方版权和许可证的信息。</block>
-  <block id="21b17c7b7d71861473c6337e153ea6ea" category="paragraph"><block ref="21b17c7b7d71861473c6337e153ea6ea" category="inline-link-rx"></block></block>
-  <block id="29007b92e2b6688072358d8f25529d24" category="paragraph"><block ref="29007b92e2b6688072358d8f25529d24" category="inline-link-rx"></block></block>
   <block id="9f6353da86fa1f6ae96f6a022e88709b" category="summary">StorageGRID 内部防火墙仅允许传入网格网络上的特定端口，但端口 22 ， 80 ， 123 和 443 除外 \ （请参见有关外部通信的信息 \ ）。负载平衡器端点定义的端口也接受连接。</block>
   <block id="d6551410e0a6c8c712af2331c2b66254" category="paragraph">StorageGRID 内部防火墙允许与网格网络上的特定端口建立传入连接。负载平衡器端点定义的端口也接受连接。</block>
   <block id="5d704155823ccea3b11689d40751ca9e" category="admonition">NetApp 建议您在网格节点之间启用 Internet 控制消息协议（ Internet Control Message Protocol ， ICMP ）流量。如果无法访问网格节点、则允许ICMP流量可以提高故障转移性能。</block>
@@ -23832,4 +23830,5 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="801721392db9ec580e86ab03b9a6efe4" category="list-text">(可选)选中或清除相应复选框以添加父接口或删除未使用的接口。然后，选择 * 继续 * 。</block>
   <block id="b99103ea3d7994a0290fe8493d3c561e" category="section-title">删除 VLAN 接口</block>
   <block id="e07029212eca08ab6df5839ea9342176" category="paragraph">您可以删除一个或多个 VLAN 接口。</block>
+  <block id="46621f49f52b2e7735202aeadc8627bc" category="paragraph"><block ref="46621f49f52b2e7735202aeadc8627bc" category="inline-link-rx"></block></block>
 </blocks>
