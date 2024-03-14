@@ -2122,7 +2122,6 @@ x-NetApp-asUP型号名称+</block>
   <block id="243f8ae8a2808c58d6751a1b344980de" category="list-text">选择 * 上传元数据文件 * 按钮，然后选择为相应管理节点下载的 SAML 元数据文件。</block>
   <block id="8965ca0da3d3be7f5b359a725f9bd813" category="list-text">加载文件后，选择 * 保存 * ，然后选择 * X * 以关闭窗格。此时将返回到使用 SAML 设置单点登录页面。</block>
   <block id="d596a1bad7b0948a7985bf7153e05581" category="list-text">按照中的步骤进行操作 <block ref="4539ca96b3e34e55cee5c672da43266c" category="inline-link-macro-rx"></block> 测试每个应用程序。</block>
-  <block id="0a7565bc711ff62e67cd8ffdc054021e" category="summary">了解如何配置和使用StorageGRID设备硬件。</block>
   <block id="c7af46b6cfb1d87714ad28a6641b7604" category="doc">安装StorageGRID设备</block>
   <block id="4fab2171e21f4258294a2a074494fa18" category="inline-link">StorageGRID设备文档</block>
   <block id="dde8acece265d46e5aab164c12d3a44c" category="paragraph">转至<block ref="be9ecc58910f449a87a62c3eec4d0fe8" category="inline-link-rx"></block> 了解如何安装、配置和维护StorageGRID存储和服务设备。</block>
@@ -23831,4 +23830,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="b99103ea3d7994a0290fe8493d3c561e" category="section-title">删除 VLAN 接口</block>
   <block id="e07029212eca08ab6df5839ea9342176" category="paragraph">您可以删除一个或多个 VLAN 接口。</block>
   <block id="46621f49f52b2e7735202aeadc8627bc" category="paragraph"><block ref="46621f49f52b2e7735202aeadc8627bc" category="inline-link-rx"></block></block>
+  <block id="7fab435ddee33f90ad5e190ad86b8843" category="summary">了解如何安装、配置和使用StorageGRID设备硬件。</block>
+  <block id="9283e244bcd98f1bdd350c1b4f2da148" category="doc">StorageGRID设备</block>
 </blocks>
