@@ -88,7 +88,7 @@ MTU 设置的差异可能表明，某些（但并非所有） eth0 网络配置�
 . 列出所有节点上 eth0 的 MTU 设置。
 +
 ** 使用网格管理器中提供的查询。
-** 导航到 `_primary Admin Node IP address_/metrics/graph` 并输入以下查询： `node_network_mtu_bytes{interface='eth0'}`
+** 导航到 `_primary Admin Node IP address_/metrics/graph` 并输入以下查询： `node_network_mtu_bytes{device="eth0"}`
 
 
 . https://docs.netapp.com/us-en/storagegrid-appliances/commonhardware/changing-mtu-setting.html["修改MTU设置"^] 根据需要确保所有节点上的网格网络接口(eth0)的设置相同。
