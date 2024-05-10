@@ -84,7 +84,7 @@ vvser-archive.mf  a|
 CAUTION: 在生产部署中、不要在一个虚拟机服务器上运行多个存储节点。对每个存储节点使用专用虚拟机主机可提供一个隔离的故障域。
 
 * 如果要在扩展或恢复操作中部署节点，则可以使用 link:../expand/index.html["有关扩展 StorageGRID 系统的说明"] 或 link:../maintain/index.html["恢复和维护说明"]。
-* 如果您要将StorageGRID 节点部署为虚拟机、并从NetApp ONTAP 系统分配存储、则表示您已确认卷未启用FabricPool 分层策略。例如，如果 StorageGRID 节点在 VMware 主机上作为虚拟机运行，请确保为该节点的数据存储库提供支持的卷未启用 FabricPool 分层策略。对 StorageGRID 节点使用的卷禁用 FabricPool 分层可简化故障排除和存储操作。
+* 如果您要将StorageGRID 节点部署为虚拟机、并从NetApp ONTAP 系统分配存储、则表示您已确认卷未启用FabricPool 分层策略。例如、如果StorageGRID节点作为VMware主机上的虚拟机运行、请确保为该节点的数据存储库提供支持的卷未启用FabricPool分层策略。对 StorageGRID 节点使用的卷禁用 FabricPool 分层可简化故障排除和存储操作。
 +
 
 NOTE: 切勿使用 FabricPool 将与 StorageGRID 相关的任何数据分层回 StorageGRID 本身。将 StorageGRID 数据分层回 StorageGRID 会增加故障排除和操作复杂性。

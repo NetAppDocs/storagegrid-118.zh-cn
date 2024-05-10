@@ -22,5 +22,6 @@ summary: 您可以将 StorageGRID 设备上的网络端口配置为使用符合�
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/gathering-installation-information-sg6100.html#port-bond-modes["端口绑定模式(SGF6112)"^]
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/gathering-installation-information-sg6000.html#port-bond-modes["端口绑定模式(SG6000-CN控制器)"^]
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/gathering-installation-information-sg5700.html#port-bond-modes["端口绑定模式(E5700SG控制器)"^]
+* https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/gathering-installation-information-sg110-and-sg1100.html#port-bond-modes["端口绑定模式(SG110和SG1100)"^]
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/gathering-installation-information-sg100-and-sg1000.html#port-bond-modes["端口绑定模式(SG100和SG1000)"^]
 

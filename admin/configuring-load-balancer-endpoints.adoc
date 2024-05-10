@@ -22,7 +22,7 @@ NOTE: 对Swift客户端应用程序的支持已弃用、将在未来版本中删
 * 您已查看 link:managing-load-balancing.html["负载平衡注意事项"]。
 * 如果您先前已重新映射要用于负载平衡器端点的端口，则表示您已重新映射 link:../maintain/removing-port-remaps.html["已删除端口重新映射"]。
 * 您已创建计划使用的任何高可用性（ HA ）组。建议使用 HA 组，但不要求使用 HA 组。请参见 link:managing-high-availability-groups.html["管理高可用性组"]。
-* 负载平衡器端点是否将由使用 link:../admin/manage-s3-select-for-tenant-accounts.html["S3 Select 的 S3 租户"]，不能使用任何裸机节点的 IP 地址或 FQDN 。用于 S3 Select 的负载平衡器端点仅允许使用 SG100 或 SG1000 设备以及基于 VMware 的软件节点。
+* 负载平衡器端点是否将由使用 link:../admin/manage-s3-select-for-tenant-accounts.html["S3 Select 的 S3 租户"]，不能使用任何裸机节点的 IP 地址或 FQDN 。用于S3 Select的负载平衡器端点仅允许使用服务设备和基于VMware的软件节点。
 * 您已配置计划使用的任何 VLAN 接口。请参见 link:configure-vlan-interfaces.html["配置 VLAN 接口"]。
 * 如果要创建 HTTPS 端点（建议），则您具有服务器证书的信息。
 +

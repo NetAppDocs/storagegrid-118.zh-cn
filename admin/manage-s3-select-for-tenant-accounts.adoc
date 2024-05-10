@@ -57,7 +57,7 @@ SelectObjectContent 请求必须发送到 link:configuring-load-balancer-endpoin
 
 端点使用的管理节点和网关节点必须为以下选项之一：
 
-* SG100或SG1000设备节点
+* 服务设备节点
 * 基于VMware的软件节点
 * 运行已启用cgroup v2的内核的裸机节点
 

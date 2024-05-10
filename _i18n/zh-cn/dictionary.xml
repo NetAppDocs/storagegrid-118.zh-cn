@@ -1356,7 +1356,6 @@ x-NetApp-asUP型号名称+</block>
   <block id="fab6e4be4117bc39c31023b11841e822" category="list-text">主管理节点或非主管理节点</block>
   <block id="4c8e81f4173e365e621b3a98a236b342" category="paragraph">S3 或 Swift 客户端访问—负载平衡器服务</block>
   <block id="c68cecdc694ad846535107dc231d13dc" category="paragraph">的 S3 客户端访问 <block ref="71229afae5cddfc7e710e51d98313610" category="inline-link-macro-rx"></block></block>
-  <block id="526e0bfdf42e4999274baebff1f765b8" category="list-text">SG100 或 SG1000 设备</block>
   <block id="b8cfda360ab058b70a78573ec3816e58" category="list-text">基于 VMware 的软件节点</block>
   <block id="f6874a0c93eb93f7900d8d5417bc97b0" category="paragraph">* 注 * ：使用 S3 Select 时建议使用 HA 组，但不要求使用 HA 组。</block>
   <block id="8b1ecdb76c8e8a403183bf06005a2b87" category="section-title">将 HA 组与 Grid Manager 或租户管理器结合使用的限制</block>
@@ -7792,7 +7791,6 @@ VM_API_Gateway</block>
   <block id="e269ceb4f0e99752a163dbef32784deb" category="cell">执行此任务期间</block>
   <block id="66b64b6e8d9cdba05b9055fe4f872d56" category="paragraph">运行预检并升级主管理节点</block>
   <block id="eeebd2dad413df87cae356cae14893d8" category="paragraph">此时将运行升级预检、并停止、升级和重新启动主管理节点。</block>
-  <block id="cb5491e384de74d749c4115eed8437cf" category="paragraph">30 分钟到 1 小时，其中 SG100 和 SG1000 设备节点最需要时间。</block>
   <block id="3a30660e99c1f6211055c01e29cd188f" category="paragraph">未解决的预检错误将增加此时间。</block>
   <block id="282284b5127c272299f057f393455eab" category="paragraph">您无法访问主管理节点。可能会报告连接错误、您可以忽略这些错误。</block>
   <block id="b1728f0a378bf93a1a4e33ad3614bee6" category="paragraph">通过在开始升级之前运行升级预检、您可以在计划的升级维护窗口之前解决任何错误。</block>
@@ -11634,7 +11632,6 @@ VM_API_Gateway</block>
   <block id="43000ef139e5fe592a89f1f7e178154a" category="list-text">* 节点名称 * ：必须使用与故障节点相同的节点名称安装服务设备。节点名称是主机名(系统名称)。</block>
   <block id="4a07e6353f00e15266081693f2a985f9" category="list-text">* IP 地址 * ：您可以为服务设备分配与故障节点相同的 IP 地址，这是首选选项，也可以在每个网络上选择新的未使用的 IP 地址。</block>
   <block id="8cd8b8b187d97f1faf73fc52f65a97a5" category="paragraph">只有在恢复 VMware 或 Linux 上托管的故障节点并将其替换为服务设备上托管的节点时，才执行此操作步骤 。</block>
-  <block id="0f857f200023b65103925b0ec2a7cfc3" category="list-text">按照说明安装新的 SG100 或 SG1000 服务设备。请参见<block ref="ee00799cc8efda342e4e96e16e67c728" category="inline-link-rx"></block>。</block>
   <block id="976f8b3f201b422dcad1f06cdca2acad" category="list-text">当系统提示您输入节点名称时，请使用故障节点的节点名称。</block>
   <block id="e5c99deaf400537b6dd55cf4bbe8dd07" category="summary">从 " 弃用站点 " 向导的第 2 步 \ （查看详细信息 \ ）中，您可以查看站点中包含的节点，查看每个存储节点上已使用的空间量，并评估网格中其他站点上的可用空间量。</block>
   <block id="c8b268f3a444e17264d9c1105f2a9471" category="doc">第 2 步：查看详细信息</block>
@@ -12943,7 +12940,6 @@ VM_API_Gateway</block>
   <block id="1cdf8f49ef2ff3da5ebee4250cf758fa" category="doc">更换存储节点</block>
   <block id="e170742e0a4cacd4b565ca1f6258ce60" category="paragraph">*Linux:*如果不确定系统驱动器是否出现故障，请按照说明更换节点以确定需要执行哪些恢复步骤。</block>
   <block id="95ca787816e58be9ee9c4654f9f73fb5" category="list-text">如果您有设备节点：</block>
-  <block id="85f3cd5c291821264228b498dd3b509c" category="list-text">对于SG100、SG1000或SGF6112设备</block>
   <block id="a9ca95e57b1ab91a96af05863a420222" category="list-text">对于 SG6000 设备</block>
   <block id="518d1635e9c9f6870e5ef4e7ebc7b15b" category="list-text">对于 SG5700 设备</block>
   <block id="9673d940e3ac6831ce6db4664cc99091" category="summary">您可以随时查看网格节点上运行的服务的当前状态。</block>
@@ -13074,7 +13070,6 @@ VM_API_Gateway</block>
   <block id="ef789bb996bc5bd0bce5cd3224a04da0" category="list-text">确定所有对象均已从归档节点移动后、关闭该节点。</block>
   <block id="43cc594a7d276977e32ec862d99e0072" category="inline-link-macro">停用已断开连接节点的操作步骤</block>
   <block id="fa82c6d1d10e7ba20c3e11c9e5f196b5" category="list-text">执行 <block ref="154861d44e53a6782f8ddb90a223bc28" category="inline-link-macro-rx"></block>。</block>
-  <block id="2eb43cbc2a61f9c743c1b3151489a296" category="summary">要在 SG100 或 SG1000 服务设备上安装网关节点或管理节点，请使用此设备上随附的 StorageGRID 设备安装程序。</block>
   <block id="af3560ee626724471488e0fc8434031e" category="doc">开始在服务设备上安装软件</block>
   <block id="ffe25415e608b1290262c56917744f07" category="list-text">设备安装在机架中、连接到您的网络并打开电源。</block>
   <block id="cd9ed31786ae693dd222136b8ae1dc5b" category="list-text">可以使用StorageGRID 设备安装程序为此设备配置网络链路和IP地址。</block>
@@ -13085,13 +13080,11 @@ VM_API_Gateway</block>
   <block id="039a8c9c5cb1f0db850c61c3aaeebbc1" category="list-text">您已将其中一个IP地址分配给此设备。您可以使用管理网络，网格网络或客户端网络的 IP 地址。</block>
   <block id="42010123a128ae897cc438748b6602d8" category="list-text">如果您要安装主管理节点，则可以使用此版本 StorageGRID 的 Ubuntu 或 Debian 安装文件。</block>
   <block id="cd177081f42b425b83fd4946264a2122" category="admonition">在制造过程中，服务设备会预加载最新版本的 StorageGRID 软件。如果预加载的软件版本与StorageGRID 部署中使用的版本匹配、则不需要安装文件。</block>
-  <block id="6615b29bec975797e60754eef45ee425" category="paragraph">要在 SG100 或 SG1000 服务设备上安装 StorageGRID 软件，请执行以下操作：</block>
   <block id="a49956edf835d311bdd81a16d9029fa5" category="list-text">对于主管理节点，您可以指定节点的名称，然后上传相应的软件包（如果需要）。</block>
   <block id="5cf0e95b96240dd51e07e9f8a744c330" category="list-text">对于非主管理节点或网关节点，您可以指定或确认主管理节点的 IP 地址以及节点的名称。</block>
   <block id="fe2b1f542f6478cbe6778ef8960473b6" category="list-text">您开始安装，并等待卷配置完毕并安装软件。</block>
   <block id="cfa04ce6be1d9bc859d0fa184c6b7d1a" category="list-text">在整个过程中，安装将暂停。要恢复安装，您必须登录到网格管理器并将待定节点配置为故障节点的替代节点。</block>
   <block id="3ae26c8e7133afcd7447f341dd34dc15" category="list-text">配置节点后，设备安装过程将完成，设备将重新启动。</block>
-  <block id="6f87af240e41fbc8eeae7f7dae03c1bb" category="list-text">打开浏览器并输入 SG100 或 SG1000 服务设备的 IP 地址之一。</block>
   <block id="82079c811cb09ee51e49c99a1f5d5860" category="paragraph"><block ref="2e06cb17e519f25def224a70d8676e2a" prefix="" category="inline-code"></block></block>
   <block id="cc4b72eaf68a56e3751756225ce52133" category="paragraph">此时将显示 StorageGRID 设备安装程序主页页面。</block>
   <block id="44c17cd641ef4b5aa3161ba53ecfea70" category="image-alt">设备安装程序主页</block>
@@ -13352,15 +13345,12 @@ VM_API_Gateway</block>
   <block id="db7de6808ff60203975188d07461ebbb" category="list-text"><block ref="db7de6808ff60203975188d07461ebbb" category="inline-link-macro-rx"></block></block>
   <block id="3baacb4fdd823379ba2af4b024054135" category="inline-link-macro">存储节点停用注意事项</block>
   <block id="59eb3ac35063c39674ac27319f346d6b" category="list-text"><block ref="59eb3ac35063c39674ac27319f346d6b" category="inline-link-macro-rx"></block></block>
-  <block id="6a2543b554a9dd04c3e6fc158b8b31ff" category="summary">您可以使用 SG100 或 SG1000 服务设备恢复出现故障的网关节点，出现故障的非主管理节点或 VMware 上托管的主管理节点， Linux 主机或服务设备发生故障。此操作步骤 是网格节点恢复操作步骤 的一个步骤。</block>
   <block id="f7cc9590ed6d73702266353b44972450" category="doc">将故障节点更换为服务设备：概述</block>
   <block id="887ba6f3b2dfd6f4ecd3b66559e7225d" category="list-text">您已确定存在以下情况之一：</block>
   <block id="cbc202ae54bf26d7a37c563e7c059ecd" category="list-text">无法还原托管此节点的虚拟机。</block>
   <block id="6ddaebd9436720921e18685743b68028" category="list-text">网格节点的物理或虚拟 Linux 主机出现故障，必须更换。</block>
   <block id="da84a75b4f465363e1c7b1342e7ff8b9" category="list-text">必须更换托管网格节点的服务设备。</block>
   <block id="9007f21ba88eb5c8716a7147f21ca7fb" category="list-text">您已确认服务设备上的StorageGRID 设备安装程序版本与StorageGRID 系统的软件版本匹配。请参见<block ref="c053d50bdd773e7ada03188ce86ced1f" category="inline-link-rx"></block>。</block>
-  <block id="0e0cf9d2ade956880e97edc4a90eb770" category="admonition">请勿在同一站点同时部署SG100和SG1000服务设备。可能会导致性能不可预测。</block>
-  <block id="0f7d30e5dc072b12c52a1d64f92369ca" category="paragraph">在以下情况下，您可以使用 SG100 或 SG1000 服务设备恢复出现故障的网格节点：</block>
   <block id="fc9f380bd75e8964e42be9bf02c8877c" category="inline-link-macro">平台变更</block>
   <block id="abb3e4ca89666d006dd2e10e57b4aeb3" category="list-text">故障节点托管在VMware或Linux (<block ref="c4b17ca101f31583d62afecea81d6e26" category="inline-link-macro-rx"></block>）</block>
   <block id="9257358f2747250fdce009604b1686a6" category="inline-link-macro">平台更换</block>
@@ -16956,7 +16946,6 @@ VM_API_Gateway</block>
   <block id="ada64f37eac9cae34bc144bb08ee63ce" category="paragraph">操作系统卷和第一个存储卷的性能会显著影响系统的整体性能。请确保在延迟，每秒输入 / 输出操作数（ IOPS ）和吞吐量方面提供足够的磁盘性能。</block>
   <block id="6a1a89af626d55750e70fed0a98c382d" category="paragraph">所有 StorageGRID 节点都要求操作系统驱动器和所有存储卷启用回写缓存。缓存必须位于受保护或永久性介质上。</block>
   <block id="ccbaec5b6b80e72117ebe1eea9bf36a1" category="section-title">使用NetApp ONTAP 存储的虚拟机的要求</block>
-  <block id="ff24d8ad9e9234ee34156eee77786778" category="paragraph">如果您要将StorageGRID 节点部署为虚拟机、并从NetApp ONTAP 系统分配存储、则表示您已确认卷未启用FabricPool 分层策略。例如，如果 StorageGRID 节点在 VMware 主机上作为虚拟机运行，请确保为该节点的数据存储库提供支持的卷未启用 FabricPool 分层策略。对 StorageGRID 节点使用的卷禁用 FabricPool 分层可简化故障排除和存储操作。</block>
   <block id="eafda1a64c73e9709ee210db9507cdf0" category="section-title">所需的虚拟机数量</block>
   <block id="6fa09b9a1a118a60c27409c82b752e8f" category="admonition">在生产部署中、不要在一个虚拟机服务器上运行多个存储节点。对每个存储节点使用专用虚拟机主机可提供一个隔离的故障域。</block>
   <block id="433ea0a25e67ff93ecb266690a505cd7" category="paragraph">其他类型的节点（例如管理节点或网关节点）可以部署在同一虚拟机主机上，也可以根据需要部署在自己的专用虚拟机主机上。但是、如果有多个类型相同的节点(例如两个网关节点)、请勿在同一虚拟机主机上安装所有实例。</block>
@@ -20208,13 +20197,9 @@ HA组是一组节点、每个节点都包含StorageGRID 负载平衡器服务。
   <block id="7f36be793e788cf4e12a4180acea72ce" category="list-text">唯一资源名称（ URN ）</block>
   <block id="5e25095d26c7c2d90fc1a37ea3f896d5" category="paragraph"><block ref="5e25095d26c7c2d90fc1a37ea3f896d5" category="inline-link-macro-rx"></block></block>
   <block id="07672b2e35cfb0fbd67bc77d6a4d4861" category="list-text">身份验证凭据（如果需要）：</block>
-  <block id="092f8abc272e044edf759bec64f9aac8" category="open-title">AWS搜索集成端点</block>
-  <block id="a0cc6278c7e17249598ade70df3940ec" category="paragraph">对于AWS搜索集成端点、您可以使用以下凭据：</block>
   <block id="569ce45ffdb25fa0757a8dedd49e3bb7" category="list-text">访问密钥：访问密钥 ID 和机密访问密钥</block>
   <block id="88bc918552fe723961c6cc5eaa25d428" category="list-text">基本 HTTP ：用户名和密码</block>
   <block id="5f318e3f912769cfef1ac0d143e915ba" category="list-text">CAP （ C2S 访问门户）：临时凭据 URL ，服务器和客户端证书，客户端密钥以及可选的客户端专用密钥密码短语。</block>
-  <block id="103988ab9fc4e86be41a1409cc28740b" category="open-title">CloudMirror复制和Amazon SNS端点</block>
-  <block id="2c58d0387f0c2b179a4b47b22f618381" category="paragraph">对于CloudMirror复制和Amazon SNS端点、您可以使用以下凭据：</block>
   <block id="2291502121a451acf21f13fceb58a2bb" category="paragraph">对于Kafka端点、您可以使用以下凭据：</block>
   <block id="6b2d14fc51750485206bd85e05af736f" category="list-text">SASL/PLAIN：用户名和密码</block>
   <block id="2b7d7f5c421055861d038e38b08935fd" category="list-text">SASL/SCRAM-SHA-256：用户名和密码</block>
@@ -20236,7 +20221,6 @@ HA组是一组节点、每个节点都包含StorageGRID 负载平衡器服务。
   <block id="7e05251295850dd13dc5d66dcde7b0b1" category="admonition">如果此端点用于CloudMirror复制服务、请勿在URI中包含存储分段名称。您可以在 * URN* 字段中包含分段名称。</block>
   <block id="8cd69e662e718190475de27c4b72b4fd" category="list-text">输入端点的唯一资源名称（ URN ）。</block>
   <block id="d4139350c2d6b382611ff9863d34c600" category="list-text">为*身份验证类型*选择一个值。</block>
-  <block id="9b8d5def618fbd5e73e2ac1c4a972ca8" category="paragraph">输入或上传AWS搜索集成端点的凭据。</block>
   <block id="ab5abe0cf9e4606368aa9d659fdfb39d" category="paragraph">您提供的凭据必须具有目标资源的写入权限。</block>
   <block id="188c9bad27f84e6fa6749495bf816b7c" category="cell">Authentication type</block>
   <block id="2daf1cb573c2c61422faf64610cf9402" category="cell">凭据</block>
@@ -20256,8 +20240,6 @@ HA组是一组节点、每个节点都包含StorageGRID 负载平衡器服务。
   <block id="08bd3ea3857a387846bd1d7de8859407" category="list-text">客户端证书（ PEM 文件上传）</block>
   <block id="75fcbd33387f1e2bf786181077c6ac7b" category="list-text">客户端专用密钥（ PEM 文件上传， OpenSSL 加密格式或未加密的专用密钥格式）</block>
   <block id="5e387077b4185d619348f395bee19cd8" category="list-text">客户端专用密钥密码短语（可选）</block>
-  <block id="c8586f37d4aaeda672a1bdf40a806b42" category="open-title">CloudMirror复制或Amazon SNS端点</block>
-  <block id="1d80e641421ae42e14b5abc1912572d8" category="paragraph">输入或上传用于CloudMirror复制或Amazon SNS端点的凭据。</block>
   <block id="cafb08c180e05e9e066dadda64ffffef" category="paragraph">输入或上传Kafka端点的凭据。</block>
   <block id="e9e6fc177e3aaec18a862c944cf8c6de" category="paragraph">SASL/普通</block>
   <block id="57b40f4823494c9760e4b52e012fdaa7" category="paragraph">使用带有纯文本的用户名和密码对目标连接进行身份验证。</block>
@@ -22115,7 +22097,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="21eb1870e8817e85daf078f7bf36421e" category="list-text">如果您先前已重新映射要用于负载平衡器端点的端口，则表示您已重新映射 <block ref="4d25576a30b1828f32613413f719ba35" category="inline-link-macro-rx"></block>。</block>
   <block id="8cc58e979219355ef8e21d0664dbf6d7" category="list-text">您已创建计划使用的任何高可用性（ HA ）组。建议使用 HA 组，但不要求使用 HA 组。请参见 <block ref="432bf56bd63b81a16795dbde22f760b0" category="inline-link-macro-rx"></block>。</block>
   <block id="beeb513fb9d618218e39727b4ee478ce" category="inline-link-macro">S3 Select 的 S3 租户</block>
-  <block id="ae659a76539f66bac3476047d4fb9a45" category="list-text">负载平衡器端点是否将由使用 <block ref="88335399af1b3db2961d70c622c13344" category="inline-link-macro-rx"></block>，不能使用任何裸机节点的 IP 地址或 FQDN 。用于 S3 Select 的负载平衡器端点仅允许使用 SG100 或 SG1000 设备以及基于 VMware 的软件节点。</block>
   <block id="c80de1e8f7c8b91d7855e12a0c08ec2f" category="list-text">您已配置计划使用的任何 VLAN 接口。请参见 <block ref="dd8d5f7d2274de4ce0aad9967f929eed" category="inline-link-macro-rx"></block>。</block>
   <block id="a42efe9c31db0c24a4b7c6fb8ff63690" category="list-text">如果要创建 HTTPS 端点（建议），则您具有服务器证书的信息。</block>
   <block id="94a5813a7bce919e5d661da4301af289" category="list-text">要上传证书，您需要服务器证书，证书专用密钥以及 CA 捆绑包（可选）。</block>
@@ -22737,7 +22718,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="8093bef8d3bd5322de90d79561037395" category="inline-link">TR-4626 ： StorageGRID 第三方和全局负载平衡器</block>
   <block id="a2c2070c2f3795327ecb2d6b0b1e4888" category="admonition">虽然建议使用 StorageGRID 负载平衡器服务来平衡负载，但您可能希望集成第三方负载平衡器。有关信息，请联系您的 NetApp 客户代表或参阅<block ref="ec679a3314262150343eb4fab3671478" category="inline-link-rx"></block>。</block>
   <block id="75d9f84a5b1a86714b17bfa534c9d736" category="section-title">我需要多少个负载平衡节点？</block>
-  <block id="4cdd2e050ab7da0c29f3507feee7e60a" category="paragraph">作为一般最佳实践， StorageGRID 系统中的每个站点都应包含两个或更多具有负载平衡器服务的节点。例如，一个站点可能包含两个网关节点，或者同时包含一个管理节点和一个网关节点。无论您使用的是 SG100 或 SG1000 服务设备，裸机节点还是基于虚拟机（ VM ）的节点，确保每个负载平衡节点都有足够的网络，硬件或虚拟化基础架构。</block>
   <block id="6c61fe5a02a47ca95d38321841f51067" category="section-title">什么是负载平衡器端点？</block>
   <block id="3d5fa7163e8081a30214dd5efe0a126c" category="paragraph">负载平衡器端点定义了传入和传出客户端应用程序请求用来访问包含负载平衡器服务的节点的端口和网络协议(HTTPS或HTTP)。端点还可以定义客户端类型(S3或Swift)、绑定模式以及允许或阻止的租户列表(可选)。</block>
   <block id="2a29698a5c2032db9dafd17b9dd5965d" category="paragraph">要创建负载平衡器端点，请选择*配置*&gt;*网络*&gt;*负载平衡器端点*或完成FabricPool 和S3设置向导。有关说明：</block>
@@ -22988,7 +22968,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="3a43707ad6464f3e0817b702e3658d4e" category="inline-link-macro">StorageGRID 负载平衡器端点</block>
   <block id="214d441362807b50e33b49ca9858ab14" category="paragraph">SelectObjectContent 请求必须发送到 <block ref="e90c5f84302a9cd3ea8c3fcd34402480" category="inline-link-macro-rx"></block>。</block>
   <block id="e7b6baffc07ac3e102e3240f21fce2e1" category="paragraph">端点使用的管理节点和网关节点必须为以下选项之一：</block>
-  <block id="b0564db3a76335b6e37f61495f24db01" category="list-text">SG100或SG1000设备节点</block>
   <block id="0619b09e18ecb0fc72deb974aae6865c" category="list-text">基于VMware的软件节点</block>
   <block id="3b02b98a6f9af9e1ab1fc2aa709b6619" category="list-text">运行已启用cgroup v2的内核的裸机节点</block>
   <block id="fde19c2bd549da587cc727edc21e60c3" category="paragraph">查询不能直接发送到存储节点。</block>
@@ -23226,8 +23205,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="15ce12269015ff944903c297a8012668" category="list-text">包括网关节点，管理节点或两者在内的 HA 组可为 S3 和 Swift 客户端提供高可用性数据连接。</block>
   <block id="6d61d35083f6f3cf58ed7f26ab13fdd8" category="list-text">仅包含管理节点的 HA 组可提供与网格管理器和租户管理器的高可用性连接。</block>
   <block id="7b3d111a92b1ea7fa6533a3a3ffab772" category="inline-link-macro">使用 S3 Select 的 S3 租户</block>
-  <block id="84e585176a63e5258061fe7c8f4da4d2" category="list-text">如果 HA 组仅包含 SG100 或 SG1000 设备以及基于 VMware 的软件节点，则可以为提供高可用性连接 <block ref="bad70b77831bec7b60632e888b282bde" category="inline-link-macro-rx"></block>。
-建议在使用 S3 Select 时使用 HA 组，但不要求使用 HA 组。</block>
   <block id="23d033b4c1918f0047093d92622dcb2f" category="section-title">如何创建 HA 组？</block>
   <block id="29f362143fa21fbe0214e69b272720d2" category="list-text">您可以为一个或多个管理节点或网关节点选择一个网络接口。您可以使用网格网络（ eth0 ）接口，客户端网络（ eth2 ）接口， VLAN 接口或已添加到节点的访问接口。</block>
   <block id="6445eac6ba15640447e4143f009e7460" category="admonition">如果某个接口具有DHCP分配的IP地址、则无法将其添加到HA组。</block>
@@ -23832,4 +23809,40 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="7fab435ddee33f90ad5e190ad86b8843" category="summary">了解如何安装、配置和使用StorageGRID设备硬件。</block>
   <block id="9283e244bcd98f1bdd350c1b4f2da148" category="doc">StorageGRID设备</block>
   <block id="aba4c14b1916186cd3b60772be91f848" category="list-text">导航到<block ref="4a12e34a57886922df81701f5c6f52a1" prefix=" " category="inline-code"></block> 并输入以下查询：<block ref="e72dbe21cf71a35756daaa57249906a8" prefix=" " category="inline-code"></block></block>
+  <block id="403cf786c7987932b2e3f8caa8ea8b0f" category="paragraph">(GET和GETNEXT)</block>
+  <block id="87df2c61f73bbeed66836564c4231f7e" category="paragraph">(陷阱和通知)</block>
+  <block id="b92ff8e60f07936caea3d653f48ec081" category="list-text">SG110和SG1100设备随附StorageGRID 11.8兼容BIOS固件。</block>
+  <block id="3188474dffec30423c0241f540c8634a" category="paragraph">30分钟到1小时、服务设备节点所需时间最多。</block>
+  <block id="90dfaf8536fdbb8b167b27e2db80f810" category="open-title">搜索集成端点</block>
+  <block id="41100908dbf511ffc6da6f3bac1e0b17" category="paragraph">对于搜索集成端点、您可以使用以下凭据：</block>
+  <block id="346a5b79b05ad450071759cf177ed2a6" category="open-title">CloudMirror复制端点</block>
+  <block id="641fa2d1d0fdac760ed92ca17ae31bce" category="paragraph">对于CloudMirror复制、您可以使用以下凭据：</block>
+  <block id="8e15698d6db873438a97c0e1076840db" category="open-title">Amazon SNS端点</block>
+  <block id="2d0c760db0609cc347465470bd6864c3" category="paragraph">对于Amazon SNS端点、您可以使用以下凭据：</block>
+  <block id="8bdc926a3688849f951a4bb6e969ecd0" category="paragraph">输入或上传搜索集成端点的凭据。</block>
+  <block id="6e08f21ffb1ce8be46f2584b87cdf0dd" category="paragraph">输入或上传CloudMirror复制端点的凭据。</block>
+  <block id="2e19a8640ae07ae454243e20399f8a72" category="paragraph">输入或上传Amazon SNS端点的凭据。</block>
+  <block id="b152356019144f89b31f96c196010a29" category="list-text">仅包含服务设备和基于VMware的软件节点的HA组可以为提供高可用性连接 <block ref="bad70b77831bec7b60632e888b282bde" category="inline-link-macro-rx"></block>。
+建议在使用 S3 Select 时使用 HA 组，但不要求使用 HA 组。</block>
+  <block id="6369300e84cadcabbf0cad1f5c6d1fe0" category="list-text">服务设备节点</block>
+  <block id="10435da69d4cd41e2c6f5e13aadb5fbe" category="list-text">负载平衡器端点是否将由使用 <block ref="88335399af1b3db2961d70c622c13344" category="inline-link-macro-rx"></block>，不能使用任何裸机节点的 IP 地址或 FQDN 。用于S3 Select的负载平衡器端点仅允许使用服务设备和基于VMware的软件节点。</block>
+  <block id="bf6a9db479978eb4f9d757484d56488a" category="list-text">服务设备</block>
+  <block id="96cf9724e85f455faaabbfe7263c2641" category="paragraph">作为一般最佳实践， StorageGRID 系统中的每个站点都应包含两个或更多具有负载平衡器服务的节点。例如，一个站点可能包含两个网关节点，或者同时包含一个管理节点和一个网关节点。无论您使用的是服务设备、裸机节点还是基于虚拟机(VM)的节点、请确保每个负载平衡节点都有足够的网络、硬件或虚拟化基础架构。</block>
+  <block id="768c56127fcc2636d57e4635785f71f3" category="inline-link">SG110和SG1100服务设备</block>
+  <block id="fee34e96097ce9794052b4aa47816540" category="list-text"><block ref="fee34e96097ce9794052b4aa47816540" category="inline-link-rx"></block></block>
+  <block id="d8eb0a72dfa8ed2d5ab5e115e3517823" category="inline-link">端口绑定模式(SG110和SG1100)</block>
+  <block id="34e6deded431afe26b1b395ef69f107d" category="list-text"><block ref="34e6deded431afe26b1b395ef69f107d" category="inline-link-rx"></block></block>
+  <block id="70bca0055a2d38054af0059da4e459ed" category="inline-link">SG110和SG1100</block>
+  <block id="0aef1c17638cdc5582a5d24fd9909ed0" category="list-text"><block ref="0aef1c17638cdc5582a5d24fd9909ed0" category="inline-link-rx"></block></block>
+  <block id="cf1c38b1c61dd66df00bd4b5d4470a89" category="paragraph">如果您要将StorageGRID 节点部署为虚拟机、并从NetApp ONTAP 系统分配存储、则表示您已确认卷未启用FabricPool 分层策略。例如、如果StorageGRID节点作为VMware主机上的虚拟机运行、请确保为该节点的数据存储库提供支持的卷未启用FabricPool分层策略。对 StorageGRID 节点使用的卷禁用 FabricPool 分层可简化故障排除和存储操作。</block>
+  <block id="6168c02d76fcf9da22bf4df750c2d4cc" category="list-text">适用于服务设备或SGF6112设备</block>
+  <block id="e3503aabb8264773a4c6b6a79786d0e3" category="paragraph"><block ref="e3503aabb8264773a4c6b6a79786d0e3" category="inline-link-rx"></block></block>
+  <block id="e993ee428a014c87f7a4d42b0b33858e" category="summary">要在服务设备上安装网关节点或管理节点、请使用该设备中提供的StorageGRID设备安装程序。</block>
+  <block id="7f332974566c3cbb54fa17185fc03dbe" category="paragraph">要在服务设备上安装StorageGRID软件、请执行以下操作：</block>
+  <block id="131b3f6f14041503df3c56ab94aad7e4" category="list-text">打开浏览器并输入服务设备的IP地址之一。</block>
+  <block id="63f4b50949264b8c54be43e2d12d082a" category="open-title">SG110或SG1100</block>
+  <block id="cadb1efbee8a60c6f70cf2cda5f8c041" category="list-text">按照说明安装新服务设备。请参见<block ref="ee00799cc8efda342e4e96e16e67c728" category="inline-link-rx"></block>。</block>
+  <block id="f7499813526e131b476c73f36c6a4c25" category="summary">您可以使用服务设备恢复VMware、Linux主机或服务设备上托管的发生故障的网关节点、发生故障的非主管理节点或发生故障的主管理节点。此操作步骤 是网格节点恢复操作步骤 的一个步骤。</block>
+  <block id="42315c8f319103d1f60342aa3fec351f" category="admonition">请勿在同一站点同时部署SG110和SG1100服务设备、也不要同时部署SG100和SG1000服务设备。可能会导致性能不可预测。</block>
+  <block id="cc4ebbff158fd83b1da3996f016b9fa7" category="paragraph">在以下情况下、您可以使用服务设备恢复发生故障的网格节点：</block>
 </blocks>

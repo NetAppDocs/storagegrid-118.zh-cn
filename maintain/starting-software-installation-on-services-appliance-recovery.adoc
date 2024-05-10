@@ -2,7 +2,7 @@
 permalink: maintain/starting-software-installation-on-services-appliance-recovery.html 
 sidebar: sidebar 
 keywords: storagegrid, recover, services appliance, start software installation 
-summary: 要在 SG100 或 SG1000 服务设备上安装网关节点或管理节点，请使用此设备上随附的 StorageGRID 设备安装程序。 
+summary: 要在服务设备上安装网关节点或管理节点、请使用该设备中提供的StorageGRID设备安装程序。 
 ---
 = 开始在服务设备上安装软件
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 要在 SG100 或 SG1000 服务设备上安装网关节点或管理节�
 
 
 [role="lead"]
-要在 SG100 或 SG1000 服务设备上安装网关节点或管理节点，请使用此设备上随附的 StorageGRID 设备安装程序。
+要在服务设备上安装网关节点或管理节点、请使用该设备中提供的StorageGRID设备安装程序。
 
 .开始之前
 * 设备安装在机架中、连接到您的网络并打开电源。
@@ -31,7 +31,7 @@ NOTE: 在制造过程中，服务设备会预加载最新版本的 StorageGRID �
 
 
 .关于此任务
-要在 SG100 或 SG1000 服务设备上安装 StorageGRID 软件，请执行以下操作：
+要在服务设备上安装StorageGRID软件、请执行以下操作：
 
 * 对于主管理节点，您可以指定节点的名称，然后上传相应的软件包（如果需要）。
 * 对于非主管理节点或网关节点，您可以指定或确认主管理节点的 IP 地址以及节点的名称。
@@ -41,7 +41,7 @@ NOTE: 在制造过程中，服务设备会预加载最新版本的 StorageGRID �
 
 
 .步骤
-. 打开浏览器并输入 SG100 或 SG1000 服务设备的 IP 地址之一。
+. 打开浏览器并输入服务设备的IP地址之一。
 +
 `https://_Controller_IP_:8443`
 

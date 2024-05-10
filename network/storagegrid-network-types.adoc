@@ -103,6 +103,7 @@ Eth2
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/hardware-description-sg6100.html["SGF6112存储设备"^]
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/hardware-description-sg6000.html["SG6000 存储设备"^]
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/hardware-description-sg5700.html["SG5700 存储设备"^]
+* https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/hardware-description-sg110-and-1100.html["SG110和SG1100服务设备"^]
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/hardware-description-sg100-and-1000.html["SG100 和 SG1000 服务设备"^]
 
 

@@ -23,7 +23,7 @@ summary: 您可以将多个管理节点和网关节点的网络接口分组到�
 
 * 包括网关节点，管理节点或两者在内的 HA 组可为 S3 和 Swift 客户端提供高可用性数据连接。
 * 仅包含管理节点的 HA 组可提供与网格管理器和租户管理器的高可用性连接。
-* 如果 HA 组仅包含 SG100 或 SG1000 设备以及基于 VMware 的软件节点，则可以为提供高可用性连接 link:../admin/manage-s3-select-for-tenant-accounts.html["使用 S3 Select 的 S3 租户"]。
+* 仅包含服务设备和基于VMware的软件节点的HA组可以为提供高可用性连接 link:../admin/manage-s3-select-for-tenant-accounts.html["使用 S3 Select 的 S3 租户"]。
 建议在使用 S3 Select 时使用 HA 组，但不要求使用 HA 组。
 
 

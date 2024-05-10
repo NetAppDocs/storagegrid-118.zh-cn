@@ -60,7 +60,7 @@ S3 或 Swift 客户端访问—负载平衡器服务
  a| 
 的 S3 客户端访问 link:../admin/manage-s3-select-for-tenant-accounts.html["S3 Select"]
  a| 
-* SG100 或 SG1000 设备
+* 服务设备
 * 基于 VMware 的软件节点
 
 

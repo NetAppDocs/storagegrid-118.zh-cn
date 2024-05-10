@@ -37,7 +37,7 @@ link:all-node-types-replacing-linux-node.html["更换 Linux 节点"]
 
 
  a| 
-SG100 和 SG1000 服务设备
+服务设备
  a| 
 link:replacing-failed-node-with-services-appliance.html["更换服务设备"]
 
