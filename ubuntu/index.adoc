@@ -44,7 +44,7 @@ summary: 按照以下简要步骤安装Ubuntu或Debian StorageGRID节点。
 
 * 使用标准流程编排框架(例如、Ands还是Puppet或Chef)实现自动化：
 +
-** 安装RHEL
+** 安装Ubuntu或Debian
 ** 配置网络和存储
 ** 安装容器引擎和StorageGRID主机服务
 ** 部署虚拟网格节点

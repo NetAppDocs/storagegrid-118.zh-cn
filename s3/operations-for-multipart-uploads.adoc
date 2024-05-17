@@ -31,9 +31,9 @@ summary: 本节介绍 StorageGRID 如何支持多部件上传操作。
 
 
 * 所有多部分上传操作均支持StorageGRID link:consistency-controls.html["一致性值"]。
+* 使用多部分上传载入对象时、 link:../admin/what-object-segmentation-is.html["对象分段阈值(1 GiB)"] 未应用。
 * 您可以根据需要使用 link:using-server-side-encryption.html["服务器端加密"] 多部分上传。要使用SSE (服务器端加密与StorageGRID管理的密钥)、您需要包括 `x-amz-server-side-encryption` 仅CreateMultipartUpload请求中的请求标头。要使用SSE-C (使用客户提供的密钥进行服务器端加密)、您可以在CreateMultipartUpload请求和后续每个UploadPart请求中指定相同的三个加密密钥请求标头。
-
-
++
 [cols="2a,3a"]
 |===
 | 操作 | 实施 
@@ -89,3 +89,4 @@ ListParts
 请参见 link:upload-part-copy.html["上传PartCopy"]
 
 |===
+

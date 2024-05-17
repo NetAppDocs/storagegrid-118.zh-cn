@@ -105,10 +105,6 @@
   <block id="7ba981622ca1c0a9fd1087a360161efe" category="paragraph">容器和区块不一定存储在同一个存储节点上。容器和分段可以存储在 ILM 规则中指定的存储池中的任何存储节点上。</block>
   <block id="b476824c1eb7a9441ca268db480f106f" category="paragraph">StorageGRID 系统会单独处理每个区块，并计入受管对象和存储对象等属性的数量。例如，如果存储在 StorageGRID 系统中的对象拆分为两个区块，则在载入完成后，受管对象的值将增加三个，如下所示：</block>
   <block id="4b19aed98748d98fae26c12341a3808b" category="paragraph"><block ref="ea6f38494bae41db8b8356e816b21c54" prefix="" category="inline-code"></block></block>
-  <block id="5670a55c2d12bd097067f67c1b0cd57d" category="paragraph">您可以通过确保以下各项来提高处理大型对象时的性能：</block>
-  <block id="c50246874f3ef5fe33cd7e0c1130e3a0" category="list-text">每个网关和存储节点都有足够的网络带宽来满足所需的吞吐量。例如，在 10 Gbps 以太网接口上配置单独的网格网络和客户端网络。</block>
-  <block id="ed054a2dcbaebcd3d01c379b58edff56" category="list-text">已部署足够多的网关和存储节点以满足所需的吞吐量。</block>
-  <block id="9283f4028ccbd82912208bf7a5d132fd" category="list-text">每个存储节点都有足够的磁盘I/O性能来满足所需的吞吐量。</block>
   <block id="0fc5a6b5097dfe267b97406b446e3ca7" category="summary">如果尝试发送AutoSupport软件包失败、StorageGRID系统会根据AutoSupport软件包的类型采取不同的操作。您可以通过选择支持&gt;&gt;工具&gt;&gt; AutoSupport &gt;&gt;结果来检查AutoSupport软件包的状态。</block>
   <block id="433fdcdd89fa69e3a6cc0d66071bbb25" category="doc">对AutoSupport软件包进行故障排除</block>
   <block id="54c8d34a7f45fa2284705d75ab8a555d" category="paragraph">如果尝试发送AutoSupport软件包失败、StorageGRID系统会根据AutoSupport软件包的类型采取不同的操作。您可以通过选择*support*&gt;*工具*&gt;* AutoSupport *&gt;*结果*来检查AutoSupport包的状态。</block>
@@ -23845,4 +23841,7 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="f7499813526e131b476c73f36c6a4c25" category="summary">您可以使用服务设备恢复VMware、Linux主机或服务设备上托管的发生故障的网关节点、发生故障的非主管理节点或发生故障的主管理节点。此操作步骤 是网格节点恢复操作步骤 的一个步骤。</block>
   <block id="42315c8f319103d1f60342aa3fec351f" category="admonition">请勿在同一站点同时部署SG110和SG1100服务设备、也不要同时部署SG100和SG1000服务设备。可能会导致性能不可预测。</block>
   <block id="cc4ebbff158fd83b1da3996f016b9fa7" category="paragraph">在以下情况下、您可以使用服务设备恢复发生故障的网格节点：</block>
+  <block id="d59d870eb266e77446ed7095c1c29700" category="inline-link-macro">对象分段阈值(1 GiB)</block>
+  <block id="3d030c22adcff0392bf00fa77ac1ce73" category="list-text">使用多部分上传载入对象时、 <block ref="a87bfe25dad20d25eeb0de0278a2ca04" category="inline-link-macro-rx"></block> 未应用。</block>
+  <block id="b9bc547f448a534063774563cb84fe3e" category="list-text">安装Ubuntu或Debian</block>
 </blocks>

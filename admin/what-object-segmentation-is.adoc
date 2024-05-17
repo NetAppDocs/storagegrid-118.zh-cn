@@ -24,10 +24,3 @@ image::../media/object_segmentation_diagram.gif[对象细分工作流]
 StorageGRID 系统会单独处理每个区块，并计入受管对象和存储对象等属性的数量。例如，如果存储在 StorageGRID 系统中的对象拆分为两个区块，则在载入完成后，受管对象的值将增加三个，如下所示：
 
 `segment container + segment 1 + segment 2 = three stored objects`
-
-您可以通过确保以下各项来提高处理大型对象时的性能：
-
-* 每个网关和存储节点都有足够的网络带宽来满足所需的吞吐量。例如，在 10 Gbps 以太网接口上配置单独的网格网络和客户端网络。
-* 已部署足够多的网关和存储节点以满足所需的吞吐量。
-* 每个存储节点都有足够的磁盘I/O性能来满足所需的吞吐量。
-
