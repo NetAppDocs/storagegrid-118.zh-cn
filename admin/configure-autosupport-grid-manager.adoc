@@ -190,10 +190,10 @@ Port:: 用于连接到其他AutoSupport 目标服务器的端口。对于HTTP、
 
 如果您在中通过代理配置AutoSupport交付、则可以将E系列设备中的AutoSupport软件包包含在StorageGRID AutoSupport中 link:../admin/sending-eseries-autosupport-messages-through-storagegrid.html["SANtricity 系统管理器"]。
 
-StorageGRID AutoSupport 不会报告硬件问题、例如DIMM或主机接口卡(Host Interface Card、HIC)故障。但是、某些组件可能会触发故障 link:../monitor/alerts-reference.html["硬件警报"]。对于带有底板管理控制器(BMC)的StorageGRID 设备、例如SG100、SG1000、SG6060或SGF6024、您可以配置电子邮件和SNMP陷阱来报告硬件故障：
+StorageGRID AutoSupport 不会报告硬件问题、例如DIMM或主机接口卡(Host Interface Card、HIC)故障。但是、某些组件可能会触发故障 link:../monitor/alerts-reference.html["硬件警报"]。对于带有底板管理控制器(BMC)的StorageGRID设备、您可以配置电子邮件和SNMP陷阱来报告硬件故障：
 
 * https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/setting-up-email-notifications-for-alerts.html["为BMC警报设置电子邮件通知"^]
-* https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/configuring-snmp-settings-for-bmc.html["配置BMC的SNMP设置"^] 对于SG6000-CN控制器或SG100和SG1000服务设备
+* https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/configuring-snmp-settings-for-bmc.html["配置BMC的SNMP设置"^]
 
 
 .相关信息

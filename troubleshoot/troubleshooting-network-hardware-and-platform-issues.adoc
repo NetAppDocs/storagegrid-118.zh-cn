@@ -180,6 +180,7 @@ NOTE: 这些步骤仅适用于因StorageGRID 设备上的FEC不匹配而导致�
 .. 检查从设备到交换机的缆线的物理完整性。
 .. 如果要更改FEC设置以尝试解决NRER警报，请首先确保在StorageGRID 设备安装程序的“链接配置”页面上将设备配置为*Auto*模式(请参阅设备说明：
 +
+*** https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/changing-link-configuration-of-sgf6112-appliance.html["SG6160"^]
 *** https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/changing-link-configuration-of-sgf6112-appliance.html["GF6112"^]
 *** https://docs.netapp.com/us-en/storagegrid-appliances/sg6000/changing-link-configuration-of-sg6000-cn-controller.html["SG6000"^]
 *** https://docs.netapp.com/us-en/storagegrid-appliances/sg5700/changing-link-configuration-of-e5700sg-controller.html["SG5700"^]

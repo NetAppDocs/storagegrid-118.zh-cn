@@ -52,6 +52,13 @@ NOTE: 在问题描述 之后 `shutdown -h now` 命令时、必须重新启动设
 +
 [role="tabbed-block"]
 ====
+.SG6160
+--
+.. 关闭SG6100-CN存储控制器的电源。
+.. 等待SG6100-CN存储控制器上的蓝色电源LED熄灭。
+
+
+--
 .GF6112
 --
 .. 关闭设备电源。
@@ -98,7 +105,7 @@ NOTE: 在问题描述 之后 `shutdown -h now` 命令时、必须重新启动设
 
 
 .相关信息
-https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/index.html["SGF6112存储设备"^]
+https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/index.html["SGF6112和SG6160存储设备"^]
 
 https://docs.netapp.com/us-en/storagegrid-appliances/sg6000/index.html["SG6000 存储设备"^]
 

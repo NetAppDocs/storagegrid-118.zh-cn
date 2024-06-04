@@ -23,7 +23,7 @@ summary: 当存储节点达到容量时，您必须通过添加新存储来扩�
 
 == 添加存储扩展架
 
-某些 StorageGRID 设备存储节点（例如 SG6060 ）可以支持更多存储架。如果您的 StorageGRID 设备具有扩展功能，但尚未扩展到最大容量，则可以添加存储架以增加容量。请参见的说明 link:../expand/index.html["扩展 StorageGRID 系统"]。
+某些StorageGRID设备存储节点(例如SG6060或SG6160)可以支持更多存储架。如果您的 StorageGRID 设备具有扩展功能，但尚未扩展到最大容量，则可以添加存储架以增加容量。请参见的说明 link:../expand/index.html["扩展 StorageGRID 系统"]。
 
 
 

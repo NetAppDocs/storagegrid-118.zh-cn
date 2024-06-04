@@ -74,6 +74,12 @@ NOTE: 如果您选择了问题描述 `service servermanager stop` 命令要停�
 ... 等待蓝色电源 LED 熄灭。
 
 
+** 对于SG6160设备
++
+... 关闭SG6100-CN存储控制器的电源。
+... 等待SG6100-CN存储控制器上的蓝色电源LED熄灭。
+
+
 ** 对于 SG6000 设备
 +
 ... 等待存储控制器背面的绿色缓存活动 LED 熄灭。
@@ -101,7 +107,7 @@ NOTE: 如果您选择了问题描述 `service servermanager stop` 命令要停�
 
 
 .相关信息
-https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/index.html["SGF6112存储设备"^]
+https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/index.html["SGF6112和SG6160存储设备"^]
 
 https://docs.netapp.com/us-en/storagegrid-appliances/sg6000/index.html["SG6000 存储设备"^]
 

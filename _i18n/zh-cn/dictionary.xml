@@ -1634,11 +1634,9 @@ x-NetApp-asUP型号名称+</block>
   <block id="bb3d04c353b1d0fe9c77e4a9a3e08a6c" category="paragraph">您可以使用SANtricity为每个存储设备启用AutoSupport。您可以在初始设备设置期间或安装设备后配置SANtricity AutoSupport ：</block>
   <block id="09caf66b6805a2aa33a74f3445899a62" category="paragraph">如果您在中通过代理配置AutoSupport交付、则可以将E系列设备中的AutoSupport软件包包含在StorageGRID AutoSupport中 <block ref="a21e08bb91b102c374a379f61adc6a68" category="inline-link-macro-rx"></block>。</block>
   <block id="86384f421619c7ec8647205f4caef951" category="inline-link-macro">硬件警报</block>
-  <block id="c2af3e31bb3938e18f6b0b814b409834" category="paragraph">StorageGRID AutoSupport 不会报告硬件问题、例如DIMM或主机接口卡(Host Interface Card、HIC)故障。但是、某些组件可能会触发故障 <block ref="af763b3bf377ef9fdbd7831bae2c7861" category="inline-link-macro-rx"></block>。对于带有底板管理控制器(BMC)的StorageGRID 设备、例如SG100、SG1000、SG6060或SGF6024、您可以配置电子邮件和SNMP陷阱来报告硬件故障：</block>
   <block id="1d46ac87d12ade0475315e467619d84f" category="inline-link">为BMC警报设置电子邮件通知</block>
   <block id="31a1077c0c139a7e231c635bbc6b356b" category="list-text"><block ref="31a1077c0c139a7e231c635bbc6b356b" category="inline-link-rx"></block></block>
   <block id="8c40c4c139d612d7304b70e6f0cb8c7c" category="inline-link">配置BMC的SNMP设置</block>
-  <block id="86ff0fe67394e4fa17e9b6501999570b" category="list-text"><block ref="3948ad6c249459b7063c84f81f42b9db" category="inline-link-rx"></block> 对于SG6000-CN控制器或SG100和SG1000服务设备</block>
   <block id="f4d1718476f238773172cc8143587c05" category="paragraph"><block ref="f4d1718476f238773172cc8143587c05" category="inline-link-rx"></block></block>
   <block id="d888e88f01f55cf8f0a34792563cd201" category="summary">链路成本可用于确定存在两个或更多数据中心站点时哪个数据中心站点提供请求的服务的优先级。您可以调整链路成本以反映站点之间的延迟。</block>
   <block id="fea922a0192ad3cc3b4770255ffb160c" category="doc">管理链路成本</block>
@@ -3246,7 +3244,6 @@ x-NetApp-asUP型号名称+</block>
   <block id="787fef0a119241554b1e2d1692dc3b04" category="list-text">99 ：存储控制器架</block>
   <block id="593fd68194186fa06aae2bcfa1c12e23" category="list-text">0 ：第一个扩展架</block>
   <block id="390572e745bd63bc546eb1e15646a5e8" category="list-text">1 ：第二个扩展架</block>
-  <block id="34f98aaaa70e537c3204a19b8c864e11" category="paragraph">* 注： * 扩展架仅适用于 SG6060 。</block>
   <block id="ead199e1741e786212f27e95d9b8851f" category="paragraph">磁盘架状态</block>
   <block id="cfa18c126baa08d4eff4b3a8ff8bf776" category="paragraph">存储架的整体状态。</block>
   <block id="2cff123344a0955a8976355fe815bc31" category="paragraph">IOM 状态</block>
@@ -12560,8 +12557,6 @@ VM_API_Gateway</block>
   <block id="4c08a39eba8bc369d32e0b777bd939d5" category="list-text">登录到主机操作系统。</block>
   <block id="cab201b4a19b794f81a5a309cc21d97f" category="list-text">停止节点：<block ref="e6b4e0ee65fecc871f61afba7d13bbaf" prefix=" " category="inline-code"></block></block>
   <block id="d344629b7a7ec5c5a37aa64536d54307" category="list-text">关闭主机操作系统。</block>
-  <block id="3d90c5bb70f82caac90bbdc4b538e9ef" category="inline-link">SGF6112存储设备</block>
-  <block id="a3018b6bc178a6b1fd557e47f4a94b22" category="paragraph"><block ref="a3018b6bc178a6b1fd557e47f4a94b22" category="inline-link-rx"></block></block>
   <block id="f7a682e5190f72fc74656c0d9aa3fc71" category="inline-link">SG6000 存储设备</block>
   <block id="4e948d08c4438e5bbc4599456d998eb8" category="paragraph"><block ref="4e948d08c4438e5bbc4599456d998eb8" category="inline-link-rx"></block></block>
   <block id="e779f92ce3680c812c26f8bab62627f1" category="inline-link">SG5700 存储设备</block>
@@ -20567,7 +20562,6 @@ HA组是一组节点、每个节点都包含StorageGRID 负载平衡器服务。
   <block id="09e91e9533de61221745c8e99edc073c" category="inline-link-macro">添加对象容量的准则</block>
   <block id="9802525c216e9a62d1507f773c521ffa" category="paragraph">在添加存储卷之前，请查看 <block ref="cc67dbb4e97043c00aebb97ddc580449" category="inline-link-macro-rx"></block> 确保您知道在何处添加卷以满足 ILM 策略的要求。</block>
   <block id="80c41098192177786ef3a9e33a7ee233" category="inline-link">将扩展架添加到已部署的 SG6060</block>
-  <block id="cf128caf23c0bb531d7cebb00b1f1e8f" category="admonition">这些说明仅适用于基于软件的存储节点。请参见<block ref="80939074506991608b6e5cc84f728c9b" category="inline-link-rx"></block> 了解如何通过安装扩展架向 SG6060 添加存储卷。无法扩展其他设备存储节点。</block>
   <block id="23abdd34ef84f4aef0cd76a623df7bb3" category="paragraph">存储节点的底层存储分为多个存储卷。存储卷是基于块的存储设备，由 StorageGRID 系统格式化并挂载以存储对象。每个存储节点最多可支持 16 个存储卷，在网格管理器中称为 _object stores_ 。</block>
   <block id="bd236d9d3bcb1d3c04b6cc8eb036653a" category="admonition">对象元数据始终存储在对象存储 0 中。</block>
   <block id="a5f6c2ca086c7266530d1fa443b47f9f" category="paragraph">每个对象存储都挂载在与其 ID 对应的卷上。例如、ID为0000的对象存储对应于<block ref="fb8e0763a6ea6baa7d3ce4773c2ef12d" prefix=" " category="inline-code"></block> 挂载点。</block>
@@ -22895,7 +22889,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="547b9db78fa3732c6c65d9a7f2511a95" category="inline-link-macro">扩展 StorageGRID 系统</block>
   <block id="f63f1bc1be248c47f0960eb39d80d3f8" category="paragraph">每个存储节点均支持最大数量的存储卷。定义的最大值因平台而异。如果存储节点包含的存储卷数少于最大数量，则可以添加卷以增加其容量。请参见的说明 <block ref="ed7fb2693d9c519671d6120bad3f19e1" category="inline-link-macro-rx"></block>。</block>
   <block id="b99c8a2197156d33f316deb2c0d1df35" category="section-title">添加存储扩展架</block>
-  <block id="63b6998560d8d9ca9a59f003536045ed" category="paragraph">某些 StorageGRID 设备存储节点（例如 SG6060 ）可以支持更多存储架。如果您的 StorageGRID 设备具有扩展功能，但尚未扩展到最大容量，则可以添加存储架以增加容量。请参见的说明 <block ref="ed7fb2693d9c519671d6120bad3f19e1" category="inline-link-macro-rx"></block>。</block>
   <block id="bda90421676565ea5bce60929e24b214" category="section-title">添加存储节点</block>
   <block id="2f89e09d98b36823a3fd4f2c40508d58" category="paragraph">您可以通过添加存储节点来增加存储容量。添加存储时，必须仔细考虑当前活动的 ILM 规则和容量要求。请参见的说明 <block ref="ed7fb2693d9c519671d6120bad3f19e1" category="inline-link-macro-rx"></block>。</block>
   <block id="d5103c9d8c738419b383537e4dcc9355" category="summary">在启用单点登录 \ （ SSO\ ）之前，您必须确认至少有一个联合用户可以登录到网格管理器以及任何现有租户帐户的租户管理器。</block>
@@ -23844,4 +23837,23 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="d59d870eb266e77446ed7095c1c29700" category="inline-link-macro">对象分段阈值(1 GiB)</block>
   <block id="3d030c22adcff0392bf00fa77ac1ce73" category="list-text">使用多部分上传载入对象时、 <block ref="a87bfe25dad20d25eeb0de0278a2ca04" category="inline-link-macro-rx"></block> 未应用。</block>
   <block id="b9bc547f448a534063774563cb84fe3e" category="list-text">安装Ubuntu或Debian</block>
+  <block id="7d08f88518a75f13c2aaf426eed55167" category="paragraph">*注：*扩展架仅适用于SG6060和SG6160。</block>
+  <block id="aae678bcd23a7d500342421ad9d9864c" category="inline-link">SG6160存储设备</block>
+  <block id="ea4bf3a14e7c1a64f54a57f2f3a730c6" category="list-text"><block ref="ea4bf3a14e7c1a64f54a57f2f3a730c6" category="inline-link-rx"></block></block>
+  <block id="c082da62f70f3630c9cdbb2f70e25ceb" category="inline-link">端口绑定模式(SG6160)</block>
+  <block id="e541e6a8ce71ad9dd582a3851dadc51f" category="list-text"><block ref="e541e6a8ce71ad9dd582a3851dadc51f" category="inline-link-rx"></block></block>
+  <block id="3d653a616afd117e668b1ec6d4cda21b" category="open-title">SG6160</block>
+  <block id="a399fc8c79370132b4648e7f73668265" category="list-text">关闭SG6100-CN存储控制器的电源。</block>
+  <block id="8ea1a38fb7663ed295555651bae87e9f" category="list-text">等待SG6100-CN存储控制器上的蓝色电源LED熄灭。</block>
+  <block id="53c35213614b3c6e296f44acde145c17" category="inline-link">SGF6112和SG6160存储设备</block>
+  <block id="37451eec9e8dfab4e834fff2248ce03e" category="list-text"><block ref="37451eec9e8dfab4e834fff2248ce03e" category="inline-link-rx"></block></block>
+  <block id="cba071db2e6e984402f3ea1cbb611840" category="list-text">对于SG6160设备</block>
+  <block id="6e6d49b787447699636bcd1167c466b2" category="paragraph">StorageGRID AutoSupport 不会报告硬件问题、例如DIMM或主机接口卡(Host Interface Card、HIC)故障。但是、某些组件可能会触发故障 <block ref="af763b3bf377ef9fdbd7831bae2c7861" category="inline-link-macro-rx"></block>。对于带有底板管理控制器(BMC)的StorageGRID设备、您可以配置电子邮件和SNMP陷阱来报告硬件故障：</block>
+  <block id="3948ad6c249459b7063c84f81f42b9db" category="list-text"><block ref="3948ad6c249459b7063c84f81f42b9db" category="inline-link-rx"></block></block>
+  <block id="c74fee6cdbf35f73120aa3b6b9b8b6e1" category="paragraph">某些StorageGRID设备存储节点(例如SG6060或SG6160)可以支持更多存储架。如果您的 StorageGRID 设备具有扩展功能，但尚未扩展到最大容量，则可以添加存储架以增加容量。请参见的说明 <block ref="ed7fb2693d9c519671d6120bad3f19e1" category="inline-link-macro-rx"></block>。</block>
+  <block id="e4c94823822eb560adf47c0c8c4401e4" category="list-text">您可以向每个SG6160设备添加一个或两个扩展架。每个扩展架可添加60个存储卷。如果安装了这两个扩展架、SG6160总共可支持180个存储卷。</block>
+  <block id="002c5b52cccb8df3acc3fed409d4cf3f" category="inline-link">将扩展架添加到已部署的SG6160</block>
+  <block id="7e21d6041a09b9b339ad7be5802c9e75" category="list-text">要向SG6160存储设备添加一个或两个扩展架、请转至<block ref="ef34b01068ea7c3e677ab9e27b749868" category="inline-link-rx"></block></block>
+  <block id="2be6ad5e2e5b8183e8ce21da7c80bb45" category="admonition">这些说明仅适用于基于软件的存储节点。请参见<block ref="80939074506991608b6e5cc84f728c9b" category="inline-link-rx"></block> 或<block ref="ef34b01068ea7c3e677ab9e27b749868" category="inline-link-rx"></block> 了解如何通过安装扩展架向SG6060或SG6160添加存储卷。无法扩展其他设备存储节点。</block>
+  <block id="db37b96288f306898bba4ed4e564e69c" category="list-text"><block ref="db37b96288f306898bba4ed4e564e69c" category="inline-link-rx"></block></block>
 </blocks>

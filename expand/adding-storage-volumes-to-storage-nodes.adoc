@@ -17,7 +17,7 @@ summary: 您可以通过添加其他存储卷来扩展存储卷数量不超过 1
 在添加存储卷之前，请查看 link:guidelines-for-adding-object-capacity.html["添加对象容量的准则"] 确保您知道在何处添加卷以满足 ILM 策略的要求。
 
 
-NOTE: 这些说明仅适用于基于软件的存储节点。请参见 https://docs.netapp.com/us-en/storagegrid-appliances/sg6000/adding-expansion-shelf-to-deployed-sg6060.html["将扩展架添加到已部署的 SG6060"^] 了解如何通过安装扩展架向 SG6060 添加存储卷。无法扩展其他设备存储节点。
+NOTE: 这些说明仅适用于基于软件的存储节点。请参见 https://docs.netapp.com/us-en/storagegrid-appliances/sg6000/adding-expansion-shelf-to-deployed-sg6060.html["将扩展架添加到已部署的 SG6060"^] 或 https://docs.netapp.com/us-en/storagegrid-appliances/sg6100/adding-expansion-shelf-to-deployed-sg6160.html["将扩展架添加到已部署的SG6160"^] 了解如何通过安装扩展架向SG6060或SG6160添加存储卷。无法扩展其他设备存储节点。
 
 .关于此任务
 存储节点的底层存储分为多个存储卷。存储卷是基于块的存储设备，由 StorageGRID 系统格式化并挂载以存储对象。每个存储节点最多可支持 16 个存储卷，在网格管理器中称为 _object stores_ 。
