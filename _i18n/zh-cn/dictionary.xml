@@ -23868,4 +23868,9 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="dc6774fa8560c050e29c019ef5f6960d" category="list-text">关闭控制器架上的两个电源开关、然后等待控制器架上的所有LED熄灭。</block>
   <block id="f3d66eb150682e2a60af093e5d16adc7" category="inline-link">SG工具</block>
   <block id="d3a11ed12eda956eb456e5ddb9b08abe" category="paragraph"><block ref="d3a11ed12eda956eb456e5ddb9b08abe" category="inline-link-rx"></block></block>
+  <block id="4ececd4faa0ee1692a44e0e76c58a432" category="summary">了解如何使用网格管理器从BlueXP  管理StorageGRID系统、以及如何使用BlueXP的数据服务进行备份、数据分层等。</block>
+  <block id="f0a859d6d1882a29d9e151a82ea1bdce" category="doc">如何使用BlueXP  管理StorageGRID</block>
+  <block id="e49fe84ab9de0d0293be60cd1cd89c71" category="inline-link">使用BlueXP进行StorageGRID管理</block>
+  <block id="68fca0b5ebd1ba543c02e3996102d3a7" category="paragraph">请访问<block ref="153e89292eececc83574f107181d8262" category="inline-link-rx"></block> 、了解如何使用网格管理器从BlueXP  管理StorageGRID系统、以及如何使用BlueXP的数据服务进行备份、数据分层等。</block>
+  <block id="0bbd35506c5fd92ca668359a77366235" category="sidebar">StorageGRID和BlueXP </block>
 </blocks>

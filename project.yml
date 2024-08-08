@@ -385,6 +385,8 @@ sidebar:
       url: "/maintain/how-site-recovery-is-performed-by-technical-support.html"
   - title: 启用StorageGRID
     url: "/storagegrid-enable.html"
+  - title: StorageGRID和BlueXP 
+    url: "/storagegrid-bluexp.html"
   - title: 其他版本
     url: "/earlier-versions.html"
   - title: 法律声明
