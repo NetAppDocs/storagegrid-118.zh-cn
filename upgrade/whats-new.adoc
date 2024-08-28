@@ -42,6 +42,12 @@ FIPS支持:: 支持FIPS 140-2验证加密法。
 == 配置和管理
 
 网格范围的一致性默认值:: 您可以更改 link:../s3/consistency-controls.html["网格范围的默认一致性"] 使用的网格管理器或网格配置端点 link:../admin/using-grid-management-api.html["网格管理私有API"]。新的默认值将应用于更改后创建的分段。
+默认审核目标:: StorageGRID 11.8的全新安装默认为本地节点审核目标。以前，审核消息(`/var/local/log/audit.log`仅发送到管理节点上的审核日志)。
++
+--
+有关更改审核日志目标的信息，请参见link:../monitor/configure-audit-messages.html#Select-audit-information-destinations["选择审核信息目标"]。
+
+--
 ILM策略标记:: 允许使用存储分段标记控制每个存储分段的ILM策略。可以同时存在多个活动和非活动ILM策略。请参见 link:../ilm/ilm-policy-overview.html["ILM策略：概述"]。
 Kafka端点:: 支持的Kafka端点 link:../tenant/understanding-notifications-for-buckets.html["存储分段事件通知"]。
 用于管理接口流量的负载平衡器:: 创建负载平衡器端点以管理管理节点上的管理接口工作负载。请参见 link:../admin/managing-load-balancing.html["负载平衡注意事项"]。作为此更改的一部分、现在在为S3或Swift客户端访问创建HTTPS负载平衡器端点时、您可以使用网格管理器和租户管理器端口443、8443和9443。

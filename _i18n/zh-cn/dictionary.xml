@@ -3953,7 +3953,6 @@ NetApp.storagegrid</block>
   <block id="d88853528fd56c72f54f04de9e9fba69" category="admonition">只有在配置了外部系统日志服务器后、某些目标才可用。</block>
   <block id="2f6e8bdc6346bb032a4b780d4060113c" category="list-text">在审核和系统日志服务器页面上、选择审核信息的目标。</block>
   <block id="5f3372598a7e4ea4cd6e98baab645ff4" category="admonition">*仅限本地节点*和*外部系统日志服务器*通常可提供更好的性能。</block>
-  <block id="fdb2bf60b14a38fc76e2aa2751ab1fee" category="paragraph">仅限本地节点</block>
   <block id="e8aa24b17c01c7f281b3c456e7820c8f" category="paragraph">审核消息、安全事件日志和应用程序日志不会发送到管理节点。而是仅保存在生成这些卷的节点("本地节点")上。在每个本地节点上生成的审核信息存储在中<block ref="bc9191d963b550670854df9485545416" prefix=" " category="inline-code"></block></block>
   <block id="3b8093e965fbf0247bee9e19ad740bc4" category="paragraph">*注意*：StorageGRID会定期轮换删除本地日志以释放空间。当节点的日志文件达到 1 GB 时，系统将保存现有文件并启动新的日志文件。日志的轮换限制为 21 个文件。创建日志文件的第 22 版时，将删除最早的日志文件。每个节点平均存储约 20 GB 的日志数据。</block>
   <block id="38319ee01166f2ff92e525904d7b73a0" category="paragraph">管理节点/本地节点</block>
@@ -23873,4 +23872,8 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="e49fe84ab9de0d0293be60cd1cd89c71" category="inline-link">使用BlueXP进行StorageGRID管理</block>
   <block id="68fca0b5ebd1ba543c02e3996102d3a7" category="paragraph">请访问<block ref="153e89292eececc83574f107181d8262" category="inline-link-rx"></block> 、了解如何使用网格管理器从BlueXP  管理StorageGRID系统、以及如何使用BlueXP的数据服务进行备份、数据分层等。</block>
   <block id="0bbd35506c5fd92ca668359a77366235" category="sidebar">StorageGRID和BlueXP </block>
+  <block id="6057254a4d5677aac904869e476324a4" category="paragraph">仅本地节点(默认)</block>
+  <block id="a2e27e1c9f8243051979f9a4ccf48fe5" category="list-text">默认审核目标</block>
+  <block id="279ad737122edf40bbd3d46715424816" category="list-text">StorageGRID 11.8的全新安装默认为本地节点审核目标。以前，审核消息<block ref="e674b907872c88ac8370567f44423638" prefix="(" category="inline-code"></block>仅发送到管理节点上的审核日志)。</block>
+  <block id="8f1a1fc584955802d03b05fb7d30309d" category="paragraph">有关更改审核日志目标的信息，请参见<block ref="eb9ec111efb5942e3d3bd0a86d72b7dc" category="inline-link-macro-rx"></block>。</block>
 </blocks>
