@@ -1058,7 +1058,6 @@ AutoSupport放置文件名+
 AutoSupport压缩大小+
 AutoSupport解压缩大小+
 总收集时间(毫秒)</block>
-  <block id="f4d72d97033405f7d862c1a7b5f484d9" category="paragraph">AutoSupport历史记录文件</block>
   <block id="ba505a71998ddceec6eec51fc1e3932d" category="paragraph">AutoSupport.XML</block>
   <block id="0d627a769e3b47db8502d4a046ae1212" category="paragraph">节点+
 用于联系支持部门的协议+
@@ -1131,7 +1130,6 @@ Swift Write ACL Configuration +
   <block id="c1775704f8911de8db8b3f78e5b98971" category="paragraph">ILM指标信息文件。包含每个节点的ILM评估速率以及网格范围指标。</block>
   <block id="4c081411491598226182197ee204fbb9" category="paragraph">ILM。XML</block>
   <block id="1608f217dc0a47f7f72a730a8d6124dd" category="paragraph">ILM原始XML</block>
-  <block id="12a55c4380ac5cb1308558b77c615a63" category="paragraph">ILM活动策略文件。包含有关活动ILM策略的详细信息、例如存储池ID、载入行为、筛选器、规则和问题描述。</block>
   <block id="00bd62ef1f02aa8c86268175e45f30a9" category="paragraph">Log.TGZ</block>
   <block id="0d8ad07f729b4d37d3a83f5c1433c1d3" category="paragraph">可下载的日志文件。包含<block ref="da63af0129b9e737c56f070a29e9c107" prefix=" " category="inline-code"></block> 和<block ref="1359bd8f9e3125ff62f5b0e53b2a06b2" prefix=" " category="inline-code"></block> 每个节点。</block>
   <block id="52524c4ea2186332605b0d87e88655f1" category="paragraph">Manifest.XML</block>
@@ -1594,7 +1592,6 @@ x-NetApp-asUP型号名称+</block>
   <block id="78cc9a767bd4de562f1be5bed46c0a46" category="paragraph">您可以随时禁用每周AutoSupport软件包的自动发送功能。</block>
   <block id="edb7278c8efb0bb990ab70b5fa0f2bca" category="list-text">清除*启用每周AutoSupport *复选框。</block>
   <block id="10055564c024a1426981ce3999a413c3" category="section-title">禁用事件触发的AutoSupport</block>
-  <block id="0657c1f4d13905929ba826bb23ee8975" category="paragraph">默认情况下、StorageGRID系统配置为每小时或在发生重要警报或其他重大系统事件时向技术支持发送一次AutoSupport软件包。</block>
   <block id="6ec34d4dfe6af88d37f58f463c82dbd1" category="paragraph">您可以随时禁用事件触发的AutoSupport。</block>
   <block id="7311fb484333bd132bc07957481552e3" category="list-text">清除*启用事件触发的AutoSupport *复选框。</block>
   <block id="6b24738503e161633995fbad9bcc321b" category="section-title">启用 AutoSupport On Demand</block>
@@ -11597,7 +11594,6 @@ VM_API_Gateway</block>
   <block id="aa8824f710e7764401a646dd5708b99b" category="list-text">重新启动已完成</block>
   <block id="9dcb5e0f08e6f451ba450fe0a3dcabec" category="section-title">停止滚动重新启动操作步骤</block>
   <block id="a76ba97236531c14f3e545e4a1979b33" category="paragraph">您可以从主管理节点停止滚动重新启动操作步骤。停止操作步骤后、状态为"正在停止服务"、"正在重新启动系统"或"正在启动服务"的所有节点都将完成重新启动操作。但是、这些节点将不再作为操作步骤的一部分进行跟踪。</block>
-  <block id="f825d3105cb7c895ae9c8d0972cc378c" category="list-text">从*Monitor reboot (监视器重新引导)*步骤中，选择*Stop reboot (停止重新引导)*。</block>
   <block id="472453d98a7bad5a11d90232036d1819" category="summary">或者，您也可以在出现故障的主管理节点上保留 Prometheus 维护的历史指标。只有当您的 StorageGRID 系统包含另一个管理节点时，才能还原 Prometheus 指标。</block>
   <block id="99fb5d421a4f55c7ebc77ff69be21ab0" category="doc">恢复主管理节点时还原 Prometheus 指标</block>
   <block id="2eeb8e368ac24bb472753e90618ba625" category="list-text">已恢复的管理节点已安装并正在运行。</block>
@@ -23428,10 +23424,8 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="791b07d76fdf6a38c54ddfdd97b765e2" category="list-text">(可选)输入代理服务器的用户名和密码。</block>
   <block id="e033d5f2462551e9903434736cfaafb2" category="paragraph">如果代理服务器不需要用户名或密码、请将这些字段留空。</block>
   <block id="36ddaebda56a8c215a8dfff5eb57566d" category="list-text">选择以下选项之一：</block>
-  <block id="d409ea55b5fbe64875395ca54ef1297f" category="list-text">如果要保护与管理员代理的连接，请选择*验证证书*。上传CA分发包以验证管理代理服务器提供的SSL证书的真实性。</block>
   <block id="137cb49314d7900af126e1051f835823" category="admonition">如果验证了代理证书、则AutoSupport On Demand、E系列AutoSupport到StorageGRID以及StorageGRID升级页面上的更新路径确定将不起作用。</block>
   <block id="9e5d80f44cfdfa5cb86f091585f09559" category="paragraph">上载CA分发包后、将显示其元数据。</block>
-  <block id="5a3a87e2f2fa8847e4f59567934c2020" category="list-text">如果在与管理代理服务器通信时不想验证证书，请选择*不验证证书*。</block>
   <block id="b18892a1fe6cb35b011c8785cbd7a8b7" category="paragraph">保存管理代理后、将配置管理节点与技术支持之间的代理服务器。</block>
   <block id="e26ec55466797d64707b046e78d62c79" category="list-text">如果需要禁用管理员代理，请清除*启用管理员代理*复选框，然后选择*保存*。</block>
   <block id="e3fa6319cd9bab04b5326eba1d29abbf" category="summary">在开始使用网格联盟时、请查看跨网格复制和StorageGRID CloudMirror复制服务之间的相似之处和不同之处。</block>
@@ -23876,4 +23870,15 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="a2e27e1c9f8243051979f9a4ccf48fe5" category="list-text">默认审核目标</block>
   <block id="279ad737122edf40bbd3d46715424816" category="list-text">StorageGRID 11.8的全新安装默认为本地节点审核目标。以前，审核消息<block ref="e674b907872c88ac8370567f44423638" prefix="(" category="inline-code"></block>仅发送到管理节点上的审核日志)。</block>
   <block id="8f1a1fc584955802d03b05fb7d30309d" category="paragraph">有关更改审核日志目标的信息，请参见<block ref="eb9ec111efb5942e3d3bd0a86d72b7dc" category="inline-link-macro-rx"></block>。</block>
+  <block id="6bf13eb73870a7c6ed1ee6794feb5ce7" category="paragraph">默认情况下、StorageGRID系统配置为每小时向技术支持发送一次AutoSupport软件包。</block>
+  <block id="cb2e2cdab6c5b7d9b884fb6b295f110f" category="list-text">如果要保护与管理员代理的连接，请选择*验证代理证书*。上传CA分发包以验证管理代理服务器提供的SSL证书的真实性。</block>
+  <block id="19c85285ec535031d0e03e9999adb7c3" category="list-text">如果在与管理代理服务器通信时不想验证证书，请选择*不验证代理证书*。</block>
+  <block id="b34e09f1cc4642fa3f6ca587c92dac6d" category="paragraph">AutoSupport历史记录文件。</block>
+  <block id="609fdbff45c6f1fbdea86ceb9f172c9e" category="paragraph">GRI.JSON</block>
+  <block id="a5b18d3ae0cb45c1cff54daf5b25f2a0" category="paragraph">网格+修订版+软件版本+说明+许可证+密码+ DNS + NTP +站点+节点</block>
+  <block id="bc878c6bc5c1304ce76c45aa83e2d614" category="paragraph">网格信息。</block>
+  <block id="06c55e5865d341ffdb425774b1b3a8cd" category="paragraph">ILM配置.XML</block>
+  <block id="1e84855fcb9cafb006ea4a7eada491d5" category="paragraph">ILM配置的属性列表。</block>
+  <block id="958f2d60704e1e35d5ddf6bb16950f71" category="paragraph">ILM活动策略文件。包含有关活动ILM策略的详细信息、例如存储池ID、载入行为、筛选器、规则和问题描述。还包含默认ILM策略的XML。</block>
+  <block id="f39d876514ff1d863fdf819043adc815" category="list-text">从*监视器重新引导*步骤中，选择*停止重新引导过程*。</block>
 </blocks>

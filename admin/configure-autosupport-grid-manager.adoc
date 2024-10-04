@@ -80,7 +80,7 @@ link:configuring-admin-proxy-settings.html["了解如何配置管理代理设置
 
 == 禁用事件触发的AutoSupport
 
-默认情况下、StorageGRID系统配置为每小时或在发生重要警报或其他重大系统事件时向技术支持发送一次AutoSupport软件包。
+默认情况下、StorageGRID系统配置为每小时向技术支持发送一次AutoSupport软件包。
 
 您可以随时禁用事件触发的AutoSupport。
 

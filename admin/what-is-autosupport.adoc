@@ -64,7 +64,7 @@ AutoSupport压缩大小+
 AutoSupport解压缩大小+
 总收集时间(毫秒)
  a| 
-AutoSupport历史记录文件
+AutoSupport历史记录文件。
 
 
 
@@ -158,6 +158,29 @@ grid－Tasks．XML
 
 
  a| 
+GRI.JSON
+ a| 
+网格+修订版+软件版本+说明+许可证+密码+ DNS + NTP +站点+节点
+ a| 
+网格信息。
+
+
+
+ a| 
+ILM配置.XML
+ a| 
+属性ID +
+属性名称+
+值+
+索引+
+表ID +
+表名称
+ a| 
+ILM配置的属性列表。
+
+
+
+ a| 
 ILM状态.XML
  a| 
 节点+
@@ -178,7 +201,7 @@ ILM。XML
  a| 
 ILM原始XML
  a| 
-ILM活动策略文件。包含有关活动ILM策略的详细信息、例如存储池ID、载入行为、筛选器、规则和问题描述。
+ILM活动策略文件。包含有关活动ILM策略的详细信息、例如存储池ID、载入行为、筛选器、规则和问题描述。还包含默认ILM策略的XML。
 
 
 
