@@ -89,6 +89,8 @@ indexpage:
       url: https://community.netapp.com/
   - title: 其他版本
     links:
+    - title: StorageGRID 11.9文档
+      url: https://docs.netapp.com/us-en/storagegrid/index.html
     - title: StorageGRID 11.7文档
       url: https://docs.netapp.com/us-en/storagegrid-117/index.html
     - title: StorageGRID 11.6文档
