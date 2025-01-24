@@ -22555,7 +22555,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="46e34d4025fadd766beccf79195719d5" category="paragraph">驱动器加密不适用于SANtricity-managed驱动器。如果您的存储设备具有自加密驱动器和SANtricity控制器、则可以在SANtricity中启用驱动器安全性。</block>
   <block id="b92ce36195d9b7dbea9b50e3b54158a1" category="paragraph">SANtricity System Manager 中的驱动器安全性</block>
   <block id="0472921e1ddce2239a2bd92ea276d1c2" category="inline-link">SANtricity 系统管理器</block>
-  <block id="1ef4f62596cab25c087adc0ac8a32101" category="paragraph">如果为SG5700或SG6000存储设备启用了驱动器安全性功能、则可以使用<block ref="283c6e0cd189c125ad2427024dea04cb" category="inline-link-rx"></block> 以创建和管理安全密钥。要访问受保护驱动器上的数据，需要使用此密钥。</block>
   <block id="62c2fd20c57ec08bbfadfc971ba122bc" category="paragraph">具有全磁盘加密(Full Disk Encryption、FD)驱动器或自加密驱动器的存储设备。安全驱动器上的所有数据均可防止物理丢失或从数据中心中删除。不能用于某些存储设备或任何服务设备。</block>
   <block id="190f13f2b5ba98e56f6fd5d2240e58ca" category="paragraph">您可以启用 <block ref="e8ccdd938a1e39ad62159e790db72534" category="inline-link-macro-rx"></block> 选项。启用后、在存储分段级别或对象级别未加密的任何新对象都会在数据导入期间进行加密。</block>
   <block id="c5f5bc763864c10e114ba32b66aaaf01" category="paragraph">新载入的 S3 和 Swift 对象数据。</block>
@@ -23883,4 +23882,5 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="a875f4e3e98d1c995967b1dfb394ca2e" category="inline-link">StorageGRID 11.9文档</block>
   <block id="6c2cd681861e61d16c43836be81d3df7" category="list-text"><block ref="6c2cd681861e61d16c43836be81d3df7" category="inline-link-rx"></block></block>
   <block id="336113397a545b57c8aa09ef016d802b" category="list-text">输入<block ref="f93d31996fecfb15a2c551f7b53c8b27" prefix=" " category="inline-code"></block></block>
+  <block id="202caf39f9c365924c85dae32bfdd5d4" category="paragraph">如果为StorageGRID设备启用了驱动器安全功能、则可以使用<block ref="283c6e0cd189c125ad2427024dea04cb" category="inline-link-rx"></block>创建和管理安全密钥。要访问受保护驱动器上的数据，需要使用此密钥。</block>
 </blocks>

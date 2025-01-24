@@ -45,7 +45,7 @@ StorageGRID设备安装程序中的驱动器加密页面
  a| 
 SANtricity System Manager 中的驱动器安全性
  a| 
-如果为SG5700或SG6000存储设备启用了驱动器安全性功能、则可以使用 https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/accessing-and-configuring-santricity-system-manager.html["SANtricity 系统管理器"^] 以创建和管理安全密钥。要访问受保护驱动器上的数据，需要使用此密钥。
+如果为StorageGRID设备启用了驱动器安全功能、则可以使用 https://docs.netapp.com/us-en/storagegrid-appliances/installconfig/accessing-and-configuring-santricity-system-manager.html["SANtricity 系统管理器"^]创建和管理安全密钥。要访问受保护驱动器上的数据，需要使用此密钥。
  a| 
 具有全磁盘加密(Full Disk Encryption、FD)驱动器或自加密驱动器的存储设备。安全驱动器上的所有数据均可防止物理丢失或从数据中心中删除。不能用于某些存储设备或任何服务设备。
 
