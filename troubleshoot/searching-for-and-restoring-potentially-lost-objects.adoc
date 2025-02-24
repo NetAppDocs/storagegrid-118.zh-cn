@@ -120,7 +120,7 @@ NOTE: 在命令中、始终将对象文件路径用单引号引起来以转义�
 . 如果找到对象路径、请尝试将此对象还原到StorageGRID ：
 +
 .. 从同一个存储节点中，更改对象文件的所有权，以便可通过 StorageGRID 进行管理。输入 ... `chown ldr-user:bycast 'file_path_of_object'`
-.. Telnet 到 localhost 1402 以访问 LDR 控制台。输入 ... `telnet 0 1402`
+.. 使用SSH登录到任何存储节点。然后输入"telnet 0 1402"访问LDR控制台。
 .. 输入 ... `cd /proc/STOR`
 .. 输入 ... `Object_Found 'file_path_of_object'`
 +

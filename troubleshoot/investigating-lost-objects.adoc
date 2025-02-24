@@ -60,7 +60,7 @@ image::../media/nodes_storage_nodes_objects_page_lost_object.png[节点存储节
 
 . 使用 `ObjectByUUID` 命令以按标识符(UUID)查找对象、然后确定数据是否存在风险。
 +
-.. Telnet 到 localhost 1402 以访问 LDR 控制台。
+.. 使用SSH登录到任何存储节点。然后输入"telnet 0 1402"访问LDR控制台。
 .. 输入 ... `/proc/OBRP/ObjectByUUID UUID_value`
 +
 在第一个示例中、是对象 `UUID 926026C4-00A4-449B-AC72-BCCA72DD1311` 列出了两个位置。
