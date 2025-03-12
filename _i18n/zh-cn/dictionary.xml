@@ -6535,11 +6535,9 @@ NetApp.storagegrid</block>
   <block id="8ef596bf4eb7277f78ad1d7ad4cc04de" category="sidebar">StorageGRID 知识库</block>
   <block id="c2d388654878e1108f99fdeaa465fcac" category="sidebar">NetApp 博客</block>
   <block id="a310588c148d934b9b30c31802d4a30b" category="sidebar">NetApp 社区</block>
-  <block id="8ba7e9fc95ff683b40e7c59130ea44da" category="sidebar">其他版本</block>
   <block id="9ccd79e77976b22b2105fd27f98d48e7" category="sidebar">StorageGRID 11.4 文档</block>
   <block id="8c7a26ec02e66f37e540ca0eca6fd970" category="sidebar">StorageGRID 11.3 文档</block>
   <block id="6944c8247f8c38ca693211d8bafb8a4e" category="sidebar">StorageGRID 11.2文档</block>
-  <block id="61199ec484cad6cc2dd2ebf9c1a7720c" category="sidebar">StorageGRID 11.8.</block>
   <block id="902177bd02ae0a4f1a6bb299d07e6ff7" category="sidebar">安装设备</block>
   <block id="93001c0e0ab00af3500dd1799087e9d4" category="sidebar">应用StorageGRID修补程序</block>
   <block id="531e294adf9b55c98b81240fd08d331d" category="sidebar">修补程序：概述</block>
@@ -10720,7 +10718,6 @@ VM_API_Gateway</block>
   <block id="89020511f4cbea8ea1100a70004b645d" category="inline-link">利用StorageGRID 防御勒索软件</block>
   <block id="d6ec8a69c45d301959a0f8590bdf1241" category="paragraph">按照中的建议帮助保护对象数据免受勒索软件攻击<block ref="45c0f7ef20285fd7beb4c854421470bd" category="inline-link-rx"></block>。</block>
   <block id="8727881150b0ace8b598a648cdfcd4e1" category="summary">NetApp StorageGRID 是一款软件定义的对象存储套件、支持公共、私有和混合多云环境中的各种用例。StorageGRID 为Amazon S3 API提供本机支持、并提供行业领先的创新技术、例如自动化生命周期管理、以便长期经济高效地存储、保护和保留非结构化数据。</block>
-  <block id="15b870e7b175a7af88e1f39b1dd67be6" category="doc">StorageGRID 1.18文档</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法律声明</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">法律声明提供对版权声明、商标、专利等的访问。</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">版权</block>
@@ -11270,21 +11267,6 @@ VM_API_Gateway</block>
   <block id="80b193a425859241aa42bcaf1eb3bf48" category="image-alt">网格管理网络 IP</block>
   <block id="69c6e00c8ec46d07bb48fcaac32a0939" category="doc">客户端网络要求</block>
   <block id="c7a950a9daa901035bf17ddd6154eaeb" category="paragraph">如果您使用客户端网络，则可以通过仅接受显式配置的负载平衡器端点上的入站客户端流量来帮助保护 StorageGRID 免受恶意攻击。请参见 <block ref="cc49ba24bc21d2ae8f532e5a84e9aebb" category="inline-link-macro-rx"></block> 和 <block ref="7a7ba2cabc3c2cf3b35a108ec24ae900" category="inline-link-macro-rx"></block>。</block>
-  <block id="c97c39c2fb666ab046747b5eb4d80a29" category="summary">您可以在此处找到其他版本的NetApp StorageGRID软件的文档。</block>
-  <block id="d6802b050b61628b78b01c33ead6fac3" category="doc">其他版本的NetApp StorageGRID 文档</block>
-  <block id="9c033c2a387cf8d35a3a34cb680e78a5" category="paragraph">您可以在此处找到其他版本的NetApp StorageGRID软件的文档：</block>
-  <block id="444a66aeef372672e744a05782bffa7c" category="inline-link">StorageGRID 11.7文档</block>
-  <block id="a6b4363f6225727f0507281f9ae58717" category="list-text"><block ref="a6b4363f6225727f0507281f9ae58717" category="inline-link-rx"></block></block>
-  <block id="b6a6856979f644f23831092a77a579ae" category="inline-link">StorageGRID 11.6文档</block>
-  <block id="ebe15b7f3ab23a21b80c2db319837831" category="list-text"><block ref="ebe15b7f3ab23a21b80c2db319837831" category="inline-link-rx"></block></block>
-  <block id="6d307701f8a2621afa3c68f86b66b9f7" category="inline-link">StorageGRID 11.5 文档</block>
-  <block id="57e1c48b034af2352e5a69534ab37dd2" category="list-text"><block ref="57e1c48b034af2352e5a69534ab37dd2" category="inline-link-rx"></block></block>
-  <block id="50c142f8f9e19c4c84cb06dbc431b229" category="inline-link">StorageGRID 11.4 文档中心</block>
-  <block id="71be9d9e0df7c2f5699834ae68011996" category="list-text"><block ref="71be9d9e0df7c2f5699834ae68011996" category="inline-link-rx"></block></block>
-  <block id="bab03a68f7e57fdecf1481852ac62d80" category="inline-link">StorageGRID 11.3 文档中心</block>
-  <block id="d2ca6fb14c69e8ac834f4f43b0f0e9d8" category="list-text"><block ref="d2ca6fb14c69e8ac834f4f43b0f0e9d8" category="inline-link-rx"></block></block>
-  <block id="e58d2e166dc215d59ad9458a7cef9dc8" category="inline-link">StorageGRID 11.2文档中心</block>
-  <block id="dac584c7df1389d2899102bbaee99832" category="list-text"><block ref="dac584c7df1389d2899102bbaee99832" category="inline-link-rx"></block></block>
   <block id="cfd89f37fcc937a92faf616f73dcd24c" category="summary">如果需要删除多个存储节点，可以按顺序或并行停用它们。</block>
   <block id="99b2eef38f6147ce381d9fee8f6a699f" category="doc">停用多个存储节点</block>
   <block id="bd045462ee18e63d4b77b3058af88574" category="admonition">在包含基于软件的纯元数据节点的网格中停用存储节点时、请务必小心谨慎。如果停用配置为存储_Both _对象和元数据的所有节点、则会从网格中删除存储对象的功能。请参见 <block ref="8e49185a846f0d976af4a2b64adfc64f" category="inline-link-macro-rx"></block> 有关纯元数据存储节点的详细信息、请参见。</block>
@@ -23877,8 +23859,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="1e84855fcb9cafb006ea4a7eada491d5" category="paragraph">ILM配置的属性列表。</block>
   <block id="958f2d60704e1e35d5ddf6bb16950f71" category="paragraph">ILM活动策略文件。包含有关活动ILM策略的详细信息、例如存储池ID、载入行为、筛选器、规则和问题描述。还包含默认ILM策略的XML。</block>
   <block id="f39d876514ff1d863fdf819043adc815" category="list-text">从*监视器重新引导*步骤中，选择*停止重新引导过程*。</block>
-  <block id="a875f4e3e98d1c995967b1dfb394ca2e" category="inline-link">StorageGRID 11.9文档</block>
-  <block id="6c2cd681861e61d16c43836be81d3df7" category="list-text"><block ref="6c2cd681861e61d16c43836be81d3df7" category="inline-link-rx"></block></block>
   <block id="336113397a545b57c8aa09ef016d802b" category="list-text">输入<block ref="f93d31996fecfb15a2c551f7b53c8b27" prefix=" " category="inline-code"></block></block>
   <block id="202caf39f9c365924c85dae32bfdd5d4" category="paragraph">如果为StorageGRID设备启用了驱动器安全功能、则可以使用<block ref="283c6e0cd189c125ad2427024dea04cb" category="inline-link-rx"></block>创建和管理安全密钥。要访问受保护驱动器上的数据，需要使用此密钥。</block>
   <block id="b99211e689eb30a0f585e81b64ad800d" category="paragraph">基于软件的纯元数据节点资源必须与现有存储节点资源匹配。例如：</block>
@@ -23889,4 +23869,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="b869131b8d3adc70fb1aa175c961a46b" category="list-text">如果现有StorageGRID站点正在使用具有24 GB RAM、8核CPU以及3 TB或4 TB元数据存储的虚拟存储节点、则基于软件的纯元数据节点应使用类似的资源(24 GB RAM、8核CPU和4 TB元数据存储(rangedb/0)。</block>
   <block id="5526d91c2268df033d56db9b208fdf10" category="paragraph">添加新StorageGRID站点时、新站点的元数据总容量至少应与现有StorageGRID站点匹配、新站点资源应与现有StorageGRID站点的存储节点匹配。</block>
   <block id="4ec1c04b72c04679e2ae15cab0a5e471" category="list-text">使用SSH登录到任何存储节点。然后输入"telnet 0 1402"访问LDR控制台。</block>
+  <block id="27a5fc98d432133572f8dd4b135b3de1" category="sidebar">原有版本</block>
+  <block id="30be66bcfef2e328f8fadba5f17d7d53" category="sidebar">StorageGRID 11.8文档</block>
 </blocks>
