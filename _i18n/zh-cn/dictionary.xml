@@ -3838,7 +3838,6 @@ NetApp.storagegrid</block>
   <block id="60971ee036fc828a7f3f011d017e0050" category="section-title">[[use-External系统日志服务器]]使用外部系统日志服务器</block>
   <block id="6b0ec1175ef3fb75de2f76b033681e95" category="paragraph">您可以选择配置外部系统日志服务器、将审核日志、应用程序日志和安全事件日志保存到网格外部的某个位置。</block>
   <block id="9dbccc9978bf7a6cd6f61454ca3dd73d" category="inline-xref">选择审核信息目标</block>
-  <block id="d276b907c7b72a30241bacdfbe772515" category="admonition">如果不想使用外部系统日志服务器、请跳过此步骤并转到 <block ref="87072221f37d4bc0cc02a909f99f56e5" category="inline-xref-macro-rx"></block>。</block>
   <block id="61b5c38b18f3820f2f4c8e30c5cafd11" category="admonition">如果此操作步骤中提供的配置选项不够灵活、无法满足您的要求、则可以使用应用其他配置选项<block ref="ea765f48f100619936ccdcd0b683c049" prefix=" " category="inline-code"></block> 端点、位于的专用API部分中 <block ref="cc49cdce4b10453bb923896a29379c6d" category="inline-link-macro-rx"></block>。例如、如果要对不同的节点组使用不同的系统日志服务器、则可以使用API。</block>
   <block id="fbbf2d5cf773415c1e9cf5eeb281df85" category="section-title">输入系统日志信息</block>
   <block id="ab205850007617ac9bc8ca5a91f57cf7" category="paragraph">访问配置外部系统日志服务器向导、并提供StorageGRID访问外部系统日志服务器所需的信息。</block>
@@ -3947,17 +3946,12 @@ NetApp.storagegrid</block>
   <block id="799e3f91ddd03b7a49e275dd8011bc44" category="paragraph">此时将返回到 * 审核和系统日志服务器 * 页面。绿色横幅表示系统日志服务器配置已保存。</block>
   <block id="b3ebc08545d522d257f962592c0c4ff7" category="admonition">只有在选择包含外部系统日志服务器的目标后、才会将StorageGRID审核信息发送到外部系统日志服务器。</block>
   <block id="88a94edacd8faca5352fd96948895a5d" category="paragraph">您可以指定审核日志、安全事件日志和的位置 <block ref="62a46aba536e97d2036ebe496a8f38d6" category="inline-link-macro-rx"></block> 已发送。</block>
-  <block id="d88853528fd56c72f54f04de9e9fba69" category="admonition">只有在配置了外部系统日志服务器后、某些目标才可用。</block>
   <block id="2f6e8bdc6346bb032a4b780d4060113c" category="list-text">在审核和系统日志服务器页面上、选择审核信息的目标。</block>
   <block id="5f3372598a7e4ea4cd6e98baab645ff4" category="admonition">*仅限本地节点*和*外部系统日志服务器*通常可提供更好的性能。</block>
-  <block id="e8aa24b17c01c7f281b3c456e7820c8f" category="paragraph">审核消息、安全事件日志和应用程序日志不会发送到管理节点。而是仅保存在生成这些卷的节点("本地节点")上。在每个本地节点上生成的审核信息存储在中<block ref="bc9191d963b550670854df9485545416" prefix=" " category="inline-code"></block></block>
   <block id="3b8093e965fbf0247bee9e19ad740bc4" category="paragraph">*注意*：StorageGRID会定期轮换删除本地日志以释放空间。当节点的日志文件达到 1 GB 时，系统将保存现有文件并启动新的日志文件。日志的轮换限制为 21 个文件。创建日志文件的第 22 版时，将删除最早的日志文件。每个节点平均存储约 20 GB 的日志数据。</block>
   <block id="38319ee01166f2ff92e525904d7b73a0" category="paragraph">管理节点/本地节点</block>
-  <block id="0cb4cdff1ef4a0426f582a8488ed4ae3" category="paragraph">审核消息会发送到审核日志 <block ref="e674b907872c88ac8370567f44423638" prefix="(" category="inline-code"></block>)、安全事件日志和应用程序日志存储在生成这些日志的节点上。</block>
   <block id="50ea2454931a155c2505f19e549486ff" category="paragraph">外部系统日志服务器</block>
-  <block id="4ff0f7ad14a01f5f42ad118c3f6956cb" category="paragraph">审核信息会发送到外部系统日志服务器并保存在本地节点上。发送的信息类型取决于您配置外部系统日志服务器的方式。只有在配置了外部系统日志服务器之后，才会启用此选项。</block>
   <block id="b43d00e439104a2a74c665f36b98b78d" category="paragraph">管理节点和外部系统日志服务器</block>
-  <block id="7151fbde83e72ba04d476948e5ac9c0a" category="paragraph">审核消息会发送到审核日志 <block ref="e674b907872c88ac8370567f44423638" prefix="(" category="inline-code"></block>)、审核信息将发送到外部系统日志服务器并保存在本地节点上。发送的信息类型取决于您配置外部系统日志服务器的方式。只有在配置了外部系统日志服务器之后，才会启用此选项。</block>
   <block id="65bce8d0d49681062f71ae98a99361a4" category="paragraph">此时将显示一条警告消息。</block>
   <block id="561e21cf9538d868eb70547550555ff6" category="list-text">选择*OK*确认要更改审核信息的目标。</block>
   <block id="d838bea8988184a382f2c15e0d3c2050" category="paragraph">绿色横幅表示已保存审核配置。</block>
@@ -15911,7 +15905,6 @@ VM_API_Gateway</block>
   <block id="47ee1ebf35c423b283c4bb80f8b514e9" category="list-text">在管理节点中，搜索审核日志以查找可能的对象位置：</block>
   <block id="7cc28340acdd775c05e6ecc2a704b5c0" category="list-text">输入中列出的密码<block ref="28325afa13c532a62489ef0d7bee3061" prefix=" " category="inline-code"></block> 文件
 以root用户身份登录后、提示符将从变为<block ref="c3e97dd6e97fb5125688c97f36720cbe" prefix=" " category="inline-code"></block> to<block ref="01abfc750a0c942167651c40d088531d" prefix=" " category="inline-code"></block>。</block>
-  <block id="79d10507d1eb578753c760fc95e12b82" category="list-text">更改为审核日志所在的目录：<block ref="deb122ad627cb486d581056e71282741" prefix=" " category="inline-code"></block></block>
   <block id="2d50451d1ed99088cac1a292a038e693" category="inline-link-macro">与可能丢失的对象关联的审核消息</block>
   <block id="426d738fee44d6a6555919a8b96a1e9d" category="list-text">使用grep提取 <block ref="22bb5241ff31e71b2705e48e57c4b0fe" category="inline-link-macro-rx"></block> 并将其发送到输出文件。输入 ...<block ref="63c809629b1c74ea124c6ac6b469909e" prefix=" " category="inline-code"></block></block>
   <block id="8a5de422d7c0ef16acdca149cb923f24" category="list-text">使用 grep 从此输出文件中提取丢失位置（ LLLST ）审核消息。输入 ...<block ref="77f8923361a2e09749aba63083dc7827" prefix=" " category="inline-code"></block></block>
@@ -16026,7 +16019,6 @@ VM_API_Gateway</block>
   <block id="8a763c715195c6c30b293013c82e2126" category="list-text">转到*configuration*&gt;*Monitoring*&gt;*Audit and syslog server*。</block>
   <block id="1fa458d6f22f9317d191067ad9c73bf0" category="list-text">如果客户端写入正常、请访问审核日志：</block>
   <block id="df7e94e88d7e541515db8cc819ccf8dc" category="list-text">输入 ...<block ref="23e554a8303c5e2f2a814b91356f9c72" prefix=" " category="inline-code"></block></block>
-  <block id="0fd8dcbac62e03fa4b1e1fdc26c128c7" category="list-text">输入 ...<block ref="8128b9e658ca83ca63b6a74f47c237a2" prefix=" " category="inline-code"></block></block>
   <block id="a7d635c518fe86efe6bb9ffee7e4c791" category="list-text">确定哪些租户正在使用大于5 GiB的对象。</block>
   <block id="303cf1c42b3a6db6db18e3cc05a8cdf7" category="list-text">对于结果中的每个审核消息、请查看<block ref="93177f657f533dfc6f27715fdc3ad840" prefix=" " category="inline-code"></block> 字段以确定租户帐户ID。使用消息中的其他字段确定客户端、存储分段和对象使用的IP地址：</block>
   <block id="ca0dbad92a874b2f69b549293387925e" category="cell">代码</block>
@@ -16057,7 +16049,6 @@ VM_API_Gateway</block>
   <block id="b249b823efa220cdc92c155f83791484" category="image-alt">节点存储节点对象页面丢失对象</block>
   <block id="d0c60358e5ae5e5778829519414b99ce" category="inline-link-macro">访问审核日志</block>
   <block id="ba95293a64f96f2cebf7d9e4076d0c67" category="list-text">从管理节点、 <block ref="851cdae78f4ca792157b09646614b3ca" category="inline-link-macro-rx"></block> 要确定触发*对象丢失*警报的对象的唯一标识符(UUID)：</block>
-  <block id="2652ea5b6eed80528235dd1a655ffc12" category="list-text">更改为审核日志所在的目录。输入 ...<block ref="deb122ad627cb486d581056e71282741" prefix=" " category="inline-code"></block></block>
   <block id="bed0f95aae778342ff2aff4af6b18c52" category="list-text">使用 grep 提取对象丢失（ OLST ）审核消息。输入 ...<block ref="8d2ee8fb12c31c209ae2e841a6659e03" prefix=" " category="inline-code"></block></block>
   <block id="e296ae2c06db7d039be70a412b2c22a7" category="list-text">记下消息中包含的 UUID 值。</block>
   <block id="7a9ff12f88af18b0bd23124ab09acd1f" category="list-text">使用<block ref="3b5f2a3c0a1edc31b7f0b8b0585091f3" prefix=" " category="inline-code"></block> 命令以按标识符(UUID)查找对象、然后确定数据是否存在风险。</block>
@@ -20635,7 +20626,6 @@ HA组是一组节点、每个节点都包含StorageGRID 负载平衡器服务。
   <block id="5eaa0fb201a8440d17e19d30e77c0c77" category="list-text">登录到扩展管理节点：</block>
   <block id="a6fa59a0255002431fba6a46d5ea52f1" category="list-text">输入以下命令：<block ref="429751287ceacef5be558909dd3700e8" prefix=" " category="inline-code"></block></block>
   <block id="072ef37b447cac236379a387c8ebb96a" category="list-text">更新审核日志文件的用户和组设置：</block>
-  <block id="84d54dccb51332fa23a4399b443d918c" category="paragraph"><block ref="8128b9e658ca83ca63b6a74f47c237a2" prefix="" category="inline-code"></block> +<block ref="abee3d65b7b57cee8c94fded57a55207" prefix=" " category="inline-code"></block></block>
   <block id="dd2a065fb261e525830f85844976e790" category="summary">如果某个存储节点包含的存储卷少于 16 个，则可以通过添加新的块存储设备，使其对 Linux 主机可见，并将新的块设备映射添加到用于该存储节点的 StorageGRID 配置文件来增加其容量。</block>
   <block id="1f607e36bfae0ed8067e84e06ffaf6bc" category="list-text">您可以访问有关为 Linux 平台安装 StorageGRID 的说明。</block>
   <block id="b0880c1b676e67050270238d3222c66f" category="admonition">在软件升级、恢复操作步骤 或其他扩展操作步骤 处于活动状态时、请勿尝试向存储节点添加存储卷。</block>
@@ -23871,4 +23861,30 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="4ec1c04b72c04679e2ae15cab0a5e471" category="list-text">使用SSH登录到任何存储节点。然后输入"telnet 0 1402"访问LDR控制台。</block>
   <block id="27a5fc98d432133572f8dd4b135b3de1" category="sidebar">原有版本</block>
   <block id="30be66bcfef2e328f8fadba5f17d7d53" category="sidebar">StorageGRID 11.8文档</block>
+  <block id="f46d78b08f1c5cf231ca39ca2b04235f" category="paragraph">审核日志目录和适用节点取决于您的审核目标设置。</block>
+  <block id="5d6fa84951bfdac1838890ed410b565c" category="paragraph">本地节点(默认)</block>
+  <block id="965b88e4fba786c4d838d8e718a8c9a1" category="paragraph"><block ref="bc9191d963b550670854df9485545416" prefix="" category="inline-code"></block></block>
+  <block id="28a5123644d0679ae4e5fe468e64fa34" category="list-text">管理节点(主节点和非主节点)：<block ref="0477507f10899867b87b3565143dff3c" prefix=" " category="inline-code"></block></block>
+  <block id="b4308347865e1fe28b4753d9e5b6c2b7" category="list-text">所有节点：<block ref="bc9191d963b550670854df9485545416" prefix=" " category="inline-code"></block>在此模式下、文件通常为空或缺失。</block>
+  <block id="b81e2d67c823582696bdc4eff4dece56" category="paragraph">根据您的审核目标设置、输入：<block ref="8128b9e658ca83ca63b6a74f47c237a2" prefix=" " category="inline-code"></block>或<block ref="a655d8961c5b4cfeb6723fdad7f92b75" prefix=" " category="inline-code"></block></block>
+  <block id="b738d97a5b00611155b5049fa75dea6a" category="paragraph">要了解更多信息，请参阅 <block ref="212e000c31180041ea825ba2d7153b6f" category="inline-link-macro-rx"></block>。</block>
+  <block id="ffab9a0a8e7cbc9105212711d425611f" category="admonition">如果不想使用外部系统日志服务器，请跳过此步骤并转到<block ref="c22ee8789664414489cd7977c16dd738" category="inline-xref-macro-rx"></block>。</block>
+  <block id="f2b300f3407bc87b6c582b581c2dfc65" category="paragraph">StorageGRID默认使用本地节点审核目标，并将审核信息存储在中<block ref="bc9191d963b550670854df9485545416" prefix=" " category="inline-code"></block>。</block>
+  <block id="fd3c53d264d60287a8e859978a04698b" category="paragraph">使用时<block ref="bc9191d963b550670854df9485545416" prefix=" " category="inline-code"></block>，Grid Manager和租户管理器审核日志条目可能会发送到存储节点。您可以使用命令查找哪个节点具有最新的条目<block ref="105f8b3c897c5eecffb70df428293ab7" prefix=" " category="inline-code"></block>。</block>
+  <block id="098aba5222c41c87d02af6a949f1598f" category="paragraph">只有在配置了外部系统日志服务器后、某些目标才可用。</block>
+  <block id="46e49782eee1e579b810d1c52f5f95ad" category="paragraph">审核消息、安全事件日志和应用程序日志不会发送到管理节点。而是仅保存在生成这些卷的节点("本地节点")上。在每个本地节点上生成的审核信息存储在中<block ref="bc9191d963b550670854df9485545416" prefix=" " category="inline-code"></block>。</block>
+  <block id="e710d60f947a90a78295308311fa2815" category="paragraph">审核消息会发送到管理节点上的审核日志、安全事件日志和应用程序日志会存储在生成这些消息的节点上。审核信息存储在以下文件中：</block>
+  <block id="82dbe249450f8784310da2e8815da133" category="list-text">所有节点：<block ref="bc9191d963b550670854df9485545416" prefix=" " category="inline-code"></block>文件通常为空或缺失。它可能包含辅助信息、例如某些消息的附加副本。</block>
+  <block id="7714a5f277da3088ccf1aeec5fbc59e0" category="paragraph">审核信息会发送到外部系统日志服务器并保存在本地节点上<block ref="bc9191d963b550670854df9485545416" prefix="(" category="inline-code"></block>)。发送的信息类型取决于您配置外部系统日志服务器的方式。只有在配置了外部系统日志服务器之后，才会启用此选项。</block>
+  <block id="899f474bfc7e40b76060770d754b57f1" category="paragraph">审核消息会发送到<block ref="0477507f10899867b87b3565143dff3c" prefix="(" category="inline-code"></block>管理节点上的审核日志()，而审核信息会发送到外部系统日志服务器并保存在本地节点上<block ref="bc9191d963b550670854df9485545416" prefix="(" category="inline-code"></block>)。发送的信息类型取决于您配置外部系统日志服务器的方式。只有在配置了外部系统日志服务器之后，才会启用此选项。</block>
+  <block id="3fb29eb79422ba280dfd5c35e336d5f0" category="paragraph">默认情况下、StorageGRID可以发送审核信息、也可以更改目标：</block>
+  <block id="a2bc7d77d31290edd3b02350c7f4ec1b" category="list-text">根据您的安装、StorageGRID默认为本地节点或管理节点审核目标。</block>
+  <block id="649be60954ddd880945fbe6669cbeadb" category="list-text">可能会将网格管理器和租户管理器审核日志条目发送到存储节点。</block>
+  <block id="4345c07eaba3ed61281d0fde2e0a1314" category="list-text">您也可以更改审核日志的目标并将审核信息发送到外部系统日志服务器。配置外部系统日志服务器后，仍会生成并存储审核记录的本地日志。</block>
+  <block id="139faffc402fa84e7e76e6a461cbc526" category="inline-link-macro">了解如何配置审核消息和日志目标</block>
+  <block id="c8ede56dab8848581960d6fff53fb0dc" category="list-text"><block ref="1ee396bdf4eb99d9ffb872e2ad584eba" category="inline-link-macro-rx"></block>(英文)</block>
+  <block id="16d41abb9d77f3e37b5a909333c79d85" category="list-text">更改为审核日志所在的目录。</block>
+  <block id="34e0c51b0645847e93351125647002d5" category="list-text">[[substage-1b]]更改为审核日志所在的目录。</block>
+  <block id="7c03f41530726ffda9e064ae1132bf05" category="inline-xref">子步骤1. b.</block>
+  <block id="8d2596b8fc055620ab4703a4b76e1538" category="list-text">更改为审核日志所在的目录。请参阅 <block ref="b1b12721c28875151da1012031aa105a" category="inline-xref-macro-rx"></block>。</block>
 </blocks>
