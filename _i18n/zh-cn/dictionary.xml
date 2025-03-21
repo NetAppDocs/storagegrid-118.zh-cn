@@ -23878,7 +23878,6 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="7714a5f277da3088ccf1aeec5fbc59e0" category="paragraph">审核信息会发送到外部系统日志服务器并保存在本地节点上<block ref="bc9191d963b550670854df9485545416" prefix="(" category="inline-code"></block>)。发送的信息类型取决于您配置外部系统日志服务器的方式。只有在配置了外部系统日志服务器之后，才会启用此选项。</block>
   <block id="899f474bfc7e40b76060770d754b57f1" category="paragraph">审核消息会发送到<block ref="0477507f10899867b87b3565143dff3c" prefix="(" category="inline-code"></block>管理节点上的审核日志()，而审核信息会发送到外部系统日志服务器并保存在本地节点上<block ref="bc9191d963b550670854df9485545416" prefix="(" category="inline-code"></block>)。发送的信息类型取决于您配置外部系统日志服务器的方式。只有在配置了外部系统日志服务器之后，才会启用此选项。</block>
   <block id="3fb29eb79422ba280dfd5c35e336d5f0" category="paragraph">默认情况下、StorageGRID可以发送审核信息、也可以更改目标：</block>
-  <block id="a2bc7d77d31290edd3b02350c7f4ec1b" category="list-text">根据您的安装、StorageGRID默认为本地节点或管理节点审核目标。</block>
   <block id="649be60954ddd880945fbe6669cbeadb" category="list-text">可能会将网格管理器和租户管理器审核日志条目发送到存储节点。</block>
   <block id="4345c07eaba3ed61281d0fde2e0a1314" category="list-text">您也可以更改审核日志的目标并将审核信息发送到外部系统日志服务器。配置外部系统日志服务器后，仍会生成并存储审核记录的本地日志。</block>
   <block id="139faffc402fa84e7e76e6a461cbc526" category="inline-link-macro">了解如何配置审核消息和日志目标</block>
@@ -23887,4 +23886,5 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="34e0c51b0645847e93351125647002d5" category="list-text">[[substage-1b]]更改为审核日志所在的目录。</block>
   <block id="7c03f41530726ffda9e064ae1132bf05" category="inline-xref">子步骤1. b.</block>
   <block id="8d2596b8fc055620ab4703a4b76e1538" category="list-text">更改为审核日志所在的目录。请参阅 <block ref="b1b12721c28875151da1012031aa105a" category="inline-xref-macro-rx"></block>。</block>
+  <block id="d64a6bcdda65708c9f5f9461c48d170a" category="list-text">StorageGRID默认为本地节点审核目标。</block>
 </blocks>
