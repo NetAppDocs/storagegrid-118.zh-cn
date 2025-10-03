@@ -191,11 +191,18 @@ Cassandra 可以有多个条目；您必须找到最新的条目。
 如果 Cassandra 数据库发生内存不足错误，则会创建堆转储，触发总事件（ SMT ）警报， Cassandra 堆内存不足错误计数将增加 1 。
 
 .步骤
-. 要查看事件，请选择 * 支持 * > * 工具 * > * 网格拓扑 * > * 配置 * 。
+. 查看活动：
++
+.. 选择 * 支持 * > * 工具 * > * 网格拓扑 * 。
+.. 展开站点，然后选择*_grid_node_*。
+.. 选择 *SSM*，然后选择 *事件* > *配置*。
+
+
 . 验证 Cassandra 堆内存不足错误计数是否为 1 或更高。
 +
 您可以 link:../monitor/running-diagnostics.html["运行诊断"] 获取有关网格当前状态的追加信息。
 
+. 使用 SSH 以“admin”身份登录选定节点，并切换到本地 root 用户。
 . 转至 `/var/local/core/`、压缩 `Cassandra.hprof` 并将其发送给技术支持。
 . 创建的备份 `Cassandra.hprof` 文件、然后将其从中删除 `/var/local/core/ directory`。
 +

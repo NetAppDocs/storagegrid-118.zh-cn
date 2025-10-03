@@ -16006,7 +16006,6 @@ VM_API_Gateway</block>
   <block id="7f187fbfb3cc374df5654c19d1b29094" category="section-title">Cassanda内存不足错误(SMTT警报)</block>
   <block id="fd73c5b19eb71a21b9e039279608b7c0" category="paragraph">如果 Cassandra 数据库出现内存不足错误，则会触发总计事件（ SMT ）警报。如果发生此错误，请联系技术支持以使用问题描述 。</block>
   <block id="e9b0dabe78a40351d7b0a637c79de6e7" category="paragraph">如果 Cassandra 数据库发生内存不足错误，则会创建堆转储，触发总事件（ SMT ）警报， Cassandra 堆内存不足错误计数将增加 1 。</block>
-  <block id="9e20710df153e393c701eda5b1d2fbcf" category="list-text">要查看事件，请选择 * 支持 * &gt; * 工具 * &gt; * 网格拓扑 * &gt; * 配置 * 。</block>
   <block id="b832676c17270cdd35801ee9b893738c" category="list-text">验证 Cassandra 堆内存不足错误计数是否为 1 或更高。</block>
   <block id="bed4eac46ec43dc854496c7fd503d700" category="list-text">转至<block ref="6bb54d6ab7d662a825eefc9b3e9f13f4" prefix=" " category="inline-code"></block>、压缩<block ref="af8530f757388fb61806648b02b0be32" prefix=" " category="inline-code"></block> 并将其发送给技术支持。</block>
   <block id="28f7e2793e7b4bef50320fd5f1b0811d" category="list-text">创建的备份<block ref="af8530f757388fb61806648b02b0be32" prefix=" " category="inline-code"></block> 文件、然后将其从中删除<block ref="e59739a1dff6d57beead9b6b52427349" prefix=" " category="inline-code"></block>。</block>
@@ -23891,4 +23890,8 @@ S3客户端可以通过发出GetObject或HeadObject请求来验证对象的复�
   <block id="1deaf9237f4171a62975b6710d5432b8" category="list-text">198.51.100.0/24，因为此子网范围包含 IP 地址 198.51.100.2 和 198.51.100.4</block>
   <block id="73481daa309b095a9aa27f202e41db43" category="section-title">示例 2：锁定敏感端口</block>
   <block id="67e66a8fc5de2d4b0e456dfdb9b3d6f8" category="section-title">示例 3：禁用对未使用的服务的访问</block>
+  <block id="2fea3b847de8a9b6640281d2b38d94d5" category="list-text">查看活动：</block>
+  <block id="110b64c7904843edcb89b0d6c1dffc04" category="list-text">展开站点，然后选择*_grid_node_*。</block>
+  <block id="0e755cbdf2a855a3d997100bcaecddef" category="list-text">选择 *SSM*，然后选择 *事件* &gt; *配置*。</block>
+  <block id="b12f2da592fdf5c6561f6893a79992c8" category="list-text">使用 SSH 以“admin”身份登录选定节点，并切换到本地 root 用户。</block>
 </blocks>
